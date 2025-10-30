@@ -1,0 +1,43 @@
+body {
+  font-family: $font-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: $font-serif;
+  font-weight: 600;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+code, pre {
+  font-family: $font-mono;
+}
+
+body {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.fuzzy-overlay{
+    position: absolute;
+    inset: -200%;
+    background: url("../images/noise-bg.png");
+    opacity: 0.35;
+    z-index: -1;
+    animation: shift .5s linear infinite both;
+}
+
+@keyframes shift {
+    0% {
+        transform: translate(10%, 10%);
+    }
+    100% {
+        transform: translate(-10%, -10%);
+    }
+    
+}

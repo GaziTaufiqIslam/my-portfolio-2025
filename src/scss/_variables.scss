@@ -1,0 +1,79 @@
+/*--------------------------------*\
+  #DESIGN TOKENS
+\*--------------------------------*/
+
+// --- 1. COLOR PALETTE (Raw Values) ---
+// Replace these with your exact HEX codes from Figma
+
+// Brand: Purples
+$color-brand-900: #2b1b3b;
+$color-brand-700: #4a2d6b;
+$color-brand-500: #6b4c8b;
+$color-brand-300: #a98dca;
+$color-brand-100: #d9c9e9;
+$color-brand-050: #f5f0fa;
+
+// Accent: Red/Browns (Row 2)
+$color-accent-900: #4f1d13;
+$color-accent-700: #a23c2a;
+$color-accent-500: #d15c4a;
+$color-accent-300: #e88d7d;
+$color-accent-100: #f4beaf;
+$color-accent-050: #fcf1ed;
+
+// Neutrals: Grays
+$color-neutral-900: #333333;
+$color-neutral-700: #555555;
+$color-neutral-500: #888888;
+$color-neutral-300: #bbbbbb;
+$color-neutral-100: #eeeeee;
+$color-neutral-000: #ffffff;
+
+// Secondary (Row 4)
+$color-secondary-pink: #e04a80;
+$color-secondary-orange: #f0a260;
+
+// Information (Row 5 - for system feedback)
+$color-error:   #e62a2a; // Red
+$color-success: #3ab57a; // Green
+$color-warning: #f0d040; // Yellow
+$color-info:    #4a6ae0; // Blue
+
+
+// --- 2. SEMANTIC VARIABLES (What We Use) ---
+// We build the site with these.
+// If you want to change your text color, you only change it here.
+
+// Text
+$color-text: $color-neutral-900;
+$color-text-light: $color-neutral-700;
+
+// Brand
+$color-brand: $color-brand-700; // Your main purple
+
+// Backgrounds
+$color-background: $color-neutral-000;
+$color-background-alt: $color-neutral-100;
+
+// Buttons & Accents
+$color-button-bg: $color-neutral-700;
+$color-button-text: $color-neutral-000;
+
+// This now correctly uses your main "Accent" palette
+$color-accent-stroke: $color-accent-500; 
+
+// System Feedback
+// $color-error: $color-info-error;
+// $color-success: $color-info-success;
+// $color-warning: $color-info-warning;
+// $color-info: $color-info-info;
+
+// --- 3. FONT VARIABLES ---
+$font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-serif: 'IBM Plex Serif', Georgia, Cambria, "Times New Roman", Times, serif;
+$font-mono: 'IBM Plex Mono', "Courier New", Courier, monospace;
+
+// --- 4. BREAKPOINTS ---
+$breakpoint-md: 768px;   // Tablet
+$breakpoint-lg: 1024px;  // Desktop
+$breakpoint-xl: 1280px;  // Large Desktop

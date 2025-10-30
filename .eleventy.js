@@ -5,6 +5,9 @@ module.exports = function(eleventyConfig) {
   // Copy our assets folder to the final build
   eleventyConfig.addPassthroughCopy("./src/assets/");
 
+  // This rule copies your HTML images directly
+  eleventyConfig.addPassthroughCopy("src/images");
+
   return {
     dir: {
       input: "src",      // Source folder

@@ -1,0 +1,13 @@
+// 1. Reset
+@import '~normalize.css/normalize.css';
+
+// 2. Variables & Fonts
+@import 'fonts';
+@import 'variables';
+
+// 3. Base styles
+@import 'base';
+@import 'typography';
+
+// 4. Your components and layouts will go here...
+@import 'header';

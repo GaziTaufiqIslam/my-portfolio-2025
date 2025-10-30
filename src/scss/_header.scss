@@ -1,0 +1,255 @@
+/*--------------------------------*\
+  #SITE-HEADER
+\*--------------------------------*/
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem; // ~24px top/bottom, 40px left/right
+//   width: 100%;
+
+    box-shadow: 0 1px 4px 0 transparentize($color: $color-neutral-900, $amount: 0.9);
+}
+
+/**
+ * 1. Brand (Left Side)
+ */
+.site-header__brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-header__logo {
+  height: 72px; // Adjust as needed
+  width: auto;
+  margin-right: 0.75rem;
+}
+
+.site-header__brand-text {
+  font-family: $font-serif;
+  font-size: 1.5rem; // 18px
+  font-weight: 400;
+  color: $color-text-light;
+  white-space: nowrap;
+}
+.site-header__my-name {
+    font-weight: 600;
+    color: $color-brand;
+    font-style: italic;
+}
+
+.site-header__my-role {
+    @media (max-width: $breakpoint-xl) {
+        // display: none;
+        font-size: 1rem;
+    }
+}
+
+/**
+ * 2. Navigation (Right Side)
+ */
+.site-header__nav {
+  display: flex;
+  align-items: center;
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0 1.5rem 0 0; // 24px spacing to the right
+    padding: 0;
+  }
+
+  li {
+    margin-left: 2rem; // 32px spacing between links
+  }
+
+  // Styles for the nav links (not the button)
+  a {
+    font-family: $font-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: $color-text;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    @media (max-width: $breakpoint-xl) {
+      font-size: 1.125rem;
+    }
+
+    &:hover {
+      color: $color-brand;
+    }
+  }
+}
+
+/**
+ * 3. Contact Button
+ * This is the final version we built.
+ */
+.btn-contact {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  font-family: $font-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  z-index: 10;
+  padding: 1rem 2.5rem;
+  transition: none; 
+
+  // --- Red Stroke (Bottom Layer) ---
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    bottom: -3px;
+    right: -2px;
+    background-image: url('../images/button-stroke-red.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  // --- Gray Stroke (Top Layer) ---
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url('../images/button-stroke-gray.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  // --- HOVER STATE ---
+  &:hover {
+    transform: none;
+
+    &::before {
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+a.btn-contact {
+    color: $color-button-text;
+    &:hover {
+      color: $color-button-text;
+    }
+}
+
+
+/**
+ * 4. Hamburger Button (Mobile Only)
+ * Hidden by default on desktop.
+ */
+.site-header__mobile-toggle {
+  display: none; // Hidden on desktop
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001; 
+
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: $color-text;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+/*--------------------------------*\
+  #RESPONSIVE (Mobile)
+\*--------------------------------*/
+@media (max-width: $breakpoint-xl) {
+    .site-header__brand-text {
+    font-size: 1.25rem
+}
+}
+@media (max-width: $breakpoint-lg) {
+
+    
+
+
+  .site-header {
+    padding: 1rem 1.5rem; // Less padding on mobile
+  }
+
+  // Show the hamburger button
+  .site-header__mobile-toggle {
+    display: block;
+  }
+
+  // Hide the text part of the brand
+  .site-header__brand-text {
+    display: none;
+  }
+
+  // Hide the desktop nav
+  .site-header__nav {
+    display: none; // Hidden by default
+    
+    // When menu is opened
+    &.is-open {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      // Full-screen overlay
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $color-background;
+      z-index: 1000;
+
+      // Stack the nav links
+      ul {
+        flex-direction: column;
+        text-align: center;
+        margin: 0 0 2rem 0;
+      }
+
+      li {
+        margin: 0 0 1.5rem 0;
+      }
+
+      // Make links big and tappable
+      a {
+        font-size: 2rem;
+      }
+      
+      .btn-contact {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  // Animate the hamburger icon to an "X"
+  .site-header__mobile-toggle.is-open {
+    span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+}
