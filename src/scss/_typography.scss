@@ -1,20 +1,22 @@
 /*--------------------------------*\
   #TYPOGRAPHY STYLES
-  # Based on the design file
+  # Fluid scaling with clamp()
 \*--------------------------------*/
 
 // --- 1. BASE BODY & PARAGRAPH ---
 
 body {
-  // Corresponds to "Body Base" (p 400)
-  font-family: $font-sans;
+  font-family: $font-serif;
   font-weight: 400;
-  font-size: 16px; // Default
   line-height: 1.6;
   color: $color-text;
   background-color: $color-background;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  // Corresponds to "Body Base"
+  // Scales from 15px to 16px
+  font-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
 }
 
 p {
@@ -22,19 +24,10 @@ p {
   margin-bottom: 1.25rem;
 }
 
-// Corresponds to "Body Strong" (p 600)
-strong, b {
-  font-weight: 600;
-}
+// ... (strong, em, etc. are fine as-is) ...
 
-// Corresponds to "Body Emphasis" (p italics)
-em, i {
-  font-style: italic;
-}
-
-// Corresponds to "Body Link" (a)
 a {
-  color: $color-text; // Uses the default text color
+  color: $color-text;
   font-weight: 400;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -42,112 +35,91 @@ a {
   transition: color 0.2s ease-out;
 
   &:hover {
-    color: $color-brand; // Change color on hover
+    color: $color-brand;
   }
 }
 
-// Corresponds to "Body Small" (p 14px 400)
+// Corresponds to "Body Small"
 small {
-  font-size: 14px;
+  // Scales from 13px to 14px
+  font-size: clamp(0.8125rem, 0.8rem + 0.1vw, 0.875rem);
   font-weight: 400;
 }
 
-// Corresponds to "Body Small Strong" (p 14px 600)
-small strong {
-  font-weight: 600;
-}
+// ... (code, pre, etc. are fine as-is) ...
 
-// Corresponds to "Body Code" (span)
-code, pre {
-  font-family: $font-mono;
-  font-size: 0.9rem;
-  background: $color-neutral-100;
-  border-radius: 4px;
-  padding: 0.2em 0.4em;
-}
-
-pre {
-  padding: 1em;
-  overflow-x: auto;
-}
 
 // --- 2. HEADINGS (H1-H6) ---
-// We also create .h1, .h2, etc. classes so you can
-// apply heading styles to any element.
 
 // Corresponds to "Title Hero" (h1)
+// Scales from 36px to 56px
 h1, .h1 {
   font-family: $font-serif;
-  font-weight: 700; // Assumed heavy weight
-  font-size: 3.5rem;  // ~56px
+  font-weight: 700;
+  font-size: clamp(2.25rem, 1rem + 5vw, 3.5rem);
   line-height: 1.1;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
 }
 
 // Corresponds to "Title Page" (h2)
+// Scales from 32px to 44px
 h2, .h2 {
   font-family: $font-serif;
   font-weight: 700;
-  font-size: 2.75rem; // ~44px
+  font-size: clamp(2rem, 1.2rem + 3.5vw, 2.75rem);
   line-height: 1.2;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
 // Corresponds to "Sub-Title" (h3)
+// Scales from 26px to 32px
 h3, .h3 {
-  font-family: $font-sans; // Note: Switched to Sans-Serif
+  font-family: $font-serif;
   font-weight: 600;
-  font-size: 2rem; // ~32px
+  font-size: clamp(1.625rem, 1.2rem + 2.5vw, 2rem);
   line-height: 1.3;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
 // Corresponds to "Heading" (h4)
+// Scales from 22px to 24px
 h4, .h4 {
-  font-family: $font-sans;
+  font-family: $font-serif;
   font-weight: 700;
-  font-size: 1.5rem; // ~24px
+  font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.5rem);
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
 
 // Corresponds to "Sub-heading" (h5)
+// Scales from 18px to 19px
 h5, .h5 {
   font-family: $font-sans;
   font-weight: 600;
-  font-size: 1.125rem; // ~18px
+  font-size: clamp(1.125rem, 1.1rem + 0.1vw, 1.1875rem);
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
 
-// A default h6 for completeness
-h6, .h6 {
-  font-family: $font-sans;
-  font-weight: 700;
-  font-size: 0.875rem; // 14px
-  line-height: 1.4;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
-}
+// ... (h6, strong, code, etc. can stay the same) ...
 
 
 // --- 3. UTILITY CLASSES ---
-// For the "single line" span styles in your image
+// These remain static, as they are specific utility overrides
 
 // Corresponds to "Body Base single Line" (span)
 .text-body-base {
-  font-family: $font-sans;
+  font-family: $font-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 16px; // 1rem
 }
 
 // Corresponds to "Body Small Strong single Line" (span)
 .text-small-strong {
-  font-family: $font-sans;
-  font-size: 14px;
+  font-family: $font-serif;
+  font-size: 14px; // 0.875rem
   font-weight: 600;
 }

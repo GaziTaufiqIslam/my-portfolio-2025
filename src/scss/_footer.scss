@@ -1,0 +1,218 @@
+/*--------------------------------*\
+  #SITE-FOOTER
+\*--------------------------------*/
+
+.site-footer {
+  position: relative; // Crucial for positioning the stickers
+  padding: 4rem 1.5rem; // Generous padding on mobile
+//   background-color: $color-neutral-100; // The light gray background
+  overflow: hidden; // Prevents stickers from causing horizontal scroll
+  
+  // Mobile Layout (default): Stacked columns
+  display: grid;
+  grid-template-areas:
+    "nav"
+    "contact"
+    "copy";
+  gap: 2.5rem;
+  text-align: center;
+  justify-items: center;
+  min-height: 15em;
+}
+
+// --- Footer Columns ---
+
+.footer-col-left {
+  grid-area: copy;
+  text-align: center;
+
+  align-self: flex-end; // Pushes to the bottom of the grid area
+}
+
+.footer-col-right {
+  display: contents; // Lets the nav and contact fit into the grid
+  align-self: flex-start;
+}
+
+/**
+ * 1. Copyright & Tagline
+ */
+.site-footer__copyright {
+  font-family: $font-serif;
+  font-size: 1.75rem; // ~28px
+  font-weight: 300;
+  color: $color-text-light;
+  margin: 0 0 0.75rem 0;
+}
+
+.site-footer__name {
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.site-footer__tagline {
+  font-family: $font-serif;
+  font-size: 0.875rem; // ~14px
+  color: $color-text-light;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+/**
+ * 2. Navigation & Contact
+ */
+.site-footer__nav {
+  grid-area: nav;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 1.25rem;
+  }
+
+  a {
+    font-family: $font-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: $color-text;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-brand;
+    }
+  }
+}
+
+.site-footer__contact {
+  grid-area: contact;
+  font-family: $font-serif;
+  font-size: 1rem;
+  color: $color-text-light;
+
+  a {
+    font-weight: 600;
+    color: $color-text;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+/**
+ * 3. Stickers (Mobile)
+ * Positioned absolutely relative to the footer
+ */
+.sticker {
+  position: absolute;
+  display: block;
+  z-index: -1;
+  max-width: 200px; // Default size
+}
+
+.sticker-dumpling {
+  top: 2.25rem;
+  left: calc(-6rem + 10vw);
+  transform: rotate(-15deg);
+}
+.sticker-camera {
+  bottom: 14rem;
+  left: calc(-8rem + 12vw);
+  transform: rotate(15deg);
+}
+.sticker-jersey {
+  top: 4rem;
+  right: calc(-6rem + 10vw);
+  transform: rotate(10deg);
+  max-width: 120px;
+}
+.sticker-cassette {
+  bottom: 16rem;
+  right: calc(-6rem + 10vw);
+  transform: rotate(-10deg);
+}
+
+
+/*--------------------------------*\
+  #RESPONSIVE (Tablet & Desktop)
+\*--------------------------------*/
+
+@media (min-width: $breakpoint-md) { // 768px and up
+  
+  .site-footer {
+    // Switch to a 2-column flex layout
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; // Aligns to the bottom
+    padding: 4rem 2.5rem;
+    text-align: left;
+    
+    // Reset grid properties
+    grid-template-areas: none;
+    gap: 0;
+    justify-items: start;
+  }
+
+  .footer-col-left {
+    text-align: left;
+  }
+
+  .footer-col-right {
+    display: block; // No longer part of a grid
+    text-align: right;
+  }
+
+  /**
+   * 1. Nav & Contact (Desktop)
+   */
+  .site-footer__nav {
+    ul {
+      display: flex; // Horizontal links
+      justify-content: flex-end;
+    }
+    li {
+      margin: 0 0 0 2rem; // 32px left margin
+    }
+    a {
+      font-size: 1.5rem; // Back to 16px
+      font-weight: 600;
+    }
+  }
+
+  .site-footer__contact {
+    margin-top: 1rem;
+  }
+
+  /**
+   * 2. Stickers (Desktop)
+   * Repositioned for the wide layout
+   */
+  .sticker-dumpling {
+    top: 3rem;
+    left: 25%;
+    transform: rotate(-10deg);
+  }
+  .sticker-camera {
+    top: 6rem;
+    left: 40%;
+    transform: rotate(10deg);
+  }
+  .sticker-jersey {
+    top: 10rem;
+    left: 60%;
+    transform: rotate(5deg);
+  }
+  .sticker-cassette {
+    top: 12rem;
+    left: 75%;
+    transform: rotate(-10deg);
+  }
+}

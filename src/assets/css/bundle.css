@@ -490,6 +490,14 @@ h1, h2, h3 {
   font-weight: 600;
 }
 
+a {
+  color: #333333;
+  text-decoration: none;
+}
+a:hover {
+  color: #555555;
+}
+
 h1 {
   font-weight: 700;
 }
@@ -498,19 +506,12 @@ code, pre {
   font-family: "IBM Plex Mono", "Courier New", Courier, monospace;
 }
 
-body {
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  height: 100vh;
-}
-
 .fuzzy-overlay {
-  position: absolute;
+  position: fixed;
   inset: -200%;
   background: url(../js/images/noise-bg.png);
   opacity: 0.35;
-  z-index: -1;
+  z-index: -10;
   animation: shift 0.5s linear infinite both;
 }
 
@@ -524,30 +525,22 @@ body {
 }
 /*--------------------------------*\
   #TYPOGRAPHY STYLES
-  # Based on the design file
+  # Fluid scaling with clamp()
 \*--------------------------------*/
 body {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 400;
-  font-size: 16px;
   line-height: 1.6;
   color: #333333;
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
 }
 
 p {
   margin-top: 0;
   margin-bottom: 1.25rem;
-}
-
-strong, b {
-  font-weight: 600;
-}
-
-em, i {
-  font-style: italic;
 }
 
 a {
@@ -563,31 +556,14 @@ a:hover {
 }
 
 small {
-  font-size: 14px;
+  font-size: clamp(0.8125rem, 0.8rem + 0.1vw, 0.875rem);
   font-weight: 400;
-}
-
-small strong {
-  font-weight: 600;
-}
-
-code, pre {
-  font-family: "IBM Plex Mono", "Courier New", Courier, monospace;
-  font-size: 0.9rem;
-  background: #eeeeee;
-  border-radius: 4px;
-  padding: 0.2em 0.4em;
-}
-
-pre {
-  padding: 1em;
-  overflow-x: auto;
 }
 
 h1, .h1 {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 700;
-  font-size: 3.5rem;
+  font-size: clamp(2.25rem, 1rem + 5vw, 3.5rem);
   line-height: 1.1;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
@@ -596,25 +572,25 @@ h1, .h1 {
 h2, .h2 {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 700;
-  font-size: 2.75rem;
+  font-size: clamp(2rem, 1.2rem + 3.5vw, 2.75rem);
   line-height: 1.2;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
 h3, .h3 {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: clamp(1.625rem, 1.2rem + 2.5vw, 2rem);
   line-height: 1.3;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
 h4, .h4 {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.5rem);
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
@@ -622,29 +598,19 @@ h4, .h4 {
 h5, .h5 {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: clamp(1.125rem, 1.1rem + 0.1vw, 1.1875rem);
   line-height: 1.4;
-  margin-bottom: 0.5rem;
-}
-
-h6, .h6 {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
 }
 
 .text-body-base {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 16px;
 }
 
 .text-small-strong {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 14px;
   font-weight: 600;
 }
@@ -725,7 +691,7 @@ h6, .h6 {
   }
 }
 .site-header__nav a:hover {
-  color: #4a2d6b;
+  color: #555555;
 }
 
 /**
@@ -861,5 +827,195 @@ a.btn-contact:hover {
   }
   .site-header__mobile-toggle.is-open span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+  }
+}
+/*--------------------------------*\
+  #SITE-FOOTER
+\*--------------------------------*/
+.site-footer {
+  position: relative;
+  padding: 4rem 1.5rem;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas: "nav" "contact" "copy";
+  gap: 2.5rem;
+  text-align: center;
+  justify-items: center;
+  min-height: 15em;
+}
+
+.footer-col-left {
+  grid-area: copy;
+  text-align: center;
+  align-self: flex-end;
+}
+
+.footer-col-right {
+  display: contents;
+  align-self: flex-start;
+}
+
+/**
+ * 1. Copyright & Tagline
+ */
+.site-footer__copyright {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: #555555;
+  margin: 0 0 0.75rem 0;
+}
+
+.site-footer__name {
+  font-style: italic;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.site-footer__tagline {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 0.875rem;
+  color: #555555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/**
+ * 2. Navigation & Contact
+ */
+.site-footer__nav {
+  grid-area: nav;
+}
+.site-footer__nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.site-footer__nav li {
+  margin-bottom: 1.25rem;
+}
+.site-footer__nav a {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #333333;
+  text-decoration: none;
+}
+.site-footer__nav a:hover {
+  color: #4a2d6b;
+}
+
+.site-footer__contact {
+  grid-area: contact;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  color: #555555;
+}
+.site-footer__contact a {
+  font-weight: 600;
+  color: #333333;
+  text-decoration: none;
+}
+.site-footer__contact a:hover {
+  text-decoration: underline;
+}
+
+/**
+ * 3. Stickers (Mobile)
+ * Positioned absolutely relative to the footer
+ */
+.sticker {
+  position: absolute;
+  display: block;
+  z-index: -1;
+  max-width: 200px;
+}
+
+.sticker-dumpling {
+  top: 2.25rem;
+  left: calc(-6rem + 10vw);
+  transform: rotate(-15deg);
+}
+
+.sticker-camera {
+  bottom: 14rem;
+  left: calc(-8rem + 12vw);
+  transform: rotate(15deg);
+}
+
+.sticker-jersey {
+  top: 4rem;
+  right: calc(-6rem + 10vw);
+  transform: rotate(10deg);
+  max-width: 120px;
+}
+
+.sticker-cassette {
+  bottom: 16rem;
+  right: calc(-6rem + 10vw);
+  transform: rotate(-10deg);
+}
+
+/*--------------------------------*\
+  #RESPONSIVE (Tablet & Desktop)
+\*--------------------------------*/
+@media (min-width: 768px) {
+  .site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 4rem 2.5rem;
+    text-align: left;
+    grid-template-areas: none;
+    gap: 0;
+    justify-items: start;
+  }
+  .footer-col-left {
+    text-align: left;
+  }
+  .footer-col-right {
+    display: block;
+    text-align: right;
+  }
+  /**
+   * 1. Nav & Contact (Desktop)
+   */
+  .site-footer__nav ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .site-footer__nav li {
+    margin: 0 0 0 2rem;
+  }
+  .site-footer__nav a {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .site-footer__contact {
+    margin-top: 1rem;
+  }
+  /**
+   * 2. Stickers (Desktop)
+   * Repositioned for the wide layout
+   */
+  .sticker-dumpling {
+    top: 3rem;
+    left: 25%;
+    transform: rotate(-10deg);
+  }
+  .sticker-camera {
+    top: 6rem;
+    left: 40%;
+    transform: rotate(10deg);
+  }
+  .sticker-jersey {
+    top: 10rem;
+    left: 60%;
+    transform: rotate(5deg);
+  }
+  .sticker-cassette {
+    top: 12rem;
+    left: 75%;
+    transform: rotate(-10deg);
   }
 }
