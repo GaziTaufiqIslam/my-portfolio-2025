@@ -1,0 +1,138 @@
+/*--------------------------------*\
+  #SITE-LOADER
+\*--------------------------------*/
+
+.site-loader {
+  position: fixed;
+  inset: 0; // Fills the entire screen
+  z-index: 9999;
+}
+
+/**
+ * 1. Background Halves
+ */
+.loader-bg-left,
+.loader-bg-right {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 50.5%; // 50.5% to hide the seam
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  // Fast transition for the split effect
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.loader-bg-left {
+  left: 0;
+  background-image: url('../images/loader-paper-left.png');
+  background-position: right center;
+}
+
+.loader-bg-right {
+  right: 0;
+  background-image: url('../images/loader-paper-right.png');
+  background-position: left center;
+}
+
+
+/**
+ * 2. Content
+ */
+.loader-content {
+  position: relative;
+  z-index: 10000;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.loader-name {
+  max-width: 180px;
+  height: auto;
+}
+
+.loader-subtitle {
+  font-family: $font-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $color-text;
+  margin-top: 0.5rem;
+}
+
+.loader-tram {
+  max-width: 150px;
+  height: auto;
+  margin: 6rem 0 2.5rem;
+  // The stop-motion bobbing animation
+  animation: bob-stop-motion 0.5s steps(2, jump-none) infinite;
+}
+
+.loader-coming-soon {
+  font-family: $font-serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $color-text;
+}
+
+
+/**
+ * 3. Animations
+ */
+
+// Tram "bob"
+@keyframes bob-stop-motion {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+// Content "stop-motion" fade out
+@keyframes fade-out-stop-motion {
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+
+/**
+ * 4. Exit Animation (Triggered by .is-loaded)
+ */
+
+body.is-loaded {
+
+  // A) Animate the content disappearing
+  .loader-content-item {
+    // "steps(1, end)" creates the stop-motion feel
+    animation: fade-out-stop-motion 0.1s steps(1, end) forwards;
+  }
+
+  // B) Stagger the disappearance (one by one, very fast)
+  .loader-content-item:nth-child(1) { animation-delay: 0s; }    // Name
+  .loader-content-item:nth-child(2) { animation-delay: 0.05s; } // Subtitle
+  .loader-content-item:nth-child(3) { animation-delay: 0.1s; }  // Tram
+  .loader-content-item:nth-child(4) { animation-delay: 0.15s; } // "Coming soon"
+
+  // C) Split the paper background
+  .loader-bg-left {
+    transform: translateX(-100%);
+  }
+  .loader-bg-right {
+    transform: translateX(100%);
+  }
+  
+  // D) Hide the whole loader after 1 second
+  .site-loader {
+    pointer-events: none;
+    visibility: hidden;
+    transition: visibility 0s 1s; // Hide after 1s (0.8s slide + 0.2s content)
+  }
+}
+

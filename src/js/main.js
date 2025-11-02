@@ -1,5 +1,20 @@
 import '../scss/main.scss';
 
+// --- Site Loader ---
+
+// We are hiding the body by default in CSS,
+// so we must un-hide it for users without JavaScript.
+document.body.classList.add('js-enabled');
+
+// // Wait for the *entire* page (images, CSS, fonts) to load
+// window.addEventListener('load', () => {
+  
+//   // Add a small delay for a better feel, then trigger the animation
+//   setTimeout(() => {
+//     document.body.classList.add('is-loaded');
+//   }, 200); // 200ms delay
+
+// });
 
 // --- Mobile Menu Toggle ---
 const menuToggle = document.querySelector('.site-header__mobile-toggle');

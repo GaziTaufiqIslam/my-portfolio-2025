@@ -1,0 +1,212 @@
+/*--------------------------------*\
+  #HERO-SECTION
+\*--------------------------------*/
+
+.hero-section {
+  display: grid;
+  // Mobile: Image first, then text content
+  grid-template-areas:
+    "right"
+    "left";
+  gap: 3rem; // Spacing between the two main halves
+  padding: 2rem 1.5rem; // Mobile padding
+  min-height: calc(100vh - 80px); // At least viewport height minus header
+  align-items: center;
+  justify-items: center; // Center grid items horizontally
+  overflow: hidden; // Contain absolutely positioned elements
+}
+
+/*--------------------------------*\
+  #HERO-LEFT-CONTENT
+\*--------------------------------*/
+
+.hero-left-content {
+  grid-area: left; // Positions it below the right content on mobile
+  width: 100%;
+  max-width: 500px; // Constrain width on larger mobiles/small tablets
+  text-align: left; // Center align text on mobile
+}
+
+.hero-name-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%; /* Aspect ratio of the brown paper container */
+  margin-bottom: 2rem;
+  display: flex; /* For centering content */
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-brown-paper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160%;
+  height: 160%;
+  object-fit: cover; // Ensure it fits without distortion
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+
+.hero-name-cursive {
+  position: absolute;
+  width: 95%; // Adjust size relative to container
+  height: auto;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); // Center it precisely
+}
+
+// Small decorative PNGs
+.sticker {
+  position: absolute;
+  z-index: 5; // Above the paper
+}
+
+.hero-dove {
+  width: 30px;
+  top: 15%;
+  right: 15%;
+//   transform: rotate(15deg);
+}
+
+#dove {
+  z-index: 12;
+
+}
+
+.hero-leaf-top-left {
+  width: 40px;
+  top: 5%;
+  left: 5%;
+//   transform: rotate(20deg);
+}
+.hero-leaf-bottom-right {
+  width: 40px;
+  bottom: 5%;
+  right: 5%;
+//   transform: rotate(-25deg);
+}
+
+.hero-description-container {
+  position: relative;
+  width: 100%;
+  padding: 2rem; /* Inner padding for text */
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-newspaper-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  min-height: 20vh;
+  object-fit: contain; // Cover the container
+  transform: translate(-50%, -50%); // Slight rotation for effect
+}
+
+.hero-description-text {
+  position: relative;
+  bottom: -4.125rem;
+  z-index: 2; // Above the newspaper background
+  font-family: $font-sans;
+  font-size: clamp(1rem, 1rem + 0.5vw, 2rem); /* Scales from 16px to 18px */
+  line-height: 1.5;
+  color: $color-text-light;
+  width: 100%;
+  max-width: 400px; /* Constrain text width */
+  transform: rotate(-3deg);
+  line-height: 120%;
+
+  span {
+    font-weight: 600;
+    font-style: italic;
+  }
+  .highlight {
+    color: $color-brand;
+  }
+}
+
+
+/*--------------------------------*\
+  #HERO-RIGHT-COMPOSITION
+\*--------------------------------*/
+
+.hero-right-composition {
+  grid-area: right; // Positions it first on mobile
+  width: 100%;
+  max-width: 600px; // Max width for image on mobile
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hero-main-image {
+  width: 120%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); // Subtle shadow
+}
+
+
+/*--------------------------------*\
+  #RESPONSIVE
+\*--------------------------------*/
+
+// Tablet & Desktop
+@media (min-width: $breakpoint-md) { // 768px and up
+  .hero-section {
+    grid-template-areas: "left right"; // Side-by-side
+    grid-template-columns: 1fr 1fr; // Equal width columns
+    padding: 4rem 10%; // Desktop padding
+    min-height: calc(100vh - 80px); // Keep it tall
+  }
+
+  .hero-left-content {
+    text-align: left; // Align text to the left
+    padding-right: 2rem;
+    max-width: none; // Allow it to expand
+  }
+  
+  .hero-name-container {
+    width: 80%; /* Adjust as needed for desktop */
+    padding-bottom: 40%;
+    margin-left: 10%; /* Pull slightly left to match design */
+  }
+
+  .hero-description-container {
+    padding: 2rem 0; /* Adjust padding for desktop */
+    margin-left: 20%; /* Indent description */
+    margin-top: -20%; /* Indent description */
+  }
+
+//   .hero-newspaper-bg {
+//     transform: rotate(0deg); /* Straighten for desktop */
+//   }
+
+  .hero-description-text {
+    max-width: 500px;   /* Wider text on desktop */
+    font-size: 1.75rem;
+  }
+
+  .hero-right-composition {
+    max-width: 500px; // Larger image on desktop
+    padding-left: 2rem;
+  }
+  
+  // Sticker repositioning for desktop
+  .hero-dove { top: -25%; right: 5%; width: 100px; }
+  .hero-leaf-top-left { top: 15%; left: -22%; width: 160px; }
+  .hero-leaf-bottom-right { bottom: -20%; right: -48%; width: 140px; }
+}
+
+// Large Desktop (Optional)
+@media (min-width: $breakpoint-lg) { // 1024px and up
+  .hero-section {
+    padding: 6rem 5%;
+  }
+}

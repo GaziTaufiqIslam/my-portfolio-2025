@@ -3,14 +3,27 @@
 \*--------------------------------*/
 
 .site-header {
+  position: fixed;
+  z-index: 10;
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 3rem; // ~24px top/bottom, 40px left/right
 //   width: 100%;
+  background-color: transparentize($color: $color-background, $amount: 0);
+  overflow: hidden;
 
     box-shadow: 0 1px 4px 0 transparentize($color: $color-neutral-900, $amount: 0.9);
 }
+
+.fuzzy-overlay__header {
+  position: absolute;
+  // z-index: -1;
+    // mask-image: url("../images/noise-bg.png");
+    // mask-repeat: repeat;
+    // background-image: none;
+} 
 
 /**
  * 1. Brand (Left Side)

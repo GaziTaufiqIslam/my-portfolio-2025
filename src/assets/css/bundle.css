@@ -480,6 +480,12 @@ template {
 /*--------------------------------*\
   #DESIGN TOKENS
 \*--------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   line-height: 1.6;
@@ -616,14 +622,151 @@ h5, .h5 {
 }
 
 /*--------------------------------*\
+  #SITE-LOADER
+\*--------------------------------*/
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+/**
+ * 1. Background Halves
+ */
+.loader-bg-left,
+.loader-bg-right {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 50.5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.loader-bg-left {
+  left: 0;
+  background-image: url(../js/images/loader-paper-left.png);
+  background-position: right center;
+}
+
+.loader-bg-right {
+  right: 0;
+  background-image: url(../js/images/loader-paper-right.png);
+  background-position: left center;
+}
+
+/**
+ * 2. Content
+ */
+.loader-content {
+  position: relative;
+  z-index: 10000;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.loader-name {
+  max-width: 180px;
+  height: auto;
+}
+
+.loader-subtitle {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333333;
+  margin-top: 0.5rem;
+}
+
+.loader-tram {
+  max-width: 150px;
+  height: auto;
+  margin: 6rem 0 2.5rem;
+  animation: bob-stop-motion 0.5s steps(2, jump-none) infinite;
+}
+
+.loader-coming-soon {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+/**
+ * 3. Animations
+ */
+@keyframes bob-stop-motion {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes fade-out-stop-motion {
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+/**
+ * 4. Exit Animation (Triggered by .is-loaded)
+ */
+body.is-loaded .loader-content-item {
+  animation: fade-out-stop-motion 0.1s steps(1, end) forwards;
+}
+body.is-loaded .loader-content-item:nth-child(1) {
+  animation-delay: 0s;
+}
+body.is-loaded .loader-content-item:nth-child(2) {
+  animation-delay: 0.05s;
+}
+body.is-loaded .loader-content-item:nth-child(3) {
+  animation-delay: 0.1s;
+}
+body.is-loaded .loader-content-item:nth-child(4) {
+  animation-delay: 0.15s;
+}
+body.is-loaded .loader-bg-left {
+  transform: translateX(-100%);
+}
+body.is-loaded .loader-bg-right {
+  transform: translateX(100%);
+}
+body.is-loaded .site-loader {
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0s 1s;
+}
+
+/*--------------------------------*\
   #SITE-HEADER
 \*--------------------------------*/
 .site-header {
+  position: fixed;
+  z-index: 10;
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 3rem;
+  background-color: white;
+  overflow: hidden;
   box-shadow: 0 1px 4px 0 rgba(51, 51, 51, 0.1);
+}
+
+.fuzzy-overlay__header {
+  position: absolute;
 }
 
 /**
@@ -830,6 +973,202 @@ a.btn-contact:hover {
   }
 }
 /*--------------------------------*\
+  #HERO-SECTION
+\*--------------------------------*/
+.hero-section {
+  display: grid;
+  grid-template-areas: "right" "left";
+  gap: 3rem;
+  padding: 2rem 1.5rem;
+  min-height: calc(100vh - 80px);
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+}
+
+/*--------------------------------*\
+  #HERO-LEFT-CONTENT
+\*--------------------------------*/
+.hero-left-content {
+  grid-area: left;
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+}
+
+.hero-name-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%; /* Aspect ratio of the brown paper container */
+  margin-bottom: 2rem;
+  display: flex; /* For centering content */
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-brown-paper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160%;
+  height: 160%;
+  object-fit: cover;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+
+.hero-name-cursive {
+  position: absolute;
+  width: 95%;
+  height: auto;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sticker {
+  position: absolute;
+  z-index: 5;
+}
+
+.hero-dove {
+  width: 30px;
+  top: 15%;
+  right: 15%;
+}
+
+#dove {
+  z-index: 12;
+}
+
+.hero-leaf-top-left {
+  width: 40px;
+  top: 5%;
+  left: 5%;
+}
+
+.hero-leaf-bottom-right {
+  width: 40px;
+  bottom: 5%;
+  right: 5%;
+}
+
+.hero-description-container {
+  position: relative;
+  width: 100%;
+  padding: 2rem; /* Inner padding for text */
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-newspaper-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  min-height: 20vh;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+}
+
+.hero-description-text {
+  position: relative;
+  bottom: -4.125rem;
+  z-index: 2;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1rem, 1rem + 0.5vw, 2rem); /* Scales from 16px to 18px */
+  line-height: 1.5;
+  color: #555555;
+  width: 100%;
+  max-width: 400px; /* Constrain text width */
+  transform: rotate(-3deg);
+  line-height: 120%;
+}
+.hero-description-text span {
+  font-weight: 600;
+  font-style: italic;
+}
+.hero-description-text .highlight {
+  color: #4a2d6b;
+}
+
+/*--------------------------------*\
+  #HERO-RIGHT-COMPOSITION
+\*--------------------------------*/
+.hero-right-composition {
+  grid-area: right;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hero-main-image {
+  width: 120%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+/*--------------------------------*\
+  #RESPONSIVE
+\*--------------------------------*/
+@media (min-width: 768px) {
+  .hero-section {
+    grid-template-areas: "left right";
+    grid-template-columns: 1fr 1fr;
+    padding: 4rem 10%;
+    min-height: calc(100vh - 80px);
+  }
+  .hero-left-content {
+    text-align: left;
+    padding-right: 2rem;
+    max-width: none;
+  }
+  .hero-name-container {
+    width: 80%; /* Adjust as needed for desktop */
+    padding-bottom: 40%;
+    margin-left: 10%; /* Pull slightly left to match design */
+  }
+  .hero-description-container {
+    padding: 2rem 0; /* Adjust padding for desktop */
+    margin-left: 20%; /* Indent description */
+    margin-top: -20%; /* Indent description */
+  }
+  .hero-description-text {
+    max-width: 500px; /* Wider text on desktop */
+    font-size: 1.75rem;
+  }
+  .hero-right-composition {
+    max-width: 500px;
+    padding-left: 2rem;
+  }
+  .hero-dove {
+    top: -25%;
+    right: 5%;
+    width: 100px;
+  }
+  .hero-leaf-top-left {
+    top: 15%;
+    left: -22%;
+    width: 160px;
+  }
+  .hero-leaf-bottom-right {
+    bottom: -20%;
+    right: -48%;
+    width: 140px;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-section {
+    padding: 6rem 5%;
+  }
+}
+/*--------------------------------*\
   #SITE-FOOTER
 \*--------------------------------*/
 .site-footer {
@@ -841,7 +1180,7 @@ a.btn-contact:hover {
   gap: 2.5rem;
   text-align: center;
   justify-items: center;
-  min-height: 15em;
+  min-height: 20em;
 }
 
 .footer-col-left {

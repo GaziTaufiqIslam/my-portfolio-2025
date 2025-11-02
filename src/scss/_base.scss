@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: $font-serif;
   line-height: 1.6;
@@ -29,7 +35,6 @@ code, pre {
 //     overflow-x: hidden;
 // }
 .fuzzy-overlay{
-  // height: 100%;
   // pointer-events: none;
   position: fixed;
   inset: -200%;
@@ -37,6 +42,7 @@ code, pre {
   opacity: 0.35;
   z-index: -10;
   animation: shift .5s linear infinite both;
+
 }
 
 @keyframes shift {
