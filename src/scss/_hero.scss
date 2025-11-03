@@ -113,21 +113,48 @@
   position: relative;
   bottom: -4.125rem;
   z-index: 2; // Above the newspaper background
-  font-family: $font-sans;
+  font-family: $font-serif;
   font-size: clamp(1rem, 1rem + 0.5vw, 2rem); /* Scales from 16px to 18px */
   line-height: 1.5;
-  color: $color-text-light;
+  color: $color-text;
   width: 100%;
   max-width: 400px; /* Constrain text width */
   transform: rotate(-3deg);
   line-height: 120%;
 
   span {
-    font-weight: 600;
+    font-weight: 400;
     font-style: italic;
   }
   .highlight {
-    color: $color-brand;
+    position: relative; // This is the anchor
+    display: inline-block; // Gives the span a layout box
+
+    &::after {
+      content: '';
+      position: absolute;
+
+      // --- Position the scribble as a strikethrough ---
+      left: -6px;
+      top: 50%; // Center it vertically on the text
+      
+      // Adjust this height to match your scribble's shape
+      height: 2rem; 
+      
+      width: 120%; // Span the full width of the word
+      
+      // Fine-tune the vertical centering
+      transform: translateY(-40%); 
+
+      // Load your scribble image (e.g., scribble.png)
+      background-image: url('../images/scribble.png');
+      background-size: 100% 100%; // Stretch the image to fit
+      background-repeat: no-repeat;
+      background-position: center;
+
+      // Ensures the scribble doesn't block mouse events
+      pointer-events: none;
+    }
   }
 }
 

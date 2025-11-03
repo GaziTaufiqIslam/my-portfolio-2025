@@ -41,7 +41,7 @@ code, pre {
   background: url("../images/noise-bg.png");
   opacity: 0.35;
   z-index: -10;
-  animation: shift .5s linear infinite both;
+  // animation: shift .5s linear infinite both;
 
 }
 
@@ -53,4 +53,37 @@ code, pre {
         transform: translate(-10%, -10%);
     }
     
+}
+
+/*--------------------------------*\
+  #BASE STYLES
+\*--------------------------------*/
+
+// By default, hide the main content.
+// The JS will un-hide it after the loader is done.
+// By default (no-JS), the content is visible
+.site-header,
+.hero-section,
+.site-footer {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+// *If* JS is enabled, hide the content
+html.js-enabled {
+  .site-header,
+  .hero-section,
+  .site-footer {
+    opacity: 0;
+  }
+}
+
+// *When* JS is loaded, fade the content back in
+html.is-loaded {
+  .site-header,
+  .hero-section,
+  .site-footer {
+    opacity: 1;
+    transition-delay: 1s; // This is our delay from before
+  }
 }

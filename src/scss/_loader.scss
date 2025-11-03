@@ -4,8 +4,14 @@
 
 .site-loader {
   position: fixed;
-  inset: 0; // Fills the entire screen
+  inset: 0;
   z-index: 9999;
+  display: none; // <-- Hide by default
+}
+
+// Show the loader *only* if JS is enabled
+html.js-enabled .site-loader {
+  display: block;
 }
 
 /**
@@ -106,33 +112,36 @@
  * 4. Exit Animation (Triggered by .is-loaded)
  */
 
-body.is-loaded {
+html.is-loaded {
 
-  // A) Animate the content disappearing
+  // --- A) Animate the content disappearing ---
   .loader-content-item {
     // "steps(1, end)" creates the stop-motion feel
     animation: fade-out-stop-motion 0.1s steps(1, end) forwards;
   }
 
-  // B) Stagger the disappearance (one by one, very fast)
-  .loader-content-item:nth-child(1) { animation-delay: 0s; }    // Name
-  .loader-content-item:nth-child(2) { animation-delay: 0.05s; } // Subtitle
-  .loader-content-item:nth-child(3) { animation-delay: 0.1s; }  // Tram
-  .loader-content-item:nth-child(4) { animation-delay: 0.15s; } // "Coming soon"
-
-  // C) Split the paper background
+  // --- B) Stagger the disappearance (one by one) ---
+  .loader-content-item:nth-child(1) { animation-delay: 0s; }    // Logo
+  .loader-content-item:nth-child(2) { animation-delay: 0.2s; } // Subtitle
+  .loader-content-item:nth-child(3) { animation-delay: 0.4s; } // Tram
+  .loader-content-item:nth-child(4) { animation-delay: 0.4s; } // "Coming soon" (with tram)
+  
+  // --- C) Split the paper background ---
+  // We add a 0.6s delay, waiting for all content to fade out (0.4s + 0.1s + buffer)
   .loader-bg-left {
     transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1) 0.6s;
   }
   .loader-bg-right {
     transform: translateX(100%);
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1) 0.6s;
   }
   
-  // D) Hide the whole loader after 1 second
+  // --- D) Hide the whole loader after the full sequence ---
+  // Total animation: 0.6s (content fade) + 0.8s (paper slide) = 1.4s
   .site-loader {
     pointer-events: none;
     visibility: hidden;
-    transition: visibility 0s 1s; // Hide after 1s (0.8s slide + 0.2s content)
+    transition: visibility 0s 1.4s; // Hide after 1.4s
   }
 }
-

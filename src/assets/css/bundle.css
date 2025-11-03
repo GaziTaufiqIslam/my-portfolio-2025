@@ -518,7 +518,6 @@ code, pre {
   background: url(../js/images/noise-bg.png);
   opacity: 0.35;
   z-index: -10;
-  animation: shift 0.5s linear infinite both;
 }
 
 @keyframes shift {
@@ -529,6 +528,29 @@ code, pre {
     transform: translate(-10%, -10%);
   }
 }
+/*--------------------------------*\
+  #BASE STYLES
+\*--------------------------------*/
+.site-header,
+.hero-section,
+.site-footer {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+html.js-enabled .site-header,
+html.js-enabled .hero-section,
+html.js-enabled .site-footer {
+  opacity: 0;
+}
+
+html.is-loaded .site-header,
+html.is-loaded .hero-section,
+html.is-loaded .site-footer {
+  opacity: 1;
+  transition-delay: 1s;
+}
+
 /*--------------------------------*\
   #TYPOGRAPHY STYLES
   # Fluid scaling with clamp()
@@ -628,6 +650,11 @@ h5, .h5 {
   position: fixed;
   inset: 0;
   z-index: 9999;
+  display: none;
+}
+
+html.js-enabled .site-loader {
+  display: block;
 }
 
 /**
@@ -722,31 +749,33 @@ h5, .h5 {
 /**
  * 4. Exit Animation (Triggered by .is-loaded)
  */
-body.is-loaded .loader-content-item {
+html.is-loaded .loader-content-item {
   animation: fade-out-stop-motion 0.1s steps(1, end) forwards;
 }
-body.is-loaded .loader-content-item:nth-child(1) {
+html.is-loaded .loader-content-item:nth-child(1) {
   animation-delay: 0s;
 }
-body.is-loaded .loader-content-item:nth-child(2) {
-  animation-delay: 0.05s;
+html.is-loaded .loader-content-item:nth-child(2) {
+  animation-delay: 0.2s;
 }
-body.is-loaded .loader-content-item:nth-child(3) {
-  animation-delay: 0.1s;
+html.is-loaded .loader-content-item:nth-child(3) {
+  animation-delay: 0.4s;
 }
-body.is-loaded .loader-content-item:nth-child(4) {
-  animation-delay: 0.15s;
+html.is-loaded .loader-content-item:nth-child(4) {
+  animation-delay: 0.4s;
 }
-body.is-loaded .loader-bg-left {
+html.is-loaded .loader-bg-left {
   transform: translateX(-100%);
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1) 0.6s;
 }
-body.is-loaded .loader-bg-right {
+html.is-loaded .loader-bg-right {
   transform: translateX(100%);
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1) 0.6s;
 }
-body.is-loaded .site-loader {
+html.is-loaded .site-loader {
   pointer-events: none;
   visibility: hidden;
-  transition: visibility 0s 1s;
+  transition: visibility 0s 1.4s;
 }
 
 /*--------------------------------*\
@@ -754,7 +783,7 @@ body.is-loaded .site-loader {
 \*--------------------------------*/
 .site-header {
   position: fixed;
-  z-index: 10;
+  z-index: 1000;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -762,7 +791,7 @@ body.is-loaded .site-loader {
   padding: 1.5rem 3rem;
   background-color: white;
   overflow: hidden;
-  box-shadow: 0 1px 4px 0 rgba(51, 51, 51, 0.1);
+  box-shadow: 0 1px 4px 0 rgba(51, 51, 51, 0.2);
 }
 
 .fuzzy-overlay__header {
@@ -779,7 +808,8 @@ body.is-loaded .site-loader {
 }
 
 .site-header__logo {
-  height: 72px;
+  max-height: 64px;
+  height: 10vw;
   width: auto;
   margin-right: 0.75rem;
 }
@@ -798,6 +828,25 @@ body.is-loaded .site-loader {
   font-style: italic;
 }
 
+.site-header__my-role {
+  position: relative;
+  padding-bottom: 10px;
+}
+.site-header__my-role::after {
+  content: "";
+  position: absolute;
+  top: 1.45rem;
+  bottom: 0;
+  left: -1rem;
+  width: 100%;
+  height: 3vw;
+  max-height: 44px;
+  background-image: url(../js/images/pencil-underline.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: -1;
+}
 @media (max-width: 1280px) {
   .site-header__my-role {
     font-size: 1rem;
@@ -824,6 +873,7 @@ body.is-loaded .site-loader {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 600;
   font-size: 1.5rem;
+  font-style: italic;
   color: #333333;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -1078,21 +1128,36 @@ a.btn-contact:hover {
   position: relative;
   bottom: -4.125rem;
   z-index: 2;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: clamp(1rem, 1rem + 0.5vw, 2rem); /* Scales from 16px to 18px */
   line-height: 1.5;
-  color: #555555;
+  color: #333333;
   width: 100%;
   max-width: 400px; /* Constrain text width */
   transform: rotate(-3deg);
   line-height: 120%;
 }
 .hero-description-text span {
-  font-weight: 600;
+  font-weight: 400;
   font-style: italic;
 }
 .hero-description-text .highlight {
-  color: #4a2d6b;
+  position: relative;
+  display: inline-block;
+}
+.hero-description-text .highlight::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  height: 2rem;
+  width: 120%;
+  transform: translateY(-40%);
+  background-image: url(../js/images/scribble.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
 }
 
 /*--------------------------------*\
