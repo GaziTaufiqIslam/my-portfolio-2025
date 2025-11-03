@@ -5,14 +5,14 @@ module.exports = {
   mode: 'development', // Change to 'production' for builds
   entry: './src/js/main.js', // Your main JS entry file
   output: {
-    filename: 'bundle.js', // The final bundled JS file
-    path: path.resolve(__dirname, 'src/assets/js'), // Put it in src/assets
-    assetModuleFilename: '../[name][ext][query]' // Send fonts/images to '../assets/'
+    path: path.resolve(__dirname, 'src/assets'), // Output to 'src/assets'
+    filename: 'js/bundle.js',                     // Put JS in 'src/assets/js'
+    assetModuleFilename: '[path][name][ext]'      // Keep original file paths for assets
   },
-
+  
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '../css/bundle.css' // Put the final CSS file in 'src/assets/css'
+      filename: 'css/bundle.css' // Put CSS in 'src/assets/css'
     })
   ],
 

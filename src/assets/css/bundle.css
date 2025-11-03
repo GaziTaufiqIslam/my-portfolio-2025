@@ -361,7 +361,7 @@ template {
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-sans-v23-latin-300.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-sans-v23-latin-300.woff2) format("woff2");
 }
 /* 400 Regular */
 @font-face {
@@ -369,7 +369,7 @@ template {
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-sans-v23-latin-regular.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-sans-v23-latin-regular.woff2) format("woff2");
 }
 /* 400 Regular Italic */
 @font-face {
@@ -377,7 +377,7 @@ template {
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-sans-v23-latin-italic.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-sans-v23-latin-italic.woff2) format("woff2");
 }
 /* 700 Bold */
 @font-face {
@@ -385,7 +385,7 @@ template {
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-sans-v23-latin-700.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-sans-v23-latin-700.woff2) format("woff2");
 }
 /* 700 Bold Italic */
 @font-face {
@@ -393,7 +393,7 @@ template {
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-sans-v23-latin-700italic.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-sans-v23-latin-700italic.woff2) format("woff2");
 }
 /* --- IBM Plex Serif --- */
 /* 300 Light */
@@ -402,7 +402,7 @@ template {
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-serif-v20-latin-300.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-serif-v20-latin-300.woff2) format("woff2");
 }
 /* 300 Light Italic */
 @font-face {
@@ -410,7 +410,7 @@ template {
   font-style: italic;
   font-weight: 300;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-serif-v20-latin-300italic.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-serif-v20-latin-300italic.woff2) format("woff2");
 }
 /* 400 Regular */
 @font-face {
@@ -418,7 +418,7 @@ template {
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-serif-v20-latin-regular.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-serif-v20-latin-regular.woff2) format("woff2");
 }
 /* 400 Regular Italic */
 @font-face {
@@ -426,7 +426,7 @@ template {
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-serif-v20-latin-italic.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-serif-v20-latin-italic.woff2) format("woff2");
 }
 /* 600 Semi-Bold */
 @font-face {
@@ -434,7 +434,7 @@ template {
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-serif-v20-latin-600.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-serif-v20-latin-600.woff2) format("woff2");
 }
 /* 600 Semi-Bold Italic */
 @font-face {
@@ -442,7 +442,7 @@ template {
   font-style: italic;
   font-weight: 600;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-serif-v20-latin-600italic.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-serif-v20-latin-600italic.woff2) format("woff2");
 }
 /* 700 Bold */
 @font-face {
@@ -450,7 +450,7 @@ template {
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-serif-v20-latin-700.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-serif-v20-latin-700.woff2) format("woff2");
 }
 /* 700 Bold Italic */
 @font-face {
@@ -458,7 +458,7 @@ template {
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-serif-v20-latin-700italic.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-serif-v20-latin-700italic.woff2) format("woff2");
 }
 /* --- IBM Plex Mono --- */
 /* 400 Regular */
@@ -467,7 +467,7 @@ template {
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-mono-v20-latin-regular.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-mono-v20-latin-regular.woff2) format("woff2");
 }
 /* 600 Semi-Bold */
 @font-face {
@@ -475,7 +475,7 @@ template {
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(../js/fonts/ibm-plex-mono-v20-latin-600.woff2) format("woff2");
+  src: url(../fonts/ibm-plex-mono-v20-latin-600.woff2) format("woff2");
 }
 /*--------------------------------*\
   #DESIGN TOKENS
@@ -484,11 +484,6 @@ template {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  line-height: 1.6;
 }
 
 h1, h2, h3 {
@@ -515,7 +510,7 @@ code, pre {
 .fuzzy-overlay {
   position: fixed;
   inset: -200%;
-  background: url(../js/images/noise-bg.png);
+  background: url(../images/noise-bg.png);
   opacity: 0.35;
   z-index: -10;
 }
@@ -538,12 +533,18 @@ code, pre {
   transition: opacity 0.5s ease-in-out;
 }
 
+html.js-enabled {
+  overflow: hidden;
+}
 html.js-enabled .site-header,
 html.js-enabled .hero-section,
 html.js-enabled .site-footer {
   opacity: 0;
 }
 
+html.is-loaded {
+  overflow: auto;
+}
 html.is-loaded .site-header,
 html.is-loaded .hero-section,
 html.is-loaded .site-footer {
@@ -673,13 +674,13 @@ html.js-enabled .site-loader {
 
 .loader-bg-left {
   left: 0;
-  background-image: url(../js/images/loader-paper-left.png);
+  background-image: url(../images/loader-paper-left.png);
   background-position: right center;
 }
 
 .loader-bg-right {
   right: 0;
-  background-image: url(../js/images/loader-paper-right.png);
+  background-image: url(../images/loader-paper-right.png);
   background-position: left center;
 }
 
@@ -782,7 +783,7 @@ html.is-loaded .site-loader {
   #SITE-HEADER
 \*--------------------------------*/
 .site-header {
-  position: fixed;
+  position: relative;
   z-index: 1000;
   display: flex;
   width: 100%;
@@ -841,7 +842,7 @@ html.is-loaded .site-loader {
   width: 100%;
   height: 3vw;
   max-height: 44px;
-  background-image: url(../js/images/pencil-underline.png);
+  background-image: url(../images/pencil-underline.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -910,7 +911,7 @@ html.is-loaded .site-loader {
   left: 0;
   bottom: -3px;
   right: -2px;
-  background-image: url(../js/images/button-stroke-red.svg);
+  background-image: url(../images/button-stroke-red.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -920,7 +921,7 @@ html.is-loaded .site-loader {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: url(../js/images/button-stroke-gray.svg);
+  background-image: url(../images/button-stroke-gray.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -1153,7 +1154,7 @@ a.btn-contact:hover {
   height: 2rem;
   width: 120%;
   transform: translateY(-40%);
-  background-image: url(../js/images/scribble.png);
+  background-image: url(../images/scribble.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -1233,6 +1234,357 @@ a.btn-contact:hover {
     padding: 6rem 5%;
   }
 }
+/*--------------------------------*\
+  #WORKS-SECTION
+\*--------------------------------*/
+div:has(.works-section) {
+  position: relative;
+}
+
+.works-section {
+  position: relative;
+  padding: 6rem 0;
+  z-index: 10;
+}
+
+.works-headline {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.25rem;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #555555;
+  z-index: 5;
+}
+.works-headline::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 150px;
+  background-image: url(../images/works-scribble.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.works-content {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2.5rem;
+}
+
+/*--------------------------------*\
+  #WORKS-GALLERY (Left Side)
+\*--------------------------------*/
+.works-gallery {
+  position: sticky;
+  top: 0;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.works-gallery-frame {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+}
+
+.gallery-frame-bg {
+  width: 100%;
+  height: auto;
+}
+
+.works-gallery-thumbnails {
+  position: absolute;
+  inset: 0;
+  padding: 3rem 2rem;
+}
+
+.works-gallery-thumbnail {
+  position: absolute;
+  inset: 0;
+  height: 55%;
+  border-radius: 1px;
+  max-height: 400px;
+  object-fit: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-53%, -55%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s;
+}
+.works-gallery-thumbnail.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*--------------------------------*\
+  #WORKS-LIST (Right Side)
+\*--------------------------------*/
+.works-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-item {
+  display: grid;
+  grid-template-columns: 2fr repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-radius: 0.25rem;
+  border: 0.2px solid #bbbbbb;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+}
+
+.project-detail-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-label {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.project-value {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #555555;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.project-arrow {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  position: absolute;
+  right: 0px;
+  width: 14px;
+  height: 14px;
+  margin-left: 0.5rem;
+}
+
+.project-item.is-active {
+  color: #4a2d6b;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border-color: transparent;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 10;
+  padding: 2.25rem 2rem;
+  pointer-events: auto;
+}
+.project-item.is-active .project-label {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+  transform: translateY(0);
+}
+.project-item.is-active .project-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #4a2d6b;
+}
+
+/*--------------------------------*\
+  #RESPONSIVE (Mobile)
+\*--------------------------------*/
+@media (max-width: 768px) {
+  .project-item {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    border-radius: 12px;
+    border-color: transparent;
+    background-color: #ffffff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+    padding: 1.5rem 1rem;
+  }
+  .project-detail-column {
+    text-align: center;
+  }
+  .project-label {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .project-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #4a2d6b;
+    justify-content: center;
+  }
+  .project-item.is-active {
+    transform: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  }
+}
+/*--------------------------------*\
+  #CONTACT-SECTION
+\*--------------------------------*/
+.contact-section {
+  position: relative;
+  padding: 8rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  min-height: 80vh;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-headline {
+  position: relative;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333333;
+  z-index: 5;
+  margin-bottom: 2rem;
+}
+.contact-headline::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 250px;
+  height: 150px;
+  background-image: url(../images/contact-scribble.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.contact-email {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #bbbbbb;
+  border-radius: 8px;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.email-text {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  color: #333333;
+  font-weight: 600;
+  padding-right: 0.5rem;
+}
+
+.copy-button {
+  background-color: #555555;
+  border: none;
+  border-radius: 6px;
+  padding: 1.25rem 1.75rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.copy-button img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+.copy-button:hover {
+  background-color: #333333;
+}
+.copy-button.is-copied {
+  background-color: #27563f;
+  transform: scale(1.1);
+}
+
+.contact-socials ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.contact-socials li {
+  margin: 0.5rem 1rem;
+}
+.contact-socials a {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555555;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.contact-socials a:hover {
+  color: #4a2d6b;
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .contact-socials ul {
+    flex-direction: column;
+  }
+  .contact-socials li {
+    margin: 0.75rem 0;
+  }
+}
+
+.contact-decor img {
+  position: absolute;
+  z-index: 1;
+  will-change: transform;
+}
+.contact-decor .decor-sun {
+  width: 200px;
+  top: 20%;
+  left: 12%;
+}
+.contact-decor .decor-tree {
+  width: 600px;
+  top: 10%;
+  right: 0;
+}
+.contact-decor .decor-mountain {
+  width: 740px;
+  bottom: 5%;
+  left: -5%;
+}
+.contact-decor .decor-tori {
+  width: 1000px;
+  bottom: 10%;
+  right: -20%;
+}
+
 /*--------------------------------*\
   #SITE-FOOTER
 \*--------------------------------*/

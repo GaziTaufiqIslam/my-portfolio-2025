@@ -4,10 +4,9 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: $font-serif;
-  line-height: 1.6;
-}
+// html, body {
+//   overflow: hidden;
+// }
 
 h1, h2, h3 {
   font-family: $font-serif;
@@ -71,6 +70,7 @@ code, pre {
 
 // *If* JS is enabled, hide the content
 html.js-enabled {
+  overflow: hidden; // Prevent scrolling during load
   .site-header,
   .hero-section,
   .site-footer {
@@ -80,6 +80,7 @@ html.js-enabled {
 
 // *When* JS is loaded, fade the content back in
 html.is-loaded {
+  overflow: auto; // Re-enable scrolling
   .site-header,
   .hero-section,
   .site-footer {
