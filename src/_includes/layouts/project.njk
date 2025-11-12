@@ -13,12 +13,31 @@ layout: layouts/base.njk
 
     {# Left Column: Sticky Nav (Desktop Only) #}
     <aside class="project-sidebar">
+      <h3 class="sidebar-label">Click to jump to section ↓</h3>
       <nav class="project-sidebar-nav" aria-label="Project sections">
         <ul>
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#process">Detailed Process</a></li>
-          <li><a href="#solution">Solution</a></li>
-          <li><a href="#behind-the-scene">Behind The Scene</a></li>
+         {% for item in projectNav %}
+          <li>
+            <a href="{{ item.href }}" class="sidebar-link">
+              <div class="sidebar-link-main">
+                <span class="sidebar-title">{{ item.title }}</span>
+                
+                <div class="sidebar-tags">
+                  {% if item.type %}
+                    <span class="tag tag-type">{{ item.type }}</span>
+                  {% endif %}
+                  {% if item.time %}
+                    <span class="tag tag-time">{{ item.time }}</span>
+                  {% endif %}
+                </div>
+              </div>
+
+              {% if item.subtitle %}
+                <span class="sidebar-subtitle">{{ item.subtitle }}</span>
+              {% endif %}
+            </a>
+          </li>
+          {% endfor %}
         </ul>
       </nav>
     </aside>

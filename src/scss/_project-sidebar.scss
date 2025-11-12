@@ -1,0 +1,133 @@
+/*--------------------------------*\
+  #PROJECT-SIDEBAR
+\*--------------------------------*/
+
+// Add this to _variables.scss if it's not there
+// $color-brand-light: #f0e6f7; 
+
+// .project-sidebar {
+//   // The 0.4px right border
+// //   border-right: 0.4px solid $color-neutral-300;
+// //   padding-right: 2.5rem; // Space from the border
+// }
+
+.sidebar-label {
+  font-family: $font-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  color: $color-text-light;
+  margin-bottom: 1rem;
+}
+
+.project-sidebar-nav {
+  ul {
+    list-style: none;
+  }
+}
+
+.sidebar-link {
+  display: block;
+  padding: 20px 16px;
+  border: 0.4px solid $color-neutral-300;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-bottom: 8px;
+  position: relative;
+  overflow: hidden; // For the progress bar
+  transition: all 0.5s ease-in-out;
+
+  .sidebar-link-main {
+    // --- This is the new layout logic ---
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-title {
+    // --- Font style updates ---
+    font-family: $font-serif;
+    font-style: normal; // <-- NOT italic
+    font-weight: 600;    // <-- 600 weight
+    font-size: 20px;
+    color: $color-text;
+    // transition: all 0.3s ease-in-out;
+  }
+
+  .sidebar-subtitle {
+    display: block;
+    font-family: $font-sans;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: $color-text-light;
+    margin-top: 4px;
+    // --- Ensure subtitle is NOT part of the flex row ---
+    flex-basis: 100%;
+  }
+
+  .sidebar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    background-color: $color-neutral-200;
+    color: $color-text;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .tag-type {
+    text-transform: uppercase;
+    letter-spacing: 0.06em; // This is how you write 6% in CSS
+  }
+
+  // --- Progress Bar (hidden by default) ---
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: $color-brand;
+    width: 100%;
+    transform: translateX(-100%); // Start off-screen
+    // transition: transform 0.3s ease;
+  }
+}
+
+// --- ACTIVE STATE ---
+.sidebar-link.is-active {
+//   padding: 32px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border: 0.8px solid $color-neutral-500;
+  background-color: $color-brand-100; // New brand 100 background
+  border: 0.8px solid $color-brand-500;
+  box-shadow: 0 10px 40px -15px rgba(0,0,0,0.2);
+
+  .sidebar-title {
+    // font-size: 24px;
+    font-weight: 600;
+    font-style: normal;
+    color: $color-text;
+    // transform: scale(1.2); // <-- ADD THIS
+    // transform-origin: left; // <-- ADD THIS
+  }
+
+  .tag {
+    background-color: $color-neutral-000; // Lightest neutral (white)
+    color: $color-brand;
+  }
+
+  // --- Show Progress Bar ---
+  &::after {
+    // We control the width with a CSS variable from JS
+    transform: translateX(calc(-100% + var(--progress-width, 0%)));
+  }
+}

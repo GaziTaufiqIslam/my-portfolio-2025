@@ -1675,7 +1675,7 @@ div:has(.works-section) {
 \*--------------------------------*/
 .project-hero {
   width: 100%;
-  height: 60vh;
+  height: 56vw;
   background-size: cover;
   background-position: center;
 }
@@ -1684,7 +1684,7 @@ div:has(.works-section) {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  margin: 2rem auto;
+  margin: 0 auto 2rem;
   padding: 0 1.5rem;
 }
 
@@ -1709,11 +1709,13 @@ div:has(.works-section) {
 /*--------------------------------*\
   #DESKTOP & TABLET LAYOUT
 \*--------------------------------*/
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .project-main-content {
-    grid-template-columns: 4fr 8fr;
-    margin-top: 4rem;
+    grid-template-columns: 3fr 9fr;
     padding: 0 2.5rem;
+  }
+  .project-content-scroll {
+    border-left: 0.4px solid #bbbbbb;
   }
   .project-sidebar {
     display: block;
@@ -1748,7 +1750,6 @@ div:has(.works-section) {
   #PROJECT-META BOX
 \*--------------------------------*/
 .project-meta {
-  background-color: #ffffff;
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 4rem;
@@ -1830,12 +1831,12 @@ div:has(.works-section) {
 
 .meta-tags .tag {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background-color: #eeeeee;
+  padding: 0.5rem 1rem;
+  background-color: #cdcdcd;
   border-radius: 0.625rem;
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #333333;
   margin: 0 0.5rem 0.5rem 0;
 }
@@ -1857,11 +1858,16 @@ div:has(.works-section) {
   flex-basis: 50%;
   margin-bottom: 1.5rem;
   padding-right: 1rem;
+  font-style: normal;
 }
 .credit-person .avatar {
   width: 48px;
   height: 48px;
   margin-right: 0.5rem;
+}
+
+.credit-person .meta-label-small {
+  font-style: normal;
 }
 
 .recognition-item,
@@ -1875,6 +1881,154 @@ div:has(.works-section) {
   height: 32px;
   width: auto;
   margin-right: 1rem;
+}
+
+/*--------------------------------*\
+  #PROJECT-SIDEBAR
+\*--------------------------------*/
+.sidebar-label {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 1rem;
+}
+
+.project-sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 20px 16px;
+  border: 0.4px solid #bbbbbb;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-bottom: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.sidebar-link .sidebar-link-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.sidebar-link .sidebar-title {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
+}
+.sidebar-link .sidebar-subtitle {
+  display: block;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: #555555;
+  margin-top: 4px;
+  flex-basis: 100%;
+}
+.sidebar-link .sidebar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sidebar-link .tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  background-color: #cdcdcd;
+  color: #333333;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+.sidebar-link .tag-type {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.sidebar-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: #4a2d6b;
+  width: 100%;
+  transform: translateX(-100%);
+}
+
+.sidebar-link.is-active {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border: 0.8px solid #888888;
+  background-color: #d9c9e9;
+  border: 0.8px solid #6b4c8b;
+  box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.2);
+}
+.sidebar-link.is-active .sidebar-title {
+  font-weight: 600;
+  font-style: normal;
+  color: #333333;
+}
+.sidebar-link.is-active .tag {
+  background-color: #ffffff;
+  color: #4a2d6b;
+}
+.sidebar-link.is-active::after {
+  transform: translateX(calc(-100% + var(--progress-width, 0%)));
+}
+
+/*--------------------------------*\
+  #PROJECT CONTENT (Right Column)
+\*--------------------------------*/
+.project-content-scroll {
+  padding: 0 1rem;
+}
+@media (min-width: 1024px) {
+  .project-content-scroll {
+    padding: 0 2.5rem;
+  }
+}
+.project-content-scroll .project-text {
+  max-width: 720px;
+  margin: 2.5rem 0;
+}
+@media (max-width: 1024px) {
+  .project-content-scroll .project-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.project-content-scroll .project-text p {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #333333;
+  margin-bottom: 1.5rem;
+}
+.project-content-scroll .project-media {
+  width: 100%;
+  margin: 3rem 0;
+}
+.project-content-scroll .project-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+.project-content-scroll .project-grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .project-content-scroll .project-grid-2-col {
+    grid-template-columns: 1fr;
+  }
 }
 
 /*--------------------------------*\

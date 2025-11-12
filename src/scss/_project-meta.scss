@@ -3,7 +3,7 @@
 \*--------------------------------*/
 
 .project-meta {
-  background-color: $color-neutral-000;
+  // background-color: $color-neutral-000;
   border-top: 1px solid $color-neutral-100;
   border-bottom: 1px solid $color-neutral-100;
   margin-bottom: 4rem; // Space from the content below
@@ -93,12 +93,12 @@
 
 .meta-tags .tag {
   display: inline-block;
-  padding: 0.25rem .75rem;
-  background-color: $color-neutral-100;
+  padding: 0.5rem 1rem;
+  background-color: $color-neutral-200;
   border-radius: 0.625rem;
   font-family: $font-sans;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   color: $color-text;
   margin: 0 0.5rem 0.5rem 0;
 }
@@ -120,6 +120,7 @@
   flex-basis: 50%; // 2 people per line
   margin-bottom: 1.5rem;
   padding-right: 1rem; // Space
+  font-style: normal;
 
   .avatar {
     width: 48px;
@@ -127,6 +128,9 @@
     // border-radius: 50%;
     margin-right: .5rem;
   }
+}
+.credit-person .meta-label-small{
+  font-style: normal;
 }
 
 .recognition-item,

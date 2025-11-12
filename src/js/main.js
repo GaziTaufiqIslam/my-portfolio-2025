@@ -85,14 +85,28 @@ function runPageSpecificJS() {
       })
       .catch(err => console.error('Error loading home animations:', err));
   }
+
+ 
   
   // You can add more checks here for other pages
   const isProjectPage = document.querySelector('.project-page');
   if (isProjectPage) {
     console.log('Project page detected. No specific JS loaded.');
     // You could import('./project-animations.js') here if you had any
+    import('./project-animations.js')
+      .then(module => module.initProjectAnimations(lenis)) // <-- NEW
+      .catch(err => console.error('Error loading project animations:', err));
   }
 }
+
+ // Check for project page
+  // const isProjectPage = document.querySelector('.project-page');
+  // if (isProjectPage) {
+  //   import('./project-animations.js')
+  //     .then(module => module.initProjectAnimations())
+  //     .catch(err => console.error('Error loading project animations:', err));
+  // }
+  // --- ▲▲▲ END BLOCK ▲▲▲ ---
 
 // --- 4. Mobile Menu Toggle (Global) ---
 const menuToggle = document.querySelector('.site-header__mobile-toggle');

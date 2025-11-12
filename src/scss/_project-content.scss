@@ -1,0 +1,64 @@
+/*--------------------------------*\
+  #PROJECT CONTENT (Right Column)
+\*--------------------------------*/
+
+.project-content-scroll {
+
+  // Add default padding for all content
+  padding: 0 1rem;
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 2.5rem;
+  }
+
+  // Style for your text blocks
+  .project-text {
+    // Constrain text for readability
+    max-width: 720px; 
+    margin: 2.5rem 0; // Vertical spacing
+
+    // On mobile, center the text block
+    @media (max-width: $breakpoint-lg) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    p {
+      font-family: $font-serif;
+      font-size: 1.125rem; // 18px
+      line-height: 1.7;
+      color: $color-text;
+      margin-bottom: 1.5rem;
+    }
+
+    // ... add styles for h3, h4, ul, etc. here
+  }
+
+  // Style for your full-width image blocks
+  .project-media {
+    // This makes it full-width of the 8-col container
+    width: 100%; 
+    margin: 3rem 0; // Vertical spacing
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block; // Removes extra space below image
+
+      // As requested, disable all mouse interaction
+      pointer-events: none; 
+    }
+  }
+
+  // A helper class for 2-column image grids
+  .project-grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+
+    // On small tablets/mobile, stack them
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
