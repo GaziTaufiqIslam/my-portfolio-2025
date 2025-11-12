@@ -48,25 +48,25 @@ lenis.on('scroll', (e) => {
 });
 
 // --- 3. Site Loader (Global) ---
-window.addEventListener('load', () => {
-  lenis.stop();
+// window.addEventListener('load', () => {
+//   lenis.stop();
 
-  setTimeout(() => {
-    document.documentElement.classList.add('is-loaded');
-    window.scrollTo(0, 0);
+//   setTimeout(() => {
+//     document.documentElement.classList.add('is-loaded');
+//     window.scrollTo(0, 0);
 
-    setTimeout(() => {
-      // --- A. Run page-specific animations ---
-      runPageSpecificJS();
+//     setTimeout(() => {
+//       // --- A. Run page-specific animations ---
+//       runPageSpecificJS();
       
-      // --- B. Refresh ScrollTrigger & restart scroll ---
-      ScrollTrigger.refresh();
-      lenis.start();
+//       // --- B. Refresh ScrollTrigger & restart scroll ---
+//       ScrollTrigger.refresh();
+//       lenis.start();
       
-    }, 1500);
+//     }, 1500);
 
-  }, 200);
-});
+//   }, 200);
+// });
 
 /**
  * This function checks what page we're on and
