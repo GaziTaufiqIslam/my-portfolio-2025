@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+---
+<article class="project-page">
+
+  {# 1. PROJECT HERO #}
+  <header class="project-hero" style="background-image: url('{{ heroImage }}');">
+    {# Intentionally empty so user can see details below #}
+  </header>
+
+  {# 2. MAIN CONTENT WRAPPER #}
+  <div class="project-main-content">
+
+    {# Left Column: Sticky Nav (Desktop Only) #}
+    <aside class="project-sidebar">
+      <nav class="project-sidebar-nav" aria-label="Project sections">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#process">Detailed Process</a></li>
+          <li><a href="#solution">Solution</a></li>
+          <li><a href="#behind-the-scene">Behind The Scene</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    {# Right Column: Scrollable Content #}
+    <div class="project-content-scroll">
+
+      {# This includes the meta box and uses this page's front matter #}
+      {% include "partials/project-meta.njk" %}
+
+      {# This is where your Markdown/Nunjucks content will go #}
+      {{ content | safe }}
+
+    </div>
+  </div>
+
+</article>

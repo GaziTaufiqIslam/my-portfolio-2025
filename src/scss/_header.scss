@@ -3,31 +3,66 @@
 \*--------------------------------*/
 
 .site-header {
-  position: relative;
-  z-index: 1000;
-  display: flex;
+  // --- Fixed position logic ---
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  z-index: 1000;
+  height: $header-height;
+  background-color: $color-background;
+  
+  // We define the properties we WANT to transition...
+  transition-property: transform, opacity;
+  // ...and their (new) durations...
+  transition-duration: 0.3s, 0.5s; // 0.3s for transform, 0.5s for opacity
+  // ...and their timing functions.
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1), ease-in-out;
+  // The 'transition-delay' will be set by the loader logic below.
+  
+  // --- Layout fix ---
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 3rem; // ~24px top/bottom, 40px left/right
-//   width: 100%;
-  background-color: transparentize($color: $color-background, $amount: 0);
-  overflow: hidden;
+  padding: 0 2.5rem;
+  
+  // --- Overlay fix ---
+  overflow: hidden; // <-- ADD THIS to clip the overlay
 
-    box-shadow: 0 1px 4px 0 transparentize($color: $color-neutral-900, $amount: 0.8);
+  border-bottom: 0.4px solid $color-neutral-300; // Adds the separation
+
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
 }
 
 .fuzzy-overlay__header {
+  // --- This is the fix for the overlay ---
   position: absolute;
-  // z-index: -1;
-    // mask-image: url("../images/noise-bg.png");
-    // mask-repeat: repeat;
-    // background-image: none;
-} 
+  inset: 0; // Stretches to fill the parent header
+  width: 100%;
+  height: 100%;
+  
+  // Apply noise (using your "noise-bg.png" as per _base.scss)
+  background-image: url('../images/noise-bg.png');
+  background-repeat: repeat;
+  opacity: 0.35; // Using the opacity from your _base.scss
+  
+  // Put it *just* on top of the header background
+  z-index: 1; 
+  pointer-events: none;
+  // You can add the animation back here if you want
+  // animation: shift .5s linear infinite both;
+}
 
 /**
  * 1. Brand (Left Side)
  */
+.site-header__brand {
+  position: relative; // <-- ADD THIS
+  z-index: 2;         // <-- ADD THIS
+}
+
 .site-header__brand-link {
   display: flex;
   align-items: center;
@@ -93,9 +128,12 @@
 /**
  * 2. Navigation (Right Side)
  */
+
 .site-header__nav {
   display: flex;
   align-items: center;
+  position: relative; // <-- ADD THIS
+  z-index: 2;  
 
   ul {
     display: flex;

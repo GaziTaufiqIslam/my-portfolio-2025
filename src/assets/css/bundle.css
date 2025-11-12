@@ -507,7 +507,12 @@ code, pre {
   font-family: "IBM Plex Mono", "Courier New", Courier, monospace;
 }
 
+main {
+  padding-top: 120px;
+}
+
 .fuzzy-overlay {
+  pointer-events: none;
   position: fixed;
   inset: -200%;
   background: url(../images/noise-bg.png);
@@ -545,11 +550,14 @@ html.js-enabled .site-footer {
 html.is-loaded {
   overflow: auto;
 }
-html.is-loaded .site-header,
 html.is-loaded .hero-section,
 html.is-loaded .site-footer {
   opacity: 1;
   transition-delay: 1s;
+}
+html.is-loaded .site-header {
+  opacity: 1;
+  transition-delay: 0s, 1s;
 }
 
 /*--------------------------------*\
@@ -836,25 +844,47 @@ html.is-loaded .site-loader {
   #SITE-HEADER
 \*--------------------------------*/
 .site-header {
-  position: relative;
-  z-index: 1000;
-  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  z-index: 1000;
+  height: 120px;
+  background-color: #ffffff;
+  transition-property: transform, opacity;
+  transition-duration: 0.3s, 0.5s;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1), ease-in-out;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 3rem;
-  background-color: white;
+  padding: 0 2.5rem;
   overflow: hidden;
-  box-shadow: 0 1px 4px 0 rgba(51, 51, 51, 0.2);
+  border-bottom: 0.4px solid #bbbbbb;
+}
+.site-header.is-hidden {
+  transform: translateY(-100%);
 }
 
 .fuzzy-overlay__header {
   position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/noise-bg.png);
+  background-repeat: repeat;
+  opacity: 0.35;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /**
  * 1. Brand (Left Side)
  */
+.site-header__brand {
+  position: relative;
+  z-index: 2;
+}
+
 .site-header__brand-link {
   display: flex;
   align-items: center;
@@ -913,6 +943,8 @@ html.is-loaded .site-loader {
 .site-header__nav {
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 .site-header__nav ul {
   display: flex;
@@ -1636,6 +1668,213 @@ div:has(.works-section) {
   width: 1000px;
   bottom: 10%;
   right: -20%;
+}
+
+/*--------------------------------*\
+  #PROJECT PAGE LAYOUT
+\*--------------------------------*/
+.project-hero {
+  width: 100%;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.project-main-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.project-sidebar {
+  display: none;
+}
+
+.project-content-scroll {
+  width: 100%;
+}
+.project-content-scroll section {
+  margin-bottom: 3rem;
+}
+
+.mobile-subheader {
+  display: block;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/*--------------------------------*\
+  #DESKTOP & TABLET LAYOUT
+\*--------------------------------*/
+@media (min-width: 768px) {
+  .project-main-content {
+    grid-template-columns: 4fr 8fr;
+    margin-top: 4rem;
+    padding: 0 2.5rem;
+  }
+  .project-sidebar {
+    display: block;
+    position: sticky;
+    top: 120px;
+    align-self: start;
+  }
+  .project-sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .project-sidebar-nav li {
+    margin-bottom: 1rem;
+  }
+  .project-sidebar-nav a {
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    color: #555555;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+  .project-sidebar-nav a:hover {
+    color: #4a2d6b;
+  }
+  .mobile-subheader {
+    display: none;
+  }
+}
+/*--------------------------------*\
+  #PROJECT-META BOX
+\*--------------------------------*/
+.project-meta {
+  background-color: #ffffff;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 4rem;
+}
+
+.meta-row {
+  display: flex;
+  padding: 2.5rem;
+  border-bottom: 1px solid #eeeeee;
+}
+.meta-row:last-child {
+  border-bottom: none;
+}
+@media (max-width: 768px) {
+  .meta-row {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+  }
+}
+
+.meta-row:nth-child(1) .meta-block {
+  flex: 1;
+  padding-right: 1.5rem;
+}
+.meta-row:nth-child(n+2) .meta-block {
+  flex: 1;
+  padding-right: 1.5rem;
+}
+@media (max-width: 768px) {
+  .meta-block {
+    padding-right: 0;
+    margin-bottom: 2.5rem;
+  }
+  .meta-block:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.meta-label,
+.meta-label-small {
+  display: block;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #757575;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+
+.meta-value,
+.meta-value-small,
+.meta-value-large,
+.meta-tags {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.meta-value-large {
+  font-size: 1.5rem;
+}
+
+.meta-value-small {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.meta-label-small {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+.client-logo {
+  max-width: 200px;
+  height: auto;
+}
+
+.meta-tags .tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #eeeeee;
+  border-radius: 0.625rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0.5rem 0.5rem 0;
+}
+
+.meta-tools img {
+  height: 32px;
+  width: 32px;
+  margin: 0 0.75rem 0.5rem 0;
+}
+
+.meta-credits {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.credit-person {
+  display: flex;
+  align-items: center;
+  flex-basis: 50%;
+  margin-bottom: 1.5rem;
+  padding-right: 1rem;
+}
+.credit-person .avatar {
+  width: 48px;
+  height: 48px;
+  margin-right: 0.5rem;
+}
+
+.recognition-item,
+.impact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.recognition-item img,
+.impact-item img {
+  height: 32px;
+  width: auto;
+  margin-right: 1rem;
 }
 
 /*--------------------------------*\

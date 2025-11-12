@@ -24,6 +24,7 @@ $color-accent-050: #fcf1ed;
 // Neutrals: Grays
 $color-neutral-900: #333333;
 $color-neutral-700: #555555;
+$color-neutral-600: #757575;
 $color-neutral-500: #888888;
 $color-neutral-300: #bbbbbb;
 $color-neutral-100: #eeeeee;
@@ -47,6 +48,7 @@ $color-info:    #4a6ae0; // Blue
 // Text
 $color-text: $color-neutral-900;
 $color-text-light: $color-neutral-700;
+$color-text-lighter: $color-neutral-600;
 
 // Brand
 $color-brand: $color-brand-700; // Your main purple
@@ -77,3 +79,9 @@ $font-mono: 'IBM Plex Mono', "Courier New", Courier, monospace;
 $breakpoint-md: 768px;   // Tablet
 $breakpoint-lg: 1024px;  // Desktop
 $breakpoint-xl: 1280px;  // Large Desktop
+
+
+// ... (your other variables) ...
+
+// --- 5. LAYOUT ---
+$header-height: 120px; // Adjust this to your header's actual height

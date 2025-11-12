@@ -1,0 +1,72 @@
+<div class="project-meta">
+
+  <div class="meta-row">
+    <div class="meta-block">
+      <span class="meta-label">Client</span>
+      <img src="{{ client.logo }}" alt="{{ client.name }} Logo" class="client-logo">
+    </div>
+    <div class="meta-block">
+      <span class="meta-label">Role</span>
+      <div class="meta-tags">
+        {% for item in role %}
+        <span class="tag">{{ item }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="meta-block">
+      <span class="meta-label">Timeline</span>
+      <span class="meta-value-large">{{ timeline }}</span>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-block">
+      <span class="meta-label">Tools</span>
+      <div class="meta-tools">
+        {% for tool in tools %}
+        <img src="{{ tool.logo }}" alt="{{ tool.name }}" title="{{ tool.name }}">
+        {% endfor %}
+      </div>
+    </div>
+    <div class="meta-block">
+      <span class="meta-label">Credits</span>
+      <div class="meta-credits">
+        {% for person in credits %}
+        <div class="credit-person">
+          <img src="{{ person.avatar }}" alt="{{ person.name }}" class="avatar">
+          <div>
+            <span class="meta-value-small">{{ person.name }}</span>
+            <span class="meta-label-small">{{ person.role }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-block">
+      <span class="meta-label">Recognition</span>
+      <div class="meta-recognition">
+        {% for item in recognition %}
+        <div class="recognition-item">
+          <img src="{{ item.logo }}" alt="">
+          <span class="meta-value">{{ item.text }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="meta-block">
+      <span class="meta-label">Impact</span>
+      <div class="meta-impact">
+        {% for item in impact %}
+        <div class="impact-item">
+          <img src="{{ item.icon }}" alt="">
+          <span class="meta-value">{{ item.text }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</div>

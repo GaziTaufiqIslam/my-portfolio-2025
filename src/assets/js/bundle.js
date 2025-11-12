@@ -76,7 +76,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/main.scss */ \"./src/scss/main.scss\");\n/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ \"./node_modules/gsap/index.js\");\n/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap/ScrollTrigger */ \"./node_modules/gsap/ScrollTrigger.js\");\n/* harmony import */ var lenis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lenis */ \"./node_modules/lenis/dist/lenis.mjs\");\n\n\n\n // <-- Import Lenis\n\ngsap__WEBPACK_IMPORTED_MODULE_1__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger);\n\n// --- 1. Initialize Lenis ---\nvar lenis = new lenis__WEBPACK_IMPORTED_MODULE_3__[\"default\"]({\n  duration: 1.2,\n  easing: function easing(t) {\n    return Math.min(1, 1.001 - Math.pow(2, -10 * t));\n  },\n  // Easing function\n  smoothTouch: true\n});\n\n// --- 2. Link Lenis to GSAP ScrollTrigger ---\nlenis.on('scroll', gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger.update);\n\n// --- 3. The Render Loop ---\n// This is required for Lenis to work\nfunction raf(time) {\n  lenis.raf(time);\n  requestAnimationFrame(raf);\n}\nrequestAnimationFrame(raf);\n\n// // --- Site Loader & Scroll Init ---\n// window.addEventListener('load', () => {\n\n//   // --- 4. Lock Scrolling ---\n//   // Stop the user from scrolling while the loader is active\n//   lenis.stop(); // <-- Use Lenis's stop method\n\n//   // --- 5. Animate Loader Out ---\n//   setTimeout(() => {\n//     document.documentElement.classList.add('is-loaded');\n//     window.scrollTo(0, 0); // Force to top\n\n//     // --- 6. DELAY GSAP INIT ---\n//     // Wait for the loader to be GONE and the site to be FADED IN\n//     setTimeout(() => {\n\n//       // --- A. NOW initialize all GSAP animations ---\n//       initializeGSAPAnimations();\n\n//       // --- B. Refresh ScrollTrigger on the visible page ---\n//       ScrollTrigger.refresh();\n\n//       // --- C. Unlock scrolling ---\n//       lenis.start(); // <-- Use Lenis's start method\n\n//     }, 1500); // This must be >= your CSS fade-in time\n\n//   }, 200); // 200ms initial delay\n\n// }); // --- END of window.onload ---\n\n/**\n * All GSAP and ScrollTrigger animations go in here.\n * This function is only called *after* the page is 100% visible.\n */\nfunction initializeGSAPAnimations() {\n  // --- Works Headline Animation ---\n  gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.utils.toArray('.works-headline .char').forEach(function (_char) {\n    gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.set(_char, {\n      rotation: gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.utils.random(-3, 2),\n      y: gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.utils.random(-2, 2)\n    });\n  });\n  gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.utils.toArray('.contact-headline .char').forEach(function (_char2) {\n    gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.set(_char2, {\n      rotation: gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.utils.random(-2, 2),\n      // 3-5 degrees\n      y: gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.utils.random(-2, 2) // Random y position\n    });\n  });\n\n  // --- Works Section Scroll Animation ---\n  if (window.innerWidth > 768) {\n    var projects = gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.utils.toArray('.project-item');\n    var thumbnails = gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.utils.toArray('.works-gallery-thumbnail');\n\n    // Variable to keep track of the active item\n    var lastActiveIndex = -1;\n\n    // 1. Create ONE ScrollTrigger for the whole section\n    gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger.create({\n      trigger: '.works-section',\n      start: 'top top',\n      endTrigger: '.works-list',\n      end: '+=2000vh',\n      pin: true,\n      pinSpacing: true,\n      scrub: 1,\n      // Smoothly scrubs the animation (1-second \"catch-up\")\n\n      // onUpdate fires every frame of the scroll\n      onUpdate: function onUpdate(self) {\n        // self.progress is a value from 0 (start) to 1 (end)\n        // We map this progress to an index in our projects array\n        var newIndex = Math.round(self.progress * (projects.length - 1));\n\n        // Only update the DOM if the index has changed\n        if (newIndex !== lastActiveIndex) {\n          // Deactivate all items\n          projects.forEach(function (p) {\n            return p.classList.remove('is-active');\n          });\n          thumbnails.forEach(function (t) {\n            return t.classList.remove('is-active');\n          });\n\n          // Activate the new current item\n          projects[newIndex].classList.add('is-active');\n          var thumbId = projects[newIndex].dataset.thumbnailId;\n          if (thumbId) {\n            document.getElementById(thumbId).classList.add('is-active');\n          }\n\n          // Update our tracker\n          lastActiveIndex = newIndex;\n        }\n      },\n      // onEnter, set the first item as active\n      onEnter: function onEnter() {\n        projects[0].classList.add('is-active');\n        var firstThumbId = projects[0].dataset.thumbnailId;\n        if (firstThumbId) {\n          document.getElementById(firstThumbId).classList.add('is-active');\n        }\n        lastActiveIndex = 0;\n      }\n    });\n\n    // 2. We have DELETED the 'forEach' loop that created\n    //    multiple triggers. This single trigger handles everything.\n  } // End of if (window.innerWidth > 768)\n\n  // --- Contact Section Scroll Animation ---\n  var contactSection = document.querySelector('.contact-section');\n\n  // Set initial off-screen positions\n  gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.set('.decor-sun', {\n    xPercent: -5,\n    yPercent: -100,\n    rotation: -45\n  });\n  gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.set('.decor-tree', {\n    xPercent: 40,\n    yPercent: -5,\n    rotation: -5\n  });\n  gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.set('.decor-mountain', {\n    xPercent: -40,\n    yPercent: 10\n  });\n  gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.set('.decor-tori', {\n    xPercent: 40,\n    yPercent: 10\n  });\n\n  // Animate them to their final position (transform: 'none')\n  var tl = gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.timeline({\n    scrollTrigger: {\n      trigger: contactSection,\n      start: 'top bottom',\n      // When section top hits viewport bottom\n      end: 'bottom top',\n      // When section bottom hits viewport top\n      scrub: 1.5 // Smoothly map to scroll (1.5s \"catch-up\")\n    }\n  });\n  tl.to('.decor-sun', {\n    xPercent: 0,\n    yPercent: 0,\n    rotation: 0\n  }, 0) // 0 = start at the same time\n  .to('.decor-tree', {\n    xPercent: 0,\n    yPercent: 0,\n    rotation: 0\n  }, 0).to('.decor-mountain', {\n    xPercent: 0,\n    yPercent: 0\n  }, 0).to('.decor-tori', {\n    xPercent: 0,\n    yPercent: 0\n  }, 0);\n}\n\n// --- Mobile Menu Toggle ---\nvar menuToggle = document.querySelector('.site-header__mobile-toggle');\nvar nav = document.querySelector('.site-header__nav');\nif (menuToggle && nav) {\n  menuToggle.addEventListener('click', function () {\n    menuToggle.classList.toggle('is-open');\n    nav.classList.toggle('is-open');\n    var isOpen = menuToggle.classList.contains('is-open');\n    menuToggle.setAttribute('aria-expanded', isOpen);\n  });\n}\n\n// --- Clipboard Button ---\ndocument.querySelectorAll('.copy-button').forEach(function (button) {\n  button.addEventListener('click', function () {\n    var textToCopy = button.dataset.clipboardText;\n    navigator.clipboard.writeText(textToCopy).then(function () {\n      // Success!\n      button.classList.add('is-copied');\n\n      // Revert after 2 seconds\n      setTimeout(function () {\n        button.classList.remove('is-copied');\n      }, 2000);\n    })[\"catch\"](function (err) {\n      console.error('Failed to copy: ', err);\n    });\n  });\n});\n\n//# sourceURL=webpack://my-portfolio-2025/./src/js/main.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/main.scss */ \"./src/scss/main.scss\");\n/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ \"./node_modules/gsap/index.js\");\n/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap/ScrollTrigger */ \"./node_modules/gsap/ScrollTrigger.js\");\n/* harmony import */ var lenis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lenis */ \"./node_modules/lenis/dist/lenis.mjs\");\n\n\n\n\ngsap__WEBPACK_IMPORTED_MODULE_1__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger);\n\n// --- 1. Initialize Lenis (Global) ---\nvar lenis = new lenis__WEBPACK_IMPORTED_MODULE_3__[\"default\"]({\n  duration: 1.2,\n  easing: function easing(t) {\n    return Math.min(1, 1.001 - Math.pow(2, -10 * t));\n  },\n  smoothTouch: true\n});\n\n// --- 2. The Render Loop (Global) ---\nfunction raf(time) {\n  lenis.raf(time);\n  requestAnimationFrame(raf);\n}\nrequestAnimationFrame(raf);\n\n// --- 4. Header Show/Hide Logic ---\nvar lastScrollTop = 0;\nvar header = document.querySelector('.site-header');\nvar headerHeight = 120; // Use the same value as $header-height\n\nlenis.on('scroll', function (e) {\n  var currentScrollTop = e.scroll;\n\n  // Check if we've scrolled past the header height\n  if (currentScrollTop > headerHeight) {\n    header.classList.add('is-scrolled');\n    if (currentScrollTop > lastScrollTop) {\n      // Scrolling Down\n      header.classList.add('is-hidden');\n    } else {\n      // Scrolling Up\n      header.classList.remove('is-hidden');\n    }\n  } else {\n    // At the top of the page\n    header.classList.remove('is-scrolled');\n    header.classList.remove('is-hidden');\n  }\n  lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;\n});\n\n// --- 3. Site Loader (Global) ---\nwindow.addEventListener('load', function () {\n  lenis.stop();\n  setTimeout(function () {\n    document.documentElement.classList.add('is-loaded');\n    window.scrollTo(0, 0);\n    setTimeout(function () {\n      // --- A. Run page-specific animations ---\n      runPageSpecificJS();\n\n      // --- B. Refresh ScrollTrigger & restart scroll ---\n      gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger.refresh();\n      lenis.start();\n    }, 1500);\n  }, 200);\n});\n\n/**\n * This function checks what page we're on and\n * dynamically imports only the JS we need.\n */\nfunction runPageSpecificJS() {\n  // Check if we are on the homepage (by looking for the hero)\n  var isHomepage = document.querySelector('.hero-section');\n  if (isHomepage) {\n    // If we are, dynamically import the homepage animations\n    __webpack_require__.e(/*! import() */ \"src_js_home-animations_js\").then(__webpack_require__.bind(__webpack_require__, /*! ./home-animations.js */ \"./src/js/home-animations.js\")).then(function (module) {\n      module.initializeGSAPAnimations(); // Run the exported function\n    })[\"catch\"](function (err) {\n      return console.error('Error loading home animations:', err);\n    });\n  }\n\n  // You can add more checks here for other pages\n  var isProjectPage = document.querySelector('.project-page');\n  if (isProjectPage) {\n    console.log('Project page detected. No specific JS loaded.');\n    // You could import('./project-animations.js') here if you had any\n  }\n}\n\n// --- 4. Mobile Menu Toggle (Global) ---\nvar menuToggle = document.querySelector('.site-header__mobile-toggle');\nvar nav = document.querySelector('.site-header__nav');\nif (menuToggle && nav) {\n  menuToggle.addEventListener('click', function () {\n    menuToggle.classList.toggle('is-open');\n    nav.classList.toggle('is-open');\n    var isOpen = menuToggle.classList.contains('is-open');\n    menuToggle.setAttribute('aria-expanded', isOpen);\n  });\n}\n\n//# sourceURL=webpack://my-portfolio-2025/./src/js/main.js?\n}");
 
 /***/ }),
 
@@ -116,6 +116,9 @@ eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-ext
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
@@ -129,9 +132,97 @@ eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-ext
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "js/" + chunkId + ".bundle.js";
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get mini-css chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.miniCssF = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return undefined;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/load script */
+/******/ 	(() => {
+/******/ 		var inProgress = {};
+/******/ 		var dataWebpackPrefix = "my-portfolio-2025:";
+/******/ 		// loadScript function to load a script via script tag
+/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
+/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
+/******/ 			var script, needAttach;
+/******/ 			if(key !== undefined) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				for(var i = 0; i < scripts.length; i++) {
+/******/ 					var s = scripts[i];
+/******/ 					if(s.getAttribute("src") == url || s.getAttribute("data-webpack") == dataWebpackPrefix + key) { script = s; break; }
+/******/ 				}
+/******/ 			}
+/******/ 			if(!script) {
+/******/ 				needAttach = true;
+/******/ 				script = document.createElement('script');
+/******/ 		
+/******/ 				script.charset = 'utf-8';
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
+/******/ 		
+/******/ 				script.src = url;
+/******/ 			}
+/******/ 			inProgress[url] = [done];
+/******/ 			var onScriptComplete = (prev, event) => {
+/******/ 				// avoid mem leaks in IE.
+/******/ 				script.onerror = script.onload = null;
+/******/ 				clearTimeout(timeout);
+/******/ 				var doneFns = inProgress[url];
+/******/ 				delete inProgress[url];
+/******/ 				script.parentNode && script.parentNode.removeChild(script);
+/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
+/******/ 				if(prev) return prev(event);
+/******/ 			}
+/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
+/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
+/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
+/******/ 			needAttach && document.head.appendChild(script);
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -143,6 +234,119 @@ eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-ext
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl + "../";
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if(true) { // all chunks have JS
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							var loadingEnded = (event) => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) {
+/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 										var realSrc = event && event.target && event.target.src;
+/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 										error.name = 'ChunkLoadError';
+/******/ 										error.type = errorType;
+/******/ 										error.request = realSrc;
+/******/ 										installedChunkData[1](error);
+/******/ 									}
+/******/ 								}
+/******/ 							};
+/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+/******/ 						}
+/******/ 					}
+/******/ 				}
+/******/ 		};
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 		
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkmy_portfolio_2025"] = self["webpackChunkmy_portfolio_2025"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
 /******/ 	
 /************************************************************************/

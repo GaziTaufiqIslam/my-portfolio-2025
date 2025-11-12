@@ -1,0 +1,95 @@
+/*--------------------------------*\
+  #PROJECT PAGE LAYOUT
+\*--------------------------------*/
+
+.project-hero {
+  width: 100%;
+  // Not full height, as requested
+  height: 60vh; 
+  background-size: cover;
+  background-position: center;
+}
+
+.project-main-content {
+  display: grid;
+  // Mobile-first: 1 column
+  grid-template-columns: 1fr; 
+  gap: 2rem;
+//   max-width: 1600px;
+  margin: 2rem auto; // Add some top/bottom space
+  padding: 0 1.5rem;
+}
+
+// 1. Left Sidebar (Desktop)
+.project-sidebar {
+  // --- HIDDEN ON MOBILE ---
+  display: none; 
+}
+
+// 2. Right Content (Mobile)
+.project-content-scroll {
+  // On mobile, this is just a normal div
+  width: 100%;
+
+  section {
+    margin-bottom: 3rem; // Space between sections on mobile
+  }
+}
+
+.mobile-subheader {
+  // --- VISIBLE ON MOBILE ---
+  display: block; 
+  font-family: $font-serif;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/*--------------------------------*\
+  #DESKTOP & TABLET LAYOUT
+\*--------------------------------*/
+
+@media (min-width: $breakpoint-md) { // 768px and up
+  .project-main-content {
+    // 4-col / 8-col split (12-col grid)
+    grid-template-columns: 4fr 8fr; 
+    margin-top: 4rem;
+    padding: 0 2.5rem;
+  }
+
+  .project-sidebar {
+    // --- VISIBLE ON DESKTOP ---
+    display: block; 
+    position: sticky;
+    // Adjust this value to account for your main header's height
+    top: 120px; 
+    align-self: start; // Crucial for sticky in a grid
+  }
+
+  .project-sidebar-nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      margin-bottom: 1rem;
+    }
+    a {
+      font-family: $font-sans;
+      font-weight: 600;
+      color: $color-text-light;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $color-brand;
+      }
+    }
+  }
+
+  .mobile-subheader {
+    // --- HIDDEN ON DESKTOP ---
+    display: none; 
+  }
+}

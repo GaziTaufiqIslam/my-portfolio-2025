@@ -33,8 +33,17 @@ code, pre {
 //     position: relative;
 //     overflow-x: hidden;
 // }
+
+main {
+  // This pushes all page content down to account for the fixed header
+  padding-top: $header-height;
+}
+
+// ... (your other base styles) ...
+
+
 .fuzzy-overlay{
-  // pointer-events: none;
+  pointer-events: none;
   position: fixed;
   inset: -200%;
   background: url("../images/noise-bg.png");
@@ -81,10 +90,17 @@ html.js-enabled {
 // *When* JS is loaded, fade the content back in
 html.is-loaded {
   overflow: auto; // Re-enable scrolling
-  .site-header,
+
   .hero-section,
   .site-footer {
     opacity: 1;
-    transition-delay: 1s; // This is our delay from before
+    transition-delay: 1s; // This is fine for hero/footer
+  }
+  
+  // --- THIS IS THE FIX ---
+  .site-header {
+    opacity: 1;
+    // Apply delays in order: 0s for transform, 1s for opacity
+    transition-delay: 0s, 1s;
   }
 }
