@@ -7,6 +7,7 @@
   inset: 0;
   z-index: 9999;
   display: none; // <-- Hide by default
+  // background-color: rgba(220, 191, 158, 0.9);
 }
 
 // Show the loader *only* if JS is enabled
@@ -34,12 +35,17 @@ html.js-enabled .site-loader {
   left: 0;
   background-image: url('../images/loader-paper-left.png');
   background-position: right center;
+  z-index: 998;
+  // opacity: .4;
+  
 }
 
 .loader-bg-right {
   right: 0;
   background-image: url('../images/loader-paper-right.png');
   background-position: left center;
+  z-index: 998;
+  // opacity: .4;
 }
 
 
@@ -86,6 +92,10 @@ html.js-enabled .site-loader {
   font-weight: 600;
   color: $color-text;
 }
+
+// .loader-noise {
+//     animation: fade-out-stop-motion 0.1s steps(1, end) forwards;
+//   }
 
 
 /**

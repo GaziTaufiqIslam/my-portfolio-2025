@@ -24,7 +24,7 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 
-// --- Site Loader & Scroll Init ---
+// // --- Site Loader & Scroll Init ---
 // window.addEventListener('load', () => {
 
 //   // --- 4. Lock Scrolling ---
