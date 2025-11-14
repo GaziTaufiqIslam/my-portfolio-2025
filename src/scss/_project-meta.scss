@@ -2,24 +2,27 @@
   #PROJECT-META BOX
 \*--------------------------------*/
 
-.project-meta {
-  // background-color: $color-neutral-000;
-  border-top: 1px solid $color-neutral-100;
-  border-bottom: 1px solid $color-neutral-100;
-  margin-bottom: 4rem; // Space from the content below
-}
+// .project-meta {
+//   /* This container just holds the rows. */
+//   /* The first row will get a top border from the design */
+//   border-top: .4px solid $color-neutral-500;
+// }
 
 .meta-row {
   display: flex;
-  // Generous padding to match your ~720px height reference
   padding: 2.5rem; 
-  border-bottom: 1px solid $color-neutral-100;
+  
+  /* --- This is the fix --- */
+  border-left: .4px solid $color-neutral-500;
+  border-right: .4px solid $color-neutral-500;
+  border-bottom: .4px solid $color-neutral-500;
 
   &:last-child {
-    border-bottom: none;
+    /* We keep this to prevent a double border */
+    border-bottom: .4px solid $color-neutral-500;
   }
 
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-lg) { // Match your page breakpoint
     flex-direction: column; // Stack columns on mobile
     padding: 2rem 1.5rem;
   }

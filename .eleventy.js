@@ -8,6 +8,8 @@ module.exports = function(eleventyConfig) {
   // This rule copies your HTML images directly
   eleventyConfig.addPassthroughCopy("src/images");
 
+  eleventyConfig.addPassthroughCopy("src/lottie");
+
   return {
     dir: {
       input: "src",      // Source folder

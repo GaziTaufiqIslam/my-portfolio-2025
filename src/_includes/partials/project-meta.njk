@@ -45,17 +45,21 @@
   </div>
 
   <div class="meta-row">
-    <div class="meta-block">
-      <span class="meta-label">Recognition</span>
-      <div class="meta-recognition">
-        {% for item in recognition %}
-        <div class="recognition-item">
-          <img src="{{ item.logo }}" alt="">
-          <span class="meta-value">{{ item.text }}</span>
+    {# This block only renders if 'recognition' exists in the front matter #}
+      {% if recognition %}
+      <div class="meta-block">
+        <span class="meta-label">Recognition</span>
+        <div class="meta-recognition">
+          {% for item in recognition %}
+          <div class="recognition-item">
+            <img src="{{ item.logo }}" alt="">
+            <span class="meta-value">{{ item.text }}</span>
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
-    </div>
+      {% endif %}
+      {# --- END FIX --- #}
     <div class="meta-block">
       <span class="meta-label">Impact</span>
       <div class="meta-impact">

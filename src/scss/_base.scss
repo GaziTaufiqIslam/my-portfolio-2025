@@ -28,11 +28,22 @@ h1 {
 code, pre {
   font-family: $font-mono;
 }
-
-// body {
-//     position: relative;
-//     overflow-x: hidden;
-// }
+body {
+  position: relative;
+  isolation: isolate;
+}
+body::after {
+    // position: relative;
+    // overflow-x: hidden;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/noise-bg.png");
+    background-repeat: repeat;
+    opacity: 0.25;
+    z-index: -1;
+    
+}
 
 main {
   // This pushes all page content down to account for the fixed header
@@ -79,7 +90,10 @@ main {
 
 // *If* JS is enabled, hide the content
 html.js-enabled {
-  overflow: hidden; // Prevent scrolling during load
+  // overflow: hidden; // Prevent scrolling during load
+
+  background-image: url("../images/noise-bg.png");
+
   .site-header,
   .hero-section,
   .site-footer {

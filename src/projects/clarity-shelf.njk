@@ -1,0 +1,102 @@
+---
+layout: layouts/project.njk
+title: "Clarity Shelf | Project"
+heroImage: "/images/hero-clarity-shelf-bg.jpg"
+
+# --- 1. Sidebar Navigation Data ---
+projectNav:
+  - title: "Overview"
+    href: "#overview"
+    time: "<1min"
+  - title: "Results"
+    subtitle: "Quickly glancing over the results for this project."
+    href: "#results"
+    type: "HIGHLIGHTS"
+    time: "~1min"
+  - title: "Process"
+    subtitle: "Dive into my design process, research project journey."
+    href: "#process"
+    type: "DETAILS"
+    time: "~12min"
+  - title: "Behind The Scene"
+    subtitle: "Have a look at my crazy side."
+    href: "#behind-the-scene"
+
+# --- 2. Project Meta Box Data ---
+client:
+  name: "National Institute of Design"
+  logo: "/images/client-nid.png"
+role: 
+  - "Product Design"
+  - "Interaction Design"
+  - "Coding"
+  - "Machine Learning"
+timeline: "1 Week"
+tools:
+  - { name: "Sketchup", logo: "/images/tool-sketchup.png" }
+  - { name: "Figma", logo: "/images/tool-figma.png" }
+  - { name: "p5.js", logo: "/images/tool-p5js.png" }
+  - { name: "arduino", logo: "/images/tool-arduino.png" }
+  - { name: "Rive", logo: "/images/tool-rive.png" }
+  - { name: "Premiere", logo: "/images/tool-premiere.png" }
+  - { name: "VS Code", logo: "/images/tool-vscode.png" }
+  - { name: "Gemini", logo: "/images/tool-gemini.png" }
+credits:
+  - { name: "Nijoo Dubey", role: "Discipline Lead", avatar: "/images/avatar-nijoo.png" }
+  - { name: "Jonak Das", role: "Project Guide", avatar: "/images/avatar-jonak.png" }
+  - { name: "Pramshu Chaudhary", role: "External Faculty", avatar: "/images/avatar-pranshu.png" }
+  - { name: "Swarnim Chandra", role: "Designer", avatar: "/images/avatar-swarnim.png" }
+  - { name: "Gazi Taufiq", role: "Designer", avatar: "/images/avatar-gazi.png" }
+recognition:
+  - { logo: "/images/sap-logo.png", text: "Selected for Showcase at SAP Impulse 2025" }
+impact:
+  - { icon: "/images/icon-chart.png", text: "72% testers found the experience is intuitive & easy to understand." }
+  - { icon: "/images/icon-users.png", text: "58% interviewees found the experience welcoming and engaging." }
+  - { icon: "/images/icon-info.png", text: "90% testers found it to be more informative over just reading labels." }
+---
+
+{# This includes your meta box #}
+{# {% include "partials/project-meta.njk" %} #}
+
+
+
+<section id="results">
+  <h2 class="mobile-subheader">Results</h2>
+  <figure class="project-media">
+    <img src="/images/clarity-shelf/slice 01.png" alt="Clarity Shelf slice 01">
+  </figure>
+  <div class="project-video-embed">
+  <div class="project-text">
+    <p class="video-label-small">Meet</p>
+    <h2 class="video-title">'CLARITY SHELF'</h2>
+    <h3 class="video-subtitle">Pick. Scan. Understand.</h3>
+  </div>
+
+  <p class="video-label-large">Watch the Prototype Demo —</p>
+  
+  <div class="video-wrapper">
+    <iframe 
+      src="https://www.youtube.com/embed/-3TxycV-Gsc" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+</section>
+
+<section id="process">
+  <h2 class="mobile-subheader">Process</h2>
+  <figure class="project-media">
+    <img src="/images/clarity-shelf/slice 02.png" alt="Clarity Shelf slice 02">
+    <img src="/images/clarity-shelf/slice 03.png" alt="Clarity Shelf slice 03">
+  </figure>
+</section>
+
+<section id="behind-the-scene">
+  <h2 class="mobile-subheader">Behind The Scene</h2>
+  <figure class="project-media">
+    {# <img src="/images/clarity-shelf/clarity-shelf/full-1.jpg" alt="Clarity Shelf mockup"> #}
+  </figure>
+</section>

@@ -29,11 +29,11 @@
     <div class="loader-content-item">
       <img src="/images/loader-tram.png" alt="A tram bobbing up and down" class="loader-tram">
     </div>
-    <div class="loader-content-item">
+    {# <div class="loader-content-item">
       <p class="loader-coming-soon">My Portfolio will be live on 13th November at 21:00 hours</p>
-    </div>
+    </div> #}
   </div>
-  <div class="loader-noise"></div>
+  {# <div class="loader-noise"></div> #}
 
 </div>
 <!-- ================== END LOADER ================== -->
@@ -58,13 +58,13 @@
 
       <nav class="site-header__nav" id="site-navigation">
         <ul>
-          <li><a href="/works/">Works</a></li>
-          <li><a href="/playground/">Playground</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/resume/">Resume</a></li>
+          <li><a href="/#work">Work</a></li>
+          {# <li><a href="/playground/">Playground</a></li>
+          <li><a href="/about/">About</a></li> #}
+          <li><a target="_blank" href="https://drive.google.com/file/d/1txpes02HM5fvtb3mQWt2jvMARQgm4fTv/view?usp=sharing">Resume</a></li>
         </ul>
         
-        <a href="/contact/" class="btn-contact">Contact</a>
+        <a href="/#contact" class="btn-contact">Contact</a>
       </nav>
     <div class="fuzzy-overlay fuzzy-overlay__header"></div>
   </header>
@@ -81,18 +81,20 @@
       <div class="footer-col-left">
         <p class="site-footer__copyright">©2025 <span class ="site-footer__name">Gazi Taufiq </span></p>
         <p class="site-footer__tagline">
-          Designed and vibe coded with ❤️, momo<br>
-          & black coffee by yours truly
+          Designed and vibe coded with ❤️, from scratch<br>
+          along with lots of momo, caffeine and breakcore.
+          
         </p>
       </div>
 
       <div class="footer-col-right">
         <nav class="site-footer__nav" aria-label="Footer navigation">
           <ul>
-            <li><a href="/works/">Works</a></li>
-            <li><a href="/playground/">Playground</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/resume/">Resume</a></li>
+            <li><a href="#work">Work</a></li>
+            {# <li><a href="/playground/">Playground</a></li>
+            <li><a href="/about/">About</a></li> #}
+            <li><a target="_blank" href="https://drive.google.com/file/d/1txpes02HM5fvtb3mQWt2jvMARQgm4fTv/view?usp=sharing">Resume</a></li>
+            <li><a href="/#contact">Contact</a></li>
           </ul>
         </nav>
         <div class="site-footer__contact">
@@ -108,7 +110,7 @@
       {# </div> #}
 
     </footer>
-  <div class="fuzzy-overlay"></div>
+  {# <div class="fuzzy-overlay"></div> #}
 
   <script src="/assets/js/bundle.js" defer></script>
 </body>

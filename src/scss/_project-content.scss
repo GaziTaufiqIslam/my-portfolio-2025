@@ -11,6 +11,18 @@
     padding: 0 2.5rem;
   }
 
+  section {
+    border-top: .4px solid $color-neutral-500;
+    border-left: .4px solid $color-neutral-500;
+    border-right: .4px solid $color-neutral-500;
+    border-bottom: .4px solid $color-neutral-500;
+    padding: 2.5rem; // Padding *inside* the borders
+
+    @media (max-width: $breakpoint-lg) {
+      padding: 2rem 1.5rem;
+    }
+  }
+
   // Style for your text blocks
   .project-text {
     // Constrain text for readability
@@ -60,5 +72,72 @@
     @media (max-width: $breakpoint-md) {
       grid-template-columns: 1fr;
     }
+  }
+}
+
+/*--------------------------------*\
+  #PROJECT VIDEO EMBED
+\*--------------------------------*/
+
+.project-video-embed {
+  // Center the content block, just like .project-text
+  max-width: 720px;
+  margin: 4rem auto; // Add vertical spacing
+
+  @media (max-width: $breakpoint-lg) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .video-label-small {
+    font-family: $font-sans;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: $color-text-light;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .video-title {
+    font-family: $font-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+    color: $color-text;
+    margin: 0.5rem 0;
+  }
+
+  .video-subtitle {
+    font-family: $font-serif;
+    font-weight: 400;
+    font-size: clamp(1.125rem, 1rem + 1vw, 1.5rem);
+    color: $color-text-light;
+    margin-bottom: 2.5rem;
+  }
+
+  .video-label-large {
+    font-family: $font-serif;
+    font-style: italic;
+    font-size: 1.125rem;
+    color: $color-text;
+    margin-bottom: 1rem;
+  }
+}
+
+// Responsive 16:9 Video Wrapper
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; // 16:9 Aspect Ratio
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: $color-neutral-100;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }

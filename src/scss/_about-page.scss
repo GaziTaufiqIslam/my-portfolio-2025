@@ -1,0 +1,21 @@
+.about-page-content {
+  // Example layout
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   align-items: center;
+  gap: 3px;
+  padding: 4rem 2.5rem;
+  min-height: 80vh;
+  text-align: center;
+
+  // Stack on mobile
+  @media (max-width: $breakpoint-md) {
+    // grid-template-columns: 1fr;
+  }
+}
+
+#lottie-cooking {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}

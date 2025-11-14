@@ -9,6 +9,7 @@
     "right"
     "left";
   gap: 3rem; // Spacing between the two main halves
+  
   padding: 2rem 1.5rem; // Mobile padding
   min-height: calc(100vh - 80px); // At least viewport height minus header
   align-items: center;
@@ -25,6 +26,7 @@
   width: 100%;
   max-width: 500px; // Constrain width on larger mobiles/small tablets
   text-align: left; // Center align text on mobile
+  justify-self: center;
 }
 
 .hero-name-container {
@@ -109,6 +111,7 @@
   transform: translate(-50%, -50%); // Slight rotation for effect
 }
 
+
 .hero-description-text {
   position: relative;
   bottom: -4.125rem;
@@ -170,10 +173,12 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  justify-self: center;
+
 }
 
 .hero-main-image {
-  width: 120%;
+  width: 100%;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); // Subtle shadow
@@ -185,24 +190,26 @@
 \*--------------------------------*/
 
 // Tablet & Desktop
-@media (min-width: $breakpoint-md) { // 768px and up
+@media (min-width: $breakpoint-lg) { // 768px and up
   .hero-section {
     grid-template-areas: "left right"; // Side-by-side
-    grid-template-columns: 1fr 1fr; // Equal width columns
+    grid-template-columns: 1fr 1fr; // <-- THIS IS THE CHANGE
     padding: 4rem 10%; // Desktop padding
     min-height: calc(100vh - 80px); // Keep it tall
+    gap: 10vw;
   }
 
   .hero-left-content {
     text-align: left; // Align text to the left
     padding-right: 2rem;
-    max-width: none; // Allow it to expand
-  }
+    max-width: 660px; // <-- THIS IS THE CHANGE
+    justify-self: end;
+}
   
   .hero-name-container {
     width: 80%; /* Adjust as needed for desktop */
     padding-bottom: 40%;
-    margin-left: 10%; /* Pull slightly left to match design */
+    // margin-left: 10%; /* Pull slightly left to match design */
   }
 
   .hero-description-container {
@@ -221,8 +228,10 @@
   }
 
   .hero-right-composition {
-    max-width: 500px; // Larger image on desktop
+    max-width: 50vh; // Larger image on desktop
     padding-left: 2rem;
+    justify-self: start;
+
   }
   
   // Sticker repositioning for desktop
@@ -235,5 +244,38 @@
 @media (min-width: $breakpoint-lg) { // 1024px and up
   .hero-section {
     padding: 6rem 5%;
+  }
+}
+
+/*--------------------------------*\
+  #NEW RESPONSIVE ADJUSTMENTS
+\*--------------------------------*/
+
+/* Hide newspaper bg on screens 1600px and smaller */
+@media (max-width: 1600px) {
+  .hero-newspaper-bg {
+    display: none;
+  }
+}
+
+/* Adjust description text bottom on screens 1280px and smaller */
+@media (max-width: 1024px) {
+  .hero-name-container{
+    width: 50vw;
+    min-width: 200px;
+    margin: 0 auto;
+  }
+  .hero-description-text {
+    bottom: 0;
+    transform: rotate(0);
+  }
+  .hero-description-container{
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-description-text {
+    padding-top: 0;
   }
 }

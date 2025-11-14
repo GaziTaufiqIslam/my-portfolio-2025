@@ -507,6 +507,21 @@ code, pre {
   font-family: "IBM Plex Mono", "Courier New", Courier, monospace;
 }
 
+body {
+  position: relative;
+  isolation: isolate;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(../images/noise-bg.png);
+  background-repeat: repeat;
+  opacity: 0.25;
+  z-index: -1;
+}
+
 main {
   padding-top: 120px;
 }
@@ -539,7 +554,7 @@ main {
 }
 
 html.js-enabled {
-  overflow: hidden;
+  background-image: url(../images/noise-bg.png);
 }
 html.js-enabled .site-header,
 html.js-enabled .hero-section,
@@ -1130,6 +1145,7 @@ a.btn-contact:hover {
   width: 100%;
   max-width: 500px;
   text-align: left;
+  justify-self: center;
 }
 
 .hero-name-container {
@@ -1256,10 +1272,11 @@ a.btn-contact:hover {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  justify-self: center;
 }
 
 .hero-main-image {
-  width: 120%;
+  width: 100%;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
@@ -1268,22 +1285,23 @@ a.btn-contact:hover {
 /*--------------------------------*\
   #RESPONSIVE
 \*--------------------------------*/
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .hero-section {
     grid-template-areas: "left right";
     grid-template-columns: 1fr 1fr;
     padding: 4rem 10%;
     min-height: calc(100vh - 80px);
+    gap: 10vw;
   }
   .hero-left-content {
     text-align: left;
     padding-right: 2rem;
-    max-width: none;
+    max-width: 660px;
+    justify-self: end;
   }
   .hero-name-container {
     width: 80%; /* Adjust as needed for desktop */
     padding-bottom: 40%;
-    margin-left: 10%; /* Pull slightly left to match design */
   }
   .hero-description-container {
     padding: 2rem 0; /* Adjust padding for desktop */
@@ -1295,8 +1313,9 @@ a.btn-contact:hover {
     font-size: 1.75rem;
   }
   .hero-right-composition {
-    max-width: 500px;
+    max-width: 50vh;
     padding-left: 2rem;
+    justify-self: start;
   }
   .hero-dove {
     top: -25%;
@@ -1320,6 +1339,35 @@ a.btn-contact:hover {
   }
 }
 /*--------------------------------*\
+  #NEW RESPONSIVE ADJUSTMENTS
+\*--------------------------------*/
+/* Hide newspaper bg on screens 1600px and smaller */
+@media (max-width: 1600px) {
+  .hero-newspaper-bg {
+    display: none;
+  }
+}
+/* Adjust description text bottom on screens 1280px and smaller */
+@media (max-width: 1024px) {
+  .hero-name-container {
+    width: 50vw;
+    min-width: 200px;
+    margin: 0 auto;
+  }
+  .hero-description-text {
+    bottom: 0;
+    transform: rotate(0);
+  }
+  .hero-description-container {
+    margin: 0;
+  }
+}
+@media (max-width: 768px) {
+  .hero-description-text {
+    padding-top: 0;
+  }
+}
+/*--------------------------------*\
   #WORKS-SECTION
 \*--------------------------------*/
 div:has(.works-section) {
@@ -1329,6 +1377,10 @@ div:has(.works-section) {
 .works-section {
   position: relative;
   padding: 6rem 0;
+  background-image: url(../images/halftone-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   z-index: 10;
 }
 
@@ -1359,7 +1411,7 @@ div:has(.works-section) {
 
 .works-content {
   display: grid;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: 6fr 6fr;
   align-items: center;
   gap: 1.5rem;
   padding: 0 2.5rem;
@@ -1432,7 +1484,19 @@ div:has(.works-section) {
   text-decoration: none;
   position: relative;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  pointer-events: none;
+  position: relative;
+  overflow: hidden;
+}
+.project-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: #4a2d6b;
+  width: 100%;
+  transform: translateX(-100%);
+  transition: transform 0s;
 }
 
 .project-detail-column {
@@ -1488,6 +1552,9 @@ div:has(.works-section) {
   padding: 2.25rem 2rem;
   pointer-events: auto;
 }
+.project-item.is-active::after {
+  transform: translateX(calc(-100% + var(--progress-width, 0%)));
+}
 .project-item.is-active .project-label {
   opacity: 1;
   visibility: visible;
@@ -1501,9 +1568,21 @@ div:has(.works-section) {
 }
 
 /*--------------------------------*\
-  #RESPONSIVE (Mobile)
+  #RESPONSIVE
 \*--------------------------------*/
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
+  .works-content {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+@media (max-width: 1024px) {
+  .works-content {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem;
+  }
+  .works-gallery {
+    display: none;
+  }
   .project-item {
     grid-template-columns: 1fr;
     gap: 1.25rem;
@@ -1513,9 +1592,6 @@ div:has(.works-section) {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     margin-bottom: 1rem;
     padding: 1.5rem 1rem;
-  }
-  .project-detail-column {
-    text-align: center;
   }
   .project-label {
     opacity: 1;
@@ -1528,11 +1604,35 @@ div:has(.works-section) {
     color: #4a2d6b;
     justify-content: center;
   }
+  .project-arrow {
+    opacity: 1;
+    visibility: visible;
+  }
   .project-item.is-active {
     transform: none;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   }
 }
+.project-item.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.project-item.is-disabled .project-arrow {
+  display: none;
+}
+.project-item.is-disabled.is-active {
+  transform: none;
+  background-color: #eeeeee;
+  border-color: #888888;
+  box-shadow: none;
+}
+.project-item.is-disabled.is-active .project-label {
+  opacity: 1;
+}
+.project-item.is-disabled.is-active .project-value {
+  color: #555555;
+}
+
 /*--------------------------------*\
   #CONTACT-SECTION
 \*--------------------------------*/
@@ -1714,9 +1814,6 @@ div:has(.works-section) {
     grid-template-columns: 3fr 9fr;
     padding: 0 2.5rem;
   }
-  .project-content-scroll {
-    border-left: 0.4px solid #bbbbbb;
-  }
   .project-sidebar {
     display: block;
     position: sticky;
@@ -1749,21 +1846,19 @@ div:has(.works-section) {
 /*--------------------------------*\
   #PROJECT-META BOX
 \*--------------------------------*/
-.project-meta {
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
-  margin-bottom: 4rem;
-}
-
 .meta-row {
   display: flex;
   padding: 2.5rem;
-  border-bottom: 1px solid #eeeeee;
+  /* --- This is the fix --- */
+  border-left: 0.4px solid #888888;
+  border-right: 0.4px solid #888888;
+  border-bottom: 0.4px solid #888888;
 }
 .meta-row:last-child {
-  border-bottom: none;
+  /* We keep this to prevent a double border */
+  border-bottom: 0.4px solid #888888;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .meta-row {
     flex-direction: column;
     padding: 2rem 1.5rem;
@@ -1893,6 +1988,7 @@ div:has(.works-section) {
   font-size: 1rem;
   color: #555555;
   margin-bottom: 1rem;
+  padding-top: 2rem;
 }
 
 .project-sidebar-nav ul {
@@ -1993,6 +2089,18 @@ div:has(.works-section) {
     padding: 0 2.5rem;
   }
 }
+.project-content-scroll section {
+  border-top: 0.4px solid #888888;
+  border-left: 0.4px solid #888888;
+  border-right: 0.4px solid #888888;
+  border-bottom: 0.4px solid #888888;
+  padding: 2.5rem;
+}
+@media (max-width: 1024px) {
+  .project-content-scroll section {
+    padding: 2rem 1.5rem;
+  }
+}
 .project-content-scroll .project-text {
   max-width: 720px;
   margin: 2.5rem 0;
@@ -2032,6 +2140,90 @@ div:has(.works-section) {
 }
 
 /*--------------------------------*\
+  #PROJECT VIDEO EMBED
+\*--------------------------------*/
+.project-video-embed {
+  max-width: 720px;
+  margin: 4rem auto;
+}
+@media (max-width: 1024px) {
+  .project-video-embed {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.project-video-embed .video-label-small {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #555555;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+.project-video-embed .video-title {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  color: #333333;
+  margin: 0.5rem 0;
+}
+.project-video-embed .video-subtitle {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-size: clamp(1.125rem, 1rem + 1vw, 1.5rem);
+  color: #555555;
+  margin-bottom: 2.5rem;
+}
+.project-video-embed .video-label-large {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #eeeeee;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.about-page-content {
+  gap: 3px;
+  padding: 4rem 2.5rem;
+  min-height: 80vh;
+  text-align: center;
+}
+#lottie-cooking {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.playground-page-content {
+  padding: 4rem 2.5rem;
+  min-height: 80vh;
+  text-align: center;
+}
+
+#lottie-playground {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/*--------------------------------*\
   #SITE-FOOTER
 \*--------------------------------*/
 .site-footer {
@@ -2044,6 +2236,7 @@ div:has(.works-section) {
   text-align: center;
   justify-items: center;
   min-height: 20em;
+  isolation: isolate;
 }
 
 .footer-col-left {
