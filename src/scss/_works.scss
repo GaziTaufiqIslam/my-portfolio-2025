@@ -6,13 +6,37 @@ div:has(.works-section) {
 }
 .works-section {
   position: relative;
-  // height: 100vh;
+  isolation: isolate; // Creates a new stacking context
   padding: 6rem 0;
-  background-image: url("../images/halftone-bg.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   z-index: 10;
+  
+  // 1. Solid background color (the bottom layer)
+  background-color: $color-neutral-000; // Your light gray
+
+  // 2. Noise layer (sits on top of the color)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/noise-bg.png');
+    background-repeat: repeat;
+    opacity: 0.25; // Your 25% opacity
+    z-index: -2;
+    pointer-events: none;
+  }
+
+  // 3. Halftone layer (sits on top of the noise)
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/halftone-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+    pointer-events: none;
+  }
 }
 
 .works-headline {

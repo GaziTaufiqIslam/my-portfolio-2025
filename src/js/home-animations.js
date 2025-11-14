@@ -45,7 +45,7 @@ export function initializeGSAPAnimations() {
     ScrollTrigger.create({
       trigger: '.works-section',
       start: 'top top',
-      end: '+=1200vh', // Your 400vh duration
+      end: '+=2000vh', // Your 400vh duration
       pin: true,
       pinSpacing: true,
       scrub: 1,
