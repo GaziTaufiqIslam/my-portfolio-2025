@@ -130,16 +130,18 @@
   }
 
   a {
-    font-family: $font-sans;
+    font-family: $font-serif;
+    font-style: italic;
     font-size: 1rem;
     font-weight: 600;
     color: $color-text-light;
     text-decoration: none;
     transition: color 0.2s ease;
+    @include animated-underline($color-text-light);
 
     &:hover {
       color: $color-brand;
-      text-decoration: underline;
+      // text-decoration: underline;
     }
   }
 

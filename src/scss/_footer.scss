@@ -83,6 +83,7 @@
     font-size: 1.15rem;
     color: $color-text;
     text-decoration: none;
+    @include animated-underline($color-text);
 
     &:hover {
       color: $color-brand;

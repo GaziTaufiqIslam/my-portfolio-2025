@@ -31,6 +31,10 @@
 
   border-bottom: 0.4px solid $color-neutral-300; // Adds the separation
 
+  @media (max-width: $breakpoint-lg) {
+    height: $header-height-mobile; // Sets height to 80px
+  }
+
   &.is-hidden {
     transform: translateY(-100%);
   }
@@ -147,7 +151,7 @@
   }
 
   // Styles for the nav links (not the button)
-  a {
+  ul a {
     font-family: $font-serif;
     font-weight: 600;
     font-size: 1.5rem;
@@ -155,6 +159,8 @@
     color: $color-text;
     text-decoration: none;
     transition: color 0.2s ease;
+    @include animated-underline($color-text);
+
     @media (max-width: $breakpoint-xl) {
       font-size: 1.125rem;
     }
@@ -162,6 +168,12 @@
     &:hover {
       color: $color-neutral-700;
     }
+  }
+  a {
+    font-family: $font-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    font-style: italic;
   }
 }
 

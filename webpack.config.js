@@ -39,6 +39,7 @@ module.exports = {
           'sass-loader'                // 1. Compiles Sass to CSS
         ]
       },
+      
       // New rule for Fonts
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -48,13 +49,48 @@ module.exports = {
         }
       },
       // New rule for Images
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name][ext]' // Output to 'src/assets/images'
-        }
-      }
+      // {
+      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
+
+      //   // This is the new part
+      //   use: [
+      //     {
+      //       loader: 'image-webpack-loader',
+      //       options: {
+      //         // --- Progressive JPEGs ---
+      //         mozjpeg: {
+      //           progressive: true, // This is the magic line
+      //           quality: 65
+      //         },
+      //         // --- PNG Compression ---
+      //         pngquant: {
+      //           quality: [0.65, 0.90], // A quality range (like TinyPNG)
+      //           speed: 4
+      //         },
+      //         // --- SVG Compression ---
+      //         // --- SVG Compression ---
+      //         svgo: {
+      //           plugins: [
+      //             {
+      //               name: 'preset-default',
+      //               params: {
+      //                 overrides: {
+      //                   removeViewBox: false,
+      //                   cleanupIDs: false,
+      //                 },
+      //               },
+      //             },
+      //           ],
+      //         }
+      //       }
+      //     }
+      //   ],
+
+      //   type: 'asset/resource',
+      //   generator: {
+      //     filename: 'images/[name][ext]' // Output to 'src/assets/images'
+      //   }
+      // }
     ]
   }
 };

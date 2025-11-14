@@ -30,7 +30,7 @@ export function initializeGSAPAnimations() {
     if (projects.length === 0) return; // Safety check
     
     let lastActiveIndex = -1;
-    const progressBarSteps = 10; // Your "stop motion" frames
+    const progressBarSteps = 6; // Your "stop motion" frames
 
     // Set default active state
     projects[0].classList.add('is-active');
@@ -45,7 +45,7 @@ export function initializeGSAPAnimations() {
     ScrollTrigger.create({
       trigger: '.works-section',
       start: 'top top',
-      end: '+=400vh', // Your 400vh duration
+      end: '+=1200vh', // Your 400vh duration
       pin: true,
       pinSpacing: true,
       scrub: 1,

@@ -1,0 +1,31 @@
+@mixin animated-underline($color: $color-brand) {
+  position: relative;
+  text-decoration: none; // Remove default underline
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; // Sits just below the text
+    left: 0;
+    
+    width: 100%;
+    height: 1.4px;
+    background-color: $color;
+    
+    // --- THIS IS THE FIX ---
+    
+    // Default state (mouse-leave):
+    transform: scaleX(0);
+    transform-origin: right; // Shrinks to the right
+    
+    // Animate the transform property
+    transition: transform 300ms ease-in-out;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    // Hover state:
+    transform: scaleX(1);
+    transform-origin: left; // Grows from the left
+  }
+}
