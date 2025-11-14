@@ -4,44 +4,46 @@ const path = require("path");
 
 module.exports = function(eleventyConfig) {
   
-  // We need to copy BOTH the assets folder (for CSS) 
-  // AND the new fonts folder.
+  // Copy the ENTIRE 'src/assets' folder (built by Webpack) to _site/assets
   eleventyConfig.addPassthroughCopy("./src/assets/");
-  eleventyConfig.addPassthroughCopy("fonts");
   
+  // Copy your lottie files
   eleventyConfig.addPassthroughCopy("src/lottie");
 
   const isServe = process.env.ELEVENTY_RUN_MODE === 'serve';
 
   if (isServe) {
-    // In dev mode ("npm start"), just copy the images.
-    console.log("Dev mode: Copying images directly.");
+    // In dev mode ("npm start"), copy static images directly
+    console.log("Dev mode: Copying static images directly.");
     eleventyConfig.addPassthroughCopy("src/images");
   
   } else {
-    // In production mode ("npm run build"), run full compression.
+    // In production mode ("npm run build"), run 'eleventy-img' compression
     eleventyConfig.on('beforeBuild', async () => {
-      console.log("Build mode: Starting image compression...");
+      console.log("Build mode: Starting STATIC image compression...");
 
-      // 1. Find files in separate groups
       const jpegFiles = glob.sync("src/images/**/*.{jpg,jpeg}");
       const pngFiles = glob.sync("src/images/**/*.png");
       const svgFiles = glob.sync("src/images/**/*.svg");
-
-      // 2. Loop and process JPEGs
+      
       if (jpegFiles.length > 0) {
         console.log(`Found ${jpegFiles.length} JPEGs to compress...`);
         await Promise.all(
           jpegFiles.map(async (file) => {
+            // --- FIX: CALCULATE DYNAMIC OUTPUT DIR ---
+            const relativeDir = path.dirname(path.relative("src/images", file));
+            const outputDir = path.join("./_site/images", relativeDir);
+            // --- END FIX ---
+            
             return Image(file, {
-              outputDir: "./_site/images/",
-              formats: ["jpeg"], // Only output JPEGs
+              outputDir: outputDir, // Use the dynamic path
+              formats: ["jpeg"],
               jpegOptions: {
                 quality: 65,
                 progressive: true,
               },
               filenameFormat: (id, src, width, format, options) => {
-                return path.basename(src); // Keep original name
+                return path.basename(src); // This is fine, basename only
               }
             });
           })
@@ -50,20 +52,24 @@ module.exports = function(eleventyConfig) {
         console.warn("No JPEGs found in src/images/");
       }
       
-      // 3. Loop and process PNGs
       if (pngFiles.length > 0) {
         console.log(`Found ${pngFiles.length} PNGs to compress...`);
         await Promise.all(
           pngFiles.map(async (file) => {
+            // --- FIX: CALCULATE DYNAMIC OUTPUT DIR ---
+            const relativeDir = path.dirname(path.relative("src/images", file));
+            const outputDir = path.join("./_site/images", relativeDir);
+            // --- END FIX ---
+
             return Image(file, {
-              outputDir: "./_site/images/",
-              formats: ["png"], // Only output PNGs
+              outputDir: outputDir, // Use the dynamic path
+              formats: ["png"],
               pngOptions: {
                 quality: [0.65, 0.90],
                 speed: 4,
               },
               filenameFormat: (id, src, width, format, options) => {
-                return path.basename(src); // Keep original name
+                return path.basename(src);
               }
             });
           })
@@ -72,13 +78,17 @@ module.exports = function(eleventyConfig) {
         console.warn("No PNGs found in src/images/");
       }
       
-      // 4. Loop and process SVGs
       if (svgFiles.length > 0) {
         console.log(`Found ${svgFiles.length} SVGs to copy...`);
         await Promise.all(
           svgFiles.map(async (file) => {
+            // --- FIX: CALCULATE DYNAMIC OUTPUT DIR ---
+            const relativeDir = path.dirname(path.relative("src/images", file));
+            const outputDir = path.join("./_site/images", relativeDir);
+            // --- END FIX ---
+            
             return Image(file, {
-              outputDir: "./_site/images/",
+              outputDir: outputDir, // Use the dynamic path
               formats: ["svg"],
               svgShortCircuit: true,
               filenameFormat: (id, src, width, format, options) => {
@@ -91,7 +101,7 @@ module.exports = function(eleventyConfig) {
         console.warn("No SVGs found in src/images/");
       }
       
-      console.log("Finished image processing.");
+      console.log("Finished static image processing.");
     });
   }
 
