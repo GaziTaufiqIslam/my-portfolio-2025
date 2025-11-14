@@ -18,7 +18,7 @@ div:has(.works-section) {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('../images/noise-bg.png');
+    background-image: url('../assets/images/noise-bg.png');
     background-repeat: repeat;
     opacity: 0.25; // Your 25% opacity
     z-index: -2;
@@ -30,7 +30,7 @@ div:has(.works-section) {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('../images/halftone-bg.png');
+    background-image: url('../assets/images/halftone-bg.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -59,7 +59,7 @@ div:has(.works-section) {
     transform: translate(-50%, -50%);
     width: 250px; // Larger than the text
     height: 150px;
-    background-image: url('../images/works-scribble.png');
+    background-image: url('../assets/images/works-scribble.png');
     background-size: contain;
     background-repeat: no-repeat;
     z-index: -1;

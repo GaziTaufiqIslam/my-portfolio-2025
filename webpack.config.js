@@ -1,65 +1,107 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const glob = require('glob');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
-module.exports = {
-  mode: 'development', // Change to 'production' for builds
-  entry: './src/js/main.js', // Your main JS entry file
-  output: {
-    path: path.resolve(__dirname, 'src/assets'), // Output to 'src/assets'
-    filename: 'js/bundle.js',                     // Put JS in 'src/assets/js'
-    // --- FIX 1: REMOVED assetModuleFilename: '[path][name][ext]' ---
-    // This was causing the /src/images/ path error
-    clean: true, // Clean the 'src/assets' folder before each build
-  },
-  
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'css/bundle.css' // Put CSS in 'src/assets/css'
-    })
-  ],
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
 
+  const imageLoaderRule = {
+    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+    type: 'asset/resource',
+    generator: {
+      filename: (pathData) => {
+        const relativePath = path.relative(
+          path.resolve(__dirname, 'src/images'), 
+          pathData.filename
+        );
+        return `images/${relativePath}`;
+      },
+    },
+    use: []
+  };
 
-  module: {
-    rules: [
-        // Rule for JavaScript files
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            sourceType: 'unambiguous'
-          }
-        }
+  if (isProduction) {
+    imageLoaderRule.use.push({
+      loader: 'image-webpack-loader',
+      options: {
+        mozjpeg: { progressive: true, quality: 75 },
+        pngquant: { quality: [0.65, 0.90], speed: 4 },
+        svgo: {
+          plugins: [
+            {
+              name: 'preset-default',
+              params: { overrides: { removeViewBox: false } },
+            },
+          ],
+        },
       },
-      // Rule for SCSS
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader, // 3. Extracts CSS into files
-          'css-loader',                // 2. Translates CSS into CommonJS
-          'sass-loader'                // 1. Compiles Sass to CSS
-        ]
-      },
-      // Rule for Fonts
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'fonts/[name][ext]' // Output to 'src/assets/fonts'
-        }
-      },
-      // --- FIX 2: ADDED A RULE FOR IMAGES ---
-      // This handles the 7 images (or any others) 
-      // referenced in your JS or SCSS.
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name][ext]' // Output to 'src/assets/images'
-        }
-      },
-    ]
+    });
   }
-}
+
+  const imageFiles = glob.sync('src/images/**/*.{png,svg,jpg,jpeg,gif}');
+  const imageEntries = imageFiles.map(file => './' + file);
+
+  return {
+    mode: isProduction ? 'production' : 'development',
+    entry: {
+      main: './src/js/main.js',
+      images: imageEntries
+    },
+    output: {
+      path: path.resolve(__dirname, 'src/assets'),
+      filename: 'js/[name].bundle.js',
+      clean: true,
+    },
+    
+    plugins: [
+      new RemoveEmptyScriptsPlugin(),
+      new MiniCssExtractPlugin({
+        filename: 'css/bundle.css'
+      }),
+    ],
+
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              sourceType: 'unambiguous'
+            }
+          }
+        },
+        {
+          test: /\.scss$/,
+          use: [
+            // --- THIS IS THE FIX ---
+            // We replace the simple string with an object
+            // to provide the correct publicPath
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                // This tells Webpack to go "up one level" from /css/ 
+                // to find other assets. (e.g., ../images/)
+                publicPath: '../' 
+              }
+            },
+            // --- END FIX ---
+            'css-loader',
+            'sass-loader'
+          ]
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
+          generator: {
+            filename: 'fonts/[name][ext]'
+          }
+        },
+        imageLoaderRule 
+      ]
+    }
+  };
+};

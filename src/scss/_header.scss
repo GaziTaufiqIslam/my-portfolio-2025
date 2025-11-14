@@ -48,7 +48,7 @@
   height: 100%;
   
   // Apply noise (using your "noise-bg.png" as per _base.scss)
-  background-image: url('../images/noise-bg.png');
+  background-image: url('../assets/images/noise-bg.png');
   background-repeat: repeat;
   opacity: 0.35; // Using the opacity from your _base.scss
   
@@ -113,7 +113,7 @@
     max-height: 44px;
 
     // 4. Load the image
-    background-image: url('../images/pencil-underline.png');
+    background-image: url('../assets/images/pencil-underline.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -201,7 +201,7 @@
     left: 0;
     bottom: -3px;
     right: -2px;
-    background-image: url('../images/button-stroke-red.svg');
+    background-image: url('../assets/images/button-stroke-red.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -213,7 +213,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background-image: url('../images/button-stroke-gray.svg');
+    background-image: url('../assets/images/button-stroke-gray.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }

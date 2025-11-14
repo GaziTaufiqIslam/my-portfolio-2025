@@ -38,7 +38,7 @@ body::after {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("../images/noise-bg.png");
+    background-image: url("../assets/images/noise-bg.png");
     background-repeat: repeat;
     opacity: 0.25;
     z-index: -1;
@@ -57,7 +57,7 @@ main {
   pointer-events: none;
   position: fixed;
   inset: -200%;
-  background: url("../images/noise-bg.png");
+  background: url("../assets/images/noise-bg.png");
   opacity: 0.35;
   z-index: -10;
   // animation: shift .5s linear infinite both;
@@ -92,7 +92,7 @@ main {
 html.js-enabled {
   // overflow: hidden; // Prevent scrolling during load
 
-  background-image: url("../images/noise-bg.png");
+  background-image: url("../assets/images/noise-bg.png");
 
   .site-header,
   .hero-section,

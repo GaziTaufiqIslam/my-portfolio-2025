@@ -33,7 +33,7 @@ html.js-enabled .site-loader {
 
 .loader-bg-left {
   left: 0;
-  background-image: url('../images/loader-paper-left.png');
+  background-image: url('../assets/images/loader-paper-left.png');
   background-position: right center;
   z-index: 998;
   // opacity: .4;
@@ -42,7 +42,7 @@ html.js-enabled .site-loader {
 
 .loader-bg-right {
   right: 0;
-  background-image: url('../images/loader-paper-right.png');
+  background-image: url('../assets/images/loader-paper-right.png');
   background-position: left center;
   z-index: 998;
   // opacity: .4;
