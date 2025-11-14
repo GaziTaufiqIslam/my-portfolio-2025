@@ -16,6 +16,10 @@
   text-align: center;
 }
 
+.contact-headline, .contact-email, .contact-socials {
+  z-index: 1; // Ensure these are above the decorative images
+}
+
 // 1. Headline
 .contact-headline {
   position: relative;
@@ -131,9 +135,10 @@
 // 4. Decorative Sumi-e Images
 // These are positioned absolutely relative to the section
 .contact-decor {
+  isolation: isolate;
   img {
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     will-change: transform; // Optimize for animation
   }
 
@@ -141,24 +146,54 @@
   .decor-sun {
     width: 200px;
     top: 20%;
-    left: 12%;
+    right: calc(100vw - 25%);
   }
   .decor-tree {
     width: 600px;
     top: 10%;
-    right: 0;
+    left: calc(100vw - 25%);
   }
   .decor-mountain {
     width: 740px;
     bottom: 5%;
-    left:-5%;
+    right: calc(100vw - 25%);
   }
   .decor-tori {
     width: 1000px;
     bottom: 10%;
-    right: -20%;
+    left: calc(100vw - 25%);
   }
+}
+
+@media (max-width: $breakpoint-md) {
+  .contact-decor {
+    img {
+      display: none; // Hide decorative images on mobile for performance
+    }
+  }
+}
   
+  // @media (min-width: 1800px) {
+  // .decor-sun {
+  //   width: 200px;
+  //   top: 20%;
+  //   left: 12%;
+  // }
+  // .decor-tree {
+  //   width: 600px;
+  //   top: 10%;
+  //   right: 0;
+  // }
+  // .decor-mountain {
+  //   width: 740px;
+  //   bottom: 5%;
+  //   left: -10%;
+  // }
+  // .decor-tori {
+  //   width: 1000px;
+  //   bottom: 10%;
+  //   right: -20%;
+  // }
+  //   }
   // --- Initial (off-screen) positions for GSAP ---
   // We'll set these in GSAP for clarity
-}

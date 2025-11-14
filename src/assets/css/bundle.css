@@ -1649,6 +1649,10 @@ div:has(.works-section) {
   text-align: center;
 }
 
+.contact-headline, .contact-email, .contact-socials {
+  z-index: 1;
+}
+
 .contact-headline {
   position: relative;
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
@@ -1744,32 +1748,40 @@ div:has(.works-section) {
   }
 }
 
+.contact-decor {
+  isolation: isolate;
+}
 .contact-decor img {
   position: absolute;
-  z-index: 1;
+  z-index: -1;
   will-change: transform;
 }
 .contact-decor .decor-sun {
   width: 200px;
   top: 20%;
-  left: 12%;
+  right: calc(100vw - 25%);
 }
 .contact-decor .decor-tree {
   width: 600px;
   top: 10%;
-  right: 0;
+  left: calc(100vw - 25%);
 }
 .contact-decor .decor-mountain {
   width: 740px;
   bottom: 5%;
-  left: -5%;
+  right: calc(100vw - 25%);
 }
 .contact-decor .decor-tori {
   width: 1000px;
   bottom: 10%;
-  right: -20%;
+  left: calc(100vw - 25%);
 }
 
+@media (max-width: 768px) {
+  .contact-decor img {
+    display: none;
+  }
+}
 /*--------------------------------*\
   #PROJECT PAGE LAYOUT
 \*--------------------------------*/
