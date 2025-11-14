@@ -1,18 +1,16 @@
 const Image = require("@11ty/eleventy-img");
-const glob = require("glob"); // We need this to find the files
-const path = require("path"); // We need this for the fix
+const glob = require("glob");
+const path = require("path");
 
 module.exports = function(eleventyConfig) {
   
-  eleventyConfig.addPassthroughCopy("./src/assets/");
+  eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("src/lottie");
 
-  // --- THIS IS THE FIX ---
-  // Check if we are in "serve" mode (npm start) or "build" mode (npm run build)
   const isServe = process.env.ELEVENTY_RUN_MODE === 'serve';
 
   if (isServe) {
-    // In dev mode ("npm start"), just copy the images. It's fast and works.
+    // In dev mode ("npm start"), just copy the images.
     console.log("Dev mode: Copying images directly.");
     eleventyConfig.addPassthroughCopy("src/images");
   
@@ -21,38 +19,58 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.on('beforeBuild', async () => {
       console.log("Build mode: Starting image compression...");
 
-      // 1. Find all our image files
-      const jpegFiles = glob.sync("src/images/**/*.{jpg,jpeg,png}");
+      // --- THIS IS THE FIX ---
+      // 1. Find files in separate groups
+      const jpegFiles = glob.sync("src/images/**/*.{jpg,jpeg}");
+      const pngFiles = glob.sync("src/images/**/*.png");
       const svgFiles = glob.sync("src/images/**/*.svg");
+      // --- END FIX ---
 
-      // 2. Loop and process JPEGs/PNGs
+      // 2. Loop and process JPEGs
       if (jpegFiles.length > 0) {
-        console.log(`Found ${jpegFiles.length} JPEGs/PNGs to compress...`);
+        console.log(`Found ${jpegFiles.length} JPEGs to compress...`);
         await Promise.all(
           jpegFiles.map(async (file) => {
             return Image(file, {
               outputDir: "./_site/images/",
+              formats: ["jpeg"], // Only output JPEGs
               jpegOptions: {
                 quality: 65,
                 progressive: true,
               },
-              pngOptions: {
-                quality: [0.65, 0.90],
-                speed: 4,
-              },
-              // --- FIX for HASHED NAMES ---
               filenameFormat: (id, src, width, format, options) => {
-                // Use the original filename
-                return path.basename(src);
+                return path.basename(src); // Keep original name
               }
             });
           })
         );
       } else {
-        console.warn("No JPEGs or PNGs found in src/images/");
+        console.warn("No JPEGs found in src/images/");
       }
       
-      // 3. Loop and process SVGs
+      // 3. Loop and process PNGs
+      if (pngFiles.length > 0) {
+        console.log(`Found ${pngFiles.length} PNGs to compress...`);
+        await Promise.all(
+          pngFiles.map(async (file) => {
+            return Image(file, {
+              outputDir: "./_site/images/",
+              formats: ["png"], // Only output PNGs
+              pngOptions: {
+                quality: [0.65, 0.90],
+                speed: 4,
+              },
+              filenameFormat: (id, src, width, format, options) => {
+                return path.basename(src); // Keep original name
+              }
+            });
+          })
+        );
+      } else {
+        console.warn("No PNGs found in src/images/");
+      }
+      
+      // 4. Loop and process SVGs
       if (svgFiles.length > 0) {
         console.log(`Found ${svgFiles.length} SVGs to copy...`);
         await Promise.all(
@@ -61,10 +79,9 @@ module.exports = function(eleventyConfig) {
               outputDir: "./_site/images/",
               formats: ["svg"],
               svgShortCircuit: true,
-              // --- FIX for HASHED NAMES ---
               filenameFormat: (id, src, width, format, options) => {
-                // Use the original filename
                 return path.basename(src);
+                // The invalid text "Top of Form" was here. I've removed it.
               }
             });
           })
@@ -76,7 +93,6 @@ module.exports = function(eleventyConfig) {
       console.log("Finished image processing.");
     });
   }
-  // --- END FIX ---
 
   return {
     dir: {
