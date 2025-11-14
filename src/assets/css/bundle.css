@@ -1684,6 +1684,7 @@ div:has(.works-section) {
   border-radius: 8px;
   padding: 0.5rem 0.5rem 0.5rem 2rem;
   margin-bottom: 2.5rem;
+  gap: 0.5rem;
 }
 
 .email-text {
@@ -1692,6 +1693,13 @@ div:has(.works-section) {
   color: #333333;
   font-weight: 600;
   padding-right: 0.5rem;
+}
+@media (max-width: 768px) {
+  .email-text {
+    font-size: 1rem;
+    padding-right: 0;
+    text-align: center;
+  }
 }
 
 .copy-button {
@@ -1714,6 +1722,18 @@ div:has(.works-section) {
 .copy-button.is-copied {
   background-color: #27563f;
   transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  .copy-button {
+    margin-left: 0;
+    padding: 1rem;
+    width: 100%;
+  }
+  .copy-button img {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+  }
 }
 
 .contact-socials ul {
