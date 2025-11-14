@@ -4,7 +4,11 @@ const path = require("path");
 
 module.exports = function(eleventyConfig) {
   
+  // We need to copy BOTH the assets folder (for CSS) 
+  // AND the new fonts folder.
+  eleventyConfig.addPassthroughCopy("./src/assets/");
   eleventyConfig.addPassthroughCopy("fonts");
+  
   eleventyConfig.addPassthroughCopy("src/lottie");
 
   const isServe = process.env.ELEVENTY_RUN_MODE === 'serve';
@@ -19,12 +23,10 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.on('beforeBuild', async () => {
       console.log("Build mode: Starting image compression...");
 
-      // --- THIS IS THE FIX ---
       // 1. Find files in separate groups
       const jpegFiles = glob.sync("src/images/**/*.{jpg,jpeg}");
       const pngFiles = glob.sync("src/images/**/*.png");
       const svgFiles = glob.sync("src/images/**/*.svg");
-      // --- END FIX ---
 
       // 2. Loop and process JPEGs
       if (jpegFiles.length > 0) {
@@ -81,7 +83,6 @@ module.exports = function(eleventyConfig) {
               svgShortCircuit: true,
               filenameFormat: (id, src, width, format, options) => {
                 return path.basename(src);
-                // The invalid text "Top of Form" was here. I've removed it.
               }
             });
           })

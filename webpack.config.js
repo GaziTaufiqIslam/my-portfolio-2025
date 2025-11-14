@@ -7,7 +7,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'src/assets'), // Output to 'src/assets'
     filename: 'js/bundle.js',                     // Put JS in 'src/assets/js'
-    assetModuleFilename: '[path][name][ext]'      // Keep original file paths for assets
+    // --- FIX 1: REMOVED assetModuleFilename: '[path][name][ext]' ---
+    // This was causing the /src/images/ path error
+    clean: true, // Clean the 'src/assets' folder before each build
   },
   
   plugins: [
@@ -31,6 +33,7 @@ module.exports = {
           }
         }
       },
+      // Rule for SCSS
       {
         test: /\.scss$/,
         use: [
@@ -39,8 +42,7 @@ module.exports = {
           'sass-loader'                // 1. Compiles Sass to CSS
         ]
       },
-      
-      // New rule for Fonts
+      // Rule for Fonts
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
@@ -48,49 +50,16 @@ module.exports = {
           filename: 'fonts/[name][ext]' // Output to 'src/assets/fonts'
         }
       },
-      // New rule for Images
-      // {
-      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
-
-      //   // This is the new part
-      //   use: [
-      //     {
-      //       loader: 'image-webpack-loader',
-      //       options: {
-      //         // --- Progressive JPEGs ---
-      //         mozjpeg: {
-      //           progressive: true, // This is the magic line
-      //           quality: 65
-      //         },
-      //         // --- PNG Compression ---
-      //         pngquant: {
-      //           quality: [0.65, 0.90], // A quality range (like TinyPNG)
-      //           speed: 4
-      //         },
-      //         // --- SVG Compression ---
-      //         // --- SVG Compression ---
-      //         svgo: {
-      //           plugins: [
-      //             {
-      //               name: 'preset-default',
-      //               params: {
-      //                 overrides: {
-      //                   removeViewBox: false,
-      //                   cleanupIDs: false,
-      //                 },
-      //               },
-      //             },
-      //           ],
-      //         }
-      //       }
-      //     }
-      //   ],
-
-      //   type: 'asset/resource',
-      //   generator: {
-      //     filename: 'images/[name][ext]' // Output to 'src/assets/images'
-      //   }
-      // }
+      // --- FIX 2: ADDED A RULE FOR IMAGES ---
+      // This handles the 7 images (or any others) 
+      // referenced in your JS or SCSS.
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]' // Output to 'src/assets/images'
+        }
+      },
     ]
   }
-};
+}
