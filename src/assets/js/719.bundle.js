@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_portfolio_2025=self.webpackChunkmy_portfolio_2025||[]).push([[719],{1719:(o,n,t)=>{t.d(n,{initPlaygroundAnimations:()=>a});var e=t(9891),i=t.n(e);function a(){var o=document.querySelector("#lottie-playground");o&&i().loadAnimation({container:o,renderer:"svg",loop:!0,autoplay:!0,path:"/lottie/cooking.json"})}}}]);
