@@ -25,8 +25,8 @@ module.exports = (env, argv) => {
     imageLoaderRule.use.push({
       loader: 'image-webpack-loader',
       options: {
-        mozjpeg: { progressive: true, quality: 75 },
-        pngquant: { quality: [0.65, 0.90], speed: 4 },
+        mozjpeg: { progressive: true, quality: 65 },
+        pngquant: { quality: [0.65, 0.90], speed: 1 },
         svgo: {
           plugins: [
             {

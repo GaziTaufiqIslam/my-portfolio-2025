@@ -78,6 +78,8 @@ window.addEventListener('load', () => {
     
   }, 1500);
 
+  gsap.to('body', { duration: 0.5, opacity: 1, ease: 'power1.inOut' });
+
 });
 
 /**
