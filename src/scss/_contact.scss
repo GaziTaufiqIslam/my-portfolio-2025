@@ -21,34 +21,90 @@
 }
 
 // 1. Headline
+/*--------------------------------*\
+      CONTACT HEADER
+\*--------------------------------*/
+
 .contact-headline {
   position: relative;
-  font-family: $font-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: $color-text;
-  z-index: 5;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  padding: 0.75rem 0;
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -40%);
-    width: 250px;
-    height: 150px;
-    background-image: url('../assets/images/contact-scribble.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: -1;
+  /* LABEL WRAPPER — handles full viewport line */
+  &__label-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 50%;
+      width: 100vw;
+      height: 0.4px;
+      background: $color-neutral-700;
+      pointer-events: none;
+      z-index: -1;
+    }
+  }
+
+  /* LABEL — identical to project section label */
+  &__label {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+
+    /* Centered pill-style label */
+    margin: 0 auto;
+    padding: 0.125rem 0.5rem;
+    text-align: center;
+
+    font-family: $font-serif;
+    font-size: 1.125rem;
+    color: $color-neutral-500;
+    letter-spacing: 0.08em;
+
+    background: $color-neutral-000;           // white pill background
+    border: 0.4px solid $color-neutral-700;   // thin neutral stroke
+    border-radius: 4px;                       // corner smoothing
+  }
+
+  /* MAIN TITLE — same typography rules as project section */
+  .contact-header__title {
+    margin-top: 3rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    font-family: $font-serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: $color-neutral-900;
+
+    @media (max-width: $breakpoint-lg) {
+      font-size: 1.25rem;
+    }
+
+    /* Highlighted word in the headline */
+    .contact-header__title--highlight {
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      font-family: $font-serif;
+      color: $color-neutral-900;
+      font-size: inherit;
+    }
   }
 }
 
 // 2. Email & Copy Button
 .contact-email {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   background-color: $color-neutral-000; // White
   border: 1px solid $color-neutral-300;
   border-radius: 8px;
@@ -131,7 +187,7 @@
 
   a {
     font-family: $font-serif;
-    font-style: italic;
+    // font-style: italic;
     font-size: 1rem;
     font-weight: 600;
     color: $color-text-light;
@@ -176,7 +232,7 @@
   .decor-tree {
     width: 600px;
     top: 10%;
-    left: calc(100vw - 25%);
+    right: calc(100vw - 25%);
   }
   .decor-mountain {
     width: 740px;

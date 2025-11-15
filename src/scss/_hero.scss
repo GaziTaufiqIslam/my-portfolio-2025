@@ -11,7 +11,7 @@
   gap: 3rem; // Spacing between the two main halves
   
   padding: 2rem 1.5rem; // Mobile padding
-  min-height: calc(100vh - 80px); // At least viewport height minus header
+  min-height: calc(80vh - 120px); // At least viewport height minus header
   align-items: center;
   justify-items: center; // Center grid items horizontally
   overflow: hidden; // Contain absolutely positioned elements
@@ -195,7 +195,7 @@
     grid-template-areas: "left right"; // Side-by-side
     grid-template-columns: 1fr 1fr; // <-- THIS IS THE CHANGE
     padding: 4rem 10%; // Desktop padding
-    min-height: calc(100vh - 80px); // Keep it tall
+    // min-height: calc(100vh - 80px); // Keep it tall
     gap: 10vw;
   }
 
@@ -228,7 +228,7 @@
   }
 
   .hero-right-composition {
-    max-width: 50vh; // Larger image on desktop
+    // max-width: 50vh; // Larger image on desktop
     padding-left: 2rem;
     justify-self: start;
 

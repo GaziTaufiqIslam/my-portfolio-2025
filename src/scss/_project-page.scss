@@ -51,7 +51,7 @@
 @media (min-width: $breakpoint-xl) { // 768px and up
   .project-main-content {
     // 4-col / 8-col split (12-col grid)
-    grid-template-columns: 3fr 9fr; 
+    grid-template-columns: 320px 1fr; 
     // margin-top: 4rem;
     padding: 0 2.5rem;
   }
@@ -63,6 +63,7 @@
   .project-sidebar {
     // --- VISIBLE ON DESKTOP ---
     display: block; 
+    position: -webkit-sticky;
     position: sticky;
     // Adjust this value to account for your main header's height
     top: 120px; 
@@ -70,9 +71,22 @@
   }
 
   .project-sidebar-nav {
+    position: relative;
+    // sticky behavior:
+    position: -webkit-sticky; // Safari
+    position: sticky;
+    top: calc($header-height + 24px); // leaves gap below header (adjust 24px as needed)
+    align-self: start;
+    z-index: 50;
+
+    // Limit height to viewport minus header area so inner list can scroll
+    max-height: calc(100vh - ( $header-height + 32px )); // extra breathing room
+    overflow: auto;
+    padding-right: 0.5rem; // allow comfortable scrollbar space
     ul {
       list-style: none;
       padding: 0;
+      padding-bottom: 2rem;
       margin: 0;
     }
     li {

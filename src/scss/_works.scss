@@ -1,357 +1,228 @@
 /*--------------------------------*\
-  #WORKS-SECTION
+   #WORK SECTION (VARIABLE-ONLY)
 \*--------------------------------*/
-div:has(.works-section) {
-  position: relative;; // Adjust for section padding
-}
-.works-section {
-  position: relative;
-  isolation: isolate; // Creates a new stacking context
+
+.work-section {
   padding: 6rem 0;
-  z-index: 10;
-  
-  // 1. Solid background color (the bottom layer)
-  background-color: $color-neutral-000; // Your light gray
+  // background: $color-background;
+  color: $color-text;
+  overflow-x: hidden;;
 
-  // 2. Noise layer (sits on top of the color)
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('../assets/images/noise-bg.png');
-    background-repeat: repeat;
-    opacity: 0.25; // Your 25% opacity
-    z-index: -2;
-    pointer-events: none;
+  .container {
+    max-width: $breakpoint-xl;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
-  // 3. Halftone layer (sits on top of the noise)
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('../assets/images/halftone-bg.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    z-index: -1;
-    pointer-events: none;
-  }
-}
+  /*--------------------------------*\
+      PROJECT HEADER
+  \*--------------------------------*/
+  .project-header {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding: 0.75rem 0;
 
-.works-headline {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2.25rem;
-  font-family: $font-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: $color-text-light;
-  z-index: 5;
-
-  // The scribble background
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 250px; // Larger than the text
-    height: 150px;
-    background-image: url('../assets/images/works-scribble.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: -1;
-  }
-}
-
-.works-content {
-  // This is our main 2-column layout for desktop
-  display: grid;
-  grid-template-columns: 6fr 6fr;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 0 2.5rem;
-}
-
-
-/*--------------------------------*\
-  #WORKS-GALLERY (Left Side)
-\*--------------------------------*/
-
-.works-gallery {
-  // This will stick to the top of the pinned section
-  position: sticky;
-  top: 0;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.works-gallery-frame {
-  position: relative;
-  width: 100%;
-  max-width: 760px;
-}
-
-.gallery-frame-bg {
-  width: 100%;
-  height: auto;
-}
-
-.works-gallery-thumbnails {
-  position: absolute;
-  inset: 0;
-  // Clip to the frame's padding
-  padding: 3rem 2rem; 
-}
-
-.works-gallery-thumbnail {
-  position: absolute;
-  inset: 0;
-  // width: 100%;
-  height: 55%;
-  border-radius: 1px;
-  max-height: 400px;
-  object-fit: contain;
-  top: 50%;
-  left: 50%;
-  transform: translate(-53%, -55%);
-  
-  // All thumbnails are hidden by default
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.6s ease, visibility 0.6s;
-
-  // The active thumbnail is visible
-  &.is-active {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-
-/*--------------------------------*\
-  #WORKS-LIST (Right Side)
-\*--------------------------------*/
-.works-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-}
-.project-item {
-  display: grid;
-  grid-template-columns: 2fr repeat(2, 1fr); // 3-column layout
-  gap: 1rem;
-  padding: 1.5rem 2rem;
-  border-radius: 0.25rem;
-  border: .2px solid $color-neutral-300;
-  text-decoration: none;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden; // This clips the progress bar
-
-  // --- Progress Bar (hidden by default) ---
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 4px;
-    background-color: $color-brand;
-    width: 100%;
-    transform: translateX(-100%); // Start off-screen
-    transition: transform 0s; // This forces the "stop motion"
-  }
-
-}
-
-.project-detail-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.project-label {
-  // --- HIDDEN BY DEFAULT ---
-  opacity: 0;
-  visibility: hidden;
-  display: none;
-  transform: translateY(-5px); // For a subtle fade-up
-  transition: all 0.3s ease;
-  
-  // Label styles
-  font-family: $font-sans;
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: $color-neutral-500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.25rem;
-}
-
-.project-value {
-  // --- Default (unfocused) style ---
-  font-family: $font-serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: $color-text-light;
-  
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.project-arrow {
-  // --- HIDDEN BY DEFAULT ---
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  position: absolute;
-  right: 0px;
-  // Icon styles
-  width: 14px;
-  height: 14px;
-  margin-left: 0.5rem;
-}
-
-
-// --- Active "Focus" State ---
-.project-item.is-active {
-  color: $color-brand;
-  background-color: $color-neutral-000;
-  border-radius: 12px;
-  border-color: transparent;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  // transform: scale(1.03);
-  z-index: 10;
-  padding: 2.25rem 2rem; // Use the focused padding
-  pointer-events: auto;
-
-  &::after {
-    // We control the width with a CSS variable from JS
-    transform: translateX(calc(-100% + var(--progress-width, 0%)));
-  }
-
-  .project-label {
-    // --- SHOW LABEL ---
-    opacity: 1;
-    visibility: visible;
-    display: block;
-    transform: translateY(0);
-  }
-  
-  .project-value {
-    // --- Change to focused style ---
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: $color-brand;
-  }
-  
-  // .project-arrow {
-  //   // --- SHOW ARROW ---
-  //   opacity: 1;
-  //   visibility: visible;
-  // }
-
-
-  
-}
-
-/*--------------------------------*\
-  #RESPONSIVE
-\*--------------------------------*/
-
-// Medium (1024px to 1279px)
-@media (max-width: $breakpoint-xl) { // 1280px
-  .works-content {
-    grid-template-columns: 5fr 7fr; // 5/7 split
-  }
-}
-
-// Tablet & Mobile (1023px and below)
-@media (max-width: $breakpoint-lg) { // 1024px
-  .works-content {
-    grid-template-columns: 1fr; // Single column
-    padding: 0 1.5rem;
-  }
-
-  // Hide the gallery on mobile
-  .works-gallery {
-    display: none;
-  }
-
-  // On mobile, show the "focused" state by default
-  .project-item {
-    grid-template-columns: 1fr; // Stack columns
-    gap: 1.25rem;
-    border-radius: 12px;
-    border-color: transparent;
-    background-color: $color-neutral-000;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    margin-bottom: 1rem;
-    padding: 1.5rem 1rem;
-  }
-
-  .project-label {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .project-value {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: $color-brand;
-    justify-content: center; // Center the value
-  }
-
-  .project-arrow {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  // Disable desktop focus effect on mobile
-  .project-item.is-active {
-    transform: none;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05); // Use the same shadow
-  }
-}
-
-// --- Disabled Project State ---
-.project-item.is-disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-
-  .project-arrow {
-    display: none; // Hide arrow
-  }
-  
-  // Override all active/hover states
-  &.is-active {
-    transform: none;
-    background-color: $color-neutral-100;
-    border-color: $color-neutral-500; // Reset to default border
-    box-shadow: none;
-
-    // Revert text to default (unfocused) styles
-    .project-label {
-      opacity: 1;
-    }
-    .project-value {
-      // font-size: 1.25rem;
-      // font-weight: 400;
-      color: $color-neutral-700;
-    }
+    // Full viewport line behind label
     
-    // Ensure progress bar is hidden
-    // &::after {
-    //   transform: translateX(-100%);
-    // }
+
+    /* Small Label */
+    &__label {
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+
+      /* Placement: perfectly centered in the viewport */
+      margin: 0 auto;
+      position: relative;
+
+      /* Existing specs */
+      padding: 0.125rem 0.5rem;
+      font-family: $font-serif;
+      font-size: 1.125rem;
+      color: $color-neutral-500;
+      letter-spacing: 0.08em;
+      text-align: center;
+
+      /* New additions */
+      background: $color-neutral-000;           // white
+      border: 0.4px solid $color-neutral-700;   // subtle border
+      border-radius: 4px;                       // corner smoothing
+      
+    }
+    &__label-wrapper{
+      display: flex;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 50%;
+        width: 100vw;
+        height: 0.4px;
+        background: $color-neutral-700;
+        pointer-events: none;
+        z-index: -1;
+      }
+    }
+
+    /* Main Title */
+    &__title {
+      margin-top: 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      font-family: $font-serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.4;
+      color: $color-neutral-900;
+
+      @media (max-width: $breakpoint-lg) {
+        font-size: 1.25rem;
+      }
+
+      /* Highlight Word (sTUDIES) */
+      .project-header__title--highlight {
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        font-family: $font-serif;
+        color: $color-neutral-900;
+        font-size: inherit;
+      }
+    }
+  }
+
+  /*--------------------------------*\
+      PROJECT GRID
+  \*--------------------------------*/
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // gap: rem;
+
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+  }
+
+  /*--------------------------------*\
+      PROJECT CARD
+  \*--------------------------------*/
+  a.project-card {
+    text-decoration: none;
+  }
+  .project-card {
+    position: relative;
+    background: $color-neutral-000;
+    border-radius: 1rem;
+    border: 0.4px solid $color-neutral-400;
+    box-shadow: 0 6px 18px rgba($color-neutral-1000, 0.06);
+    padding: 1.25rem 1.25rem 1.75rem 1.25rem;
+    overflow: visible;
+    width: 96%;
+    max-width: 480px;
+    justify-self: center;
+    transform-origin: top center;
+    transform: perspective(1200px) translateZ(0);
+    transition:
+      transform 0.45s cubic-bezier(0.25, 0.14, 0.16, 1),
+      box-shadow 0.45s cubic-bezier(0.25, 0.14, 0.16, 1);
+
+    &:hover,
+    &:focus-visible {
+      transform: perspective(1200px) rotateX(2deg) translateY(-2px);
+
+      /* NEW SHADOW: softer + more spread + dropped lower */
+      box-shadow:
+        0 18px 38px rgba($color-neutral-1000, 0.12),   // large diffused shadow
+        0 8px 18px rgba($color-neutral-1000, 0.08);    // secondary sharper shadow
+  }
+
+    /* Tape PNG */
+    &__tape {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      pointer-events: none;
+      // filter: drop-shadow(0 2px 6px rgba($color-neutral-1000, 0.08));
+      z-index: 3;
+      opacity: 0.95;
+    }
+
+    /* Thumbnail */
+    &__thumb {
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+
+      img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+    }
+
+    /* Content */
+    &__body {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 0 4px
+    }
+
+    /* Card Heading */
+    &__heading {
+      font-family: $font-serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 125%;
+      color: $color-text;
+      margin: 0;
+    }
+
+    /* Tags */
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tag {
+      padding: 2px 8px;
+      border-radius: 4px;
+      // background: $color-neutral-100;
+      border: 1px solid $color-neutral-700;
+      color: $color-neutral-800;
+      font-family: $font-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+  }
+
+  /*--------------------------------*\
+      SEE MORE PROJECTS LINK
+  \*--------------------------------*/
+  .work-footer {
+    margin-top: 3.5rem;
+    text-align: center;
+
+    .see-more-projects {
+      color: $color-neutral-900;
+      font-family: $font-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 120%;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.25rem 0;
+      @include animated-underline($color-text-light);
+    }
   }
 }

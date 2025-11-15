@@ -354,6 +354,7 @@ template {
 /*!*************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/main.scss ***!
   \*************************************************************************************************************/
+@charset "UTF-8";
 /* --- IBM Plex Sans --- */
 /* 300 Light */
 @font-face {
@@ -492,11 +493,11 @@ h1, h2, h3 {
 }
 
 a {
-  color: #333333;
+  color: #1e1e1e;
   text-decoration: none;
 }
 a:hover {
-  color: #555555;
+  color: #333333;
 }
 
 h1 {
@@ -510,6 +511,7 @@ code, pre {
 body {
   position: relative;
   isolation: isolate;
+  z-index: 0;
 }
 
 body::after {
@@ -533,6 +535,7 @@ main {
   background: url(../assets/images/noise-bg.png);
   opacity: 0.35;
   z-index: -10;
+  display: none;
 }
 
 @keyframes shift {
@@ -583,7 +586,7 @@ body {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 400;
   line-height: 1.6;
-  color: #333333;
+  color: #1e1e1e;
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -596,7 +599,7 @@ p {
 }
 
 a {
-  color: #333333;
+  color: #1e1e1e;
   font-weight: 400;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -784,7 +787,7 @@ html.js-enabled .site-loader {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1rem;
   font-weight: 600;
-  color: #333333;
+  color: #1e1e1e;
   margin-top: 0.5rem;
 }
 
@@ -800,7 +803,7 @@ html.js-enabled .site-loader {
   font-style: italic;
   font-size: 1.125rem;
   font-weight: 600;
-  color: #333333;
+  color: #1e1e1e;
 }
 
 /**
@@ -884,6 +887,18 @@ html.is-loaded .site-loader {
 .site-header.is-hidden {
   transform: translateY(-100%);
 }
+.site-header {
+  isolation: isolate;
+}
+.site-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(../assets/images/noise-bg.png);
+  background-repeat: repeat;
+  opacity: 0.25;
+  z-index: -1;
+}
 
 .fuzzy-overlay__header {
   position: absolute;
@@ -922,7 +937,7 @@ html.is-loaded .site-loader {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.5rem;
   font-weight: 400;
-  color: #555555;
+  color: #333333;
   white-space: nowrap;
 }
 
@@ -965,6 +980,7 @@ html.is-loaded .site-loader {
   align-items: center;
   position: relative;
   z-index: 2;
+  gap: 1rem;
 }
 .site-header__nav ul {
   display: flex;
@@ -978,9 +994,8 @@ html.is-loaded .site-loader {
 .site-header__nav ul a {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 600;
-  font-size: 1.5rem;
-  font-style: italic;
-  color: #333333;
+  font-size: 1.25rem;
+  color: #1e1e1e;
   text-decoration: none;
   transition: color 0.2s ease;
   position: relative;
@@ -993,7 +1008,7 @@ html.is-loaded .site-loader {
   left: 0;
   width: 100%;
   height: 1.4px;
-  background-color: #333333;
+  background-color: #1e1e1e;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 300ms ease-in-out;
@@ -1007,14 +1022,10 @@ html.is-loaded .site-loader {
     font-size: 1.125rem;
   }
 }
-.site-header__nav ul a:hover {
-  color: #555555;
-}
 .site-header__nav a {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  font-weight: 600;
-  font-size: 1.5rem;
-  font-style: italic;
+  font-weight: 500;
+  font-size: 1.25rem;
 }
 
 /**
@@ -1085,7 +1096,7 @@ a.btn-contact:hover {
   display: block;
   width: 25px;
   height: 3px;
-  background-color: #333333;
+  background-color: #1e1e1e;
   margin-bottom: 5px;
   transition: all 0.3s ease;
   border-radius: 2px;
@@ -1160,7 +1171,7 @@ a.btn-contact:hover {
   grid-template-areas: "right" "left";
   gap: 3rem;
   padding: 2rem 1.5rem;
-  min-height: calc(100vh - 80px);
+  min-height: calc(80vh - 120px);
   align-items: center;
   justify-items: center;
   overflow: hidden;
@@ -1262,7 +1273,7 @@ a.btn-contact:hover {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: clamp(1rem, 1rem + 0.5vw, 2rem); /* Scales from 16px to 18px */
   line-height: 1.5;
-  color: #333333;
+  color: #1e1e1e;
   width: 100%;
   max-width: 400px; /* Constrain text width */
   transform: rotate(-3deg);
@@ -1319,7 +1330,6 @@ a.btn-contact:hover {
     grid-template-areas: "left right";
     grid-template-columns: 1fr 1fr;
     padding: 4rem 10%;
-    min-height: calc(100vh - 80px);
     gap: 10vw;
   }
   .hero-left-content {
@@ -1342,7 +1352,6 @@ a.btn-contact:hover {
     font-size: 1.75rem;
   }
   .hero-right-composition {
-    max-width: 50vh;
     padding-left: 2rem;
     justify-self: start;
   }
@@ -1397,288 +1406,238 @@ a.btn-contact:hover {
   }
 }
 /*--------------------------------*\
-  #WORKS-SECTION
+   #WORK SECTION (VARIABLE-ONLY)
 \*--------------------------------*/
-div:has(.works-section) {
-  position: relative;
-}
-
-.works-section {
-  position: relative;
-  isolation: isolate;
+.work-section {
   padding: 6rem 0;
-  z-index: 10;
-  background-color: #ffffff;
+  color: #1e1e1e;
+  overflow-x: hidden;
 }
-.works-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url(../assets/images/noise-bg.png);
-  background-repeat: repeat;
-  opacity: 0.25;
-  z-index: -2;
-  pointer-events: none;
+.work-section .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
-.works-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url(../assets/images/halftone-bg.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  z-index: -1;
-  pointer-events: none;
+.work-section {
+  /*--------------------------------*\
+      PROJECT HEADER
+  \*--------------------------------*/
 }
-
-.works-headline {
+.work-section .project-header {
   position: relative;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2.5rem;
+  padding: 0.75rem 0;
+  /* Small Label */
+}
+.work-section .project-header__label {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  /* Placement: perfectly centered in the viewport */
+  margin: 0 auto;
+  position: relative;
+  /* Existing specs */
+  padding: 0.125rem 0.5rem;
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #555555;
-  z-index: 5;
-}
-.works-headline::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  height: 150px;
-  background-image: url(../assets/images/works-scribble.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-
-.works-content {
-  display: grid;
-  grid-template-columns: 6fr 6fr;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 0 2.5rem;
-}
-
-/*--------------------------------*\
-  #WORKS-GALLERY (Left Side)
-\*--------------------------------*/
-.works-gallery {
-  position: sticky;
-  top: 0;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.works-gallery-frame {
-  position: relative;
-  width: 100%;
-  max-width: 760px;
-}
-
-.gallery-frame-bg {
-  width: 100%;
-  height: auto;
-}
-
-.works-gallery-thumbnails {
-  position: absolute;
-  inset: 0;
-  padding: 3rem 2rem;
-}
-
-.works-gallery-thumbnail {
-  position: absolute;
-  inset: 0;
-  height: 55%;
-  border-radius: 1px;
-  max-height: 400px;
-  object-fit: contain;
-  top: 50%;
-  left: 50%;
-  transform: translate(-53%, -55%);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.6s ease, visibility 0.6s;
-}
-.works-gallery-thumbnail.is-active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/*--------------------------------*\
-  #WORKS-LIST (Right Side)
-\*--------------------------------*/
-.works-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.project-item {
-  display: grid;
-  grid-template-columns: 2fr repeat(2, 1fr);
-  gap: 1rem;
-  padding: 1.5rem 2rem;
-  border-radius: 0.25rem;
-  border: 0.2px solid #bbbbbb;
-  text-decoration: none;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden;
-}
-.project-item::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  background-color: #4a2d6b;
-  width: 100%;
-  transform: translateX(-100%);
-  transition: transform 0s;
-}
-
-.project-detail-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.project-label {
-  opacity: 0;
-  visibility: hidden;
-  display: none;
-  transform: translateY(-5px);
-  transition: all 0.3s ease;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: #888888;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.25rem;
-}
-
-.project-value {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #555555;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.project-arrow {
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  position: absolute;
-  right: 0px;
-  width: 14px;
-  height: 14px;
-  margin-left: 0.5rem;
-}
-
-.project-item.is-active {
-  color: #4a2d6b;
-  background-color: #ffffff;
-  border-radius: 12px;
-  border-color: transparent;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  z-index: 10;
-  padding: 2.25rem 2rem;
-  pointer-events: auto;
-}
-.project-item.is-active::after {
-  transform: translateX(calc(-100% + var(--progress-width, 0%)));
-}
-.project-item.is-active .project-label {
-  opacity: 1;
-  visibility: visible;
-  display: block;
-  transform: translateY(0);
-}
-.project-item.is-active .project-value {
   font-size: 1.125rem;
-  font-weight: 600;
-  color: #4a2d6b;
+  color: #757575;
+  letter-spacing: 0.08em;
+  text-align: center;
+  /* New additions */
+  background: #ffffff;
+  border: 0.4px solid #333333;
+  border-radius: 4px;
 }
-
-/*--------------------------------*\
-  #RESPONSIVE
-\*--------------------------------*/
-@media (max-width: 1280px) {
-  .works-content {
-    grid-template-columns: 5fr 7fr;
-  }
+.work-section .project-header__label-wrapper {
+  display: flex;
+  position: relative;
+}
+.work-section .project-header__label-wrapper:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  width: 100vw;
+  height: 0.4px;
+  background: #333333;
+  pointer-events: none;
+  z-index: -1;
+}
+.work-section .project-header {
+  /* Main Title */
+}
+.work-section .project-header__title {
+  margin-top: 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1e1e1e;
 }
 @media (max-width: 1024px) {
-  .works-content {
+  .work-section .project-header__title {
+    font-size: 1.25rem;
+  }
+}
+.work-section .project-header__title {
+  /* Highlight Word (sTUDIES) */
+}
+.work-section .project-header__title .project-header__title--highlight {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  color: #1e1e1e;
+  font-size: inherit;
+}
+.work-section {
+  /*--------------------------------*\
+      PROJECT GRID
+  \*--------------------------------*/
+}
+.work-section .projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 1024px) {
+  .work-section .projects-grid {
     grid-template-columns: 1fr;
-    padding: 0 1.5rem;
-  }
-  .works-gallery {
-    display: none;
-  }
-  .project-item {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    border-radius: 12px;
-    border-color: transparent;
-    background-color: #ffffff;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    margin-bottom: 1rem;
-    padding: 1.5rem 1rem;
-  }
-  .project-label {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  .project-value {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #4a2d6b;
-    justify-content: center;
-  }
-  .project-arrow {
-    opacity: 1;
-    visibility: visible;
-  }
-  .project-item.is-active {
-    transform: none;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    gap: 4rem;
   }
 }
-.project-item.is-disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+.work-section {
+  /*--------------------------------*\
+      PROJECT CARD
+  \*--------------------------------*/
 }
-.project-item.is-disabled .project-arrow {
-  display: none;
+.work-section a.project-card {
+  text-decoration: none;
 }
-.project-item.is-disabled.is-active {
-  transform: none;
-  background-color: #eeeeee;
-  border-color: #888888;
-  box-shadow: none;
+.work-section .project-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 0.4px solid #888888;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 1.25rem 1.25rem 1.75rem 1.25rem;
+  overflow: visible;
+  width: 96%;
+  max-width: 480px;
+  justify-self: center;
+  transform-origin: top center;
+  transform: perspective(1200px) translateZ(0);
+  transition: transform 0.45s cubic-bezier(0.25, 0.14, 0.16, 1), box-shadow 0.45s cubic-bezier(0.25, 0.14, 0.16, 1);
 }
-.project-item.is-disabled.is-active .project-label {
-  opacity: 1;
+.work-section .project-card:hover, .work-section .project-card:focus-visible {
+  transform: perspective(1200px) rotateX(2deg) translateY(-2px);
+  /* NEW SHADOW: softer + more spread + dropped lower */
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12), 0 8px 18px rgba(0, 0, 0, 0.08);
 }
-.project-item.is-disabled.is-active .project-value {
-  color: #555555;
+.work-section .project-card {
+  /* Tape PNG */
+}
+.work-section .project-card__tape {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.95;
+}
+.work-section .project-card {
+  /* Thumbnail */
+}
+.work-section .project-card__thumb {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.work-section .project-card__thumb img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+.work-section .project-card {
+  /* Content */
+}
+.work-section .project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 4px;
+}
+.work-section .project-card {
+  /* Card Heading */
+}
+.work-section .project-card__heading {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 125%;
+  color: #1e1e1e;
+  margin: 0;
+}
+.work-section .project-card {
+  /* Tags */
+}
+.work-section .project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.work-section .project-card .tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #333333;
+  color: #212121;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+.work-section {
+  /*--------------------------------*\
+      SEE MORE PROJECTS LINK
+  \*--------------------------------*/
+}
+.work-section .work-footer {
+  margin-top: 3.5rem;
+  text-align: center;
+}
+.work-section .work-footer .see-more-projects {
+  color: #1e1e1e;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 120%;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.25rem 0;
+  position: relative;
+  text-decoration: none;
+}
+.work-section .work-footer .see-more-projects::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.4px;
+  background-color: #333333;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 300ms ease-in-out;
+}
+.work-section .work-footer .see-more-projects:hover::after, .work-section .work-footer .see-more-projects:focus::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /*--------------------------------*\
@@ -1701,32 +1660,86 @@ div:has(.works-section) {
   z-index: 1;
 }
 
+/*--------------------------------*\
+      CONTACT HEADER
+\*--------------------------------*/
 .contact-headline {
   position: relative;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #333333;
-  z-index: 5;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  padding: 0.75rem 0;
+  /* LABEL WRAPPER — handles full viewport line */
 }
-.contact-headline::after {
+.contact-headline__label-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.contact-headline__label-wrapper:after {
   content: "";
   position: absolute;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -40%);
-  width: 250px;
-  height: 150px;
-  background-image: url(../assets/images/contact-scribble.png);
-  background-size: contain;
-  background-repeat: no-repeat;
+  transform: translateX(-50%);
+  top: 50%;
+  width: 100vw;
+  height: 0.4px;
+  background: #333333;
+  pointer-events: none;
   z-index: -1;
+}
+.contact-headline {
+  /* LABEL — identical to project section label */
+}
+.contact-headline__label {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  /* Centered pill-style label */
+  margin: 0 auto;
+  padding: 0.125rem 0.5rem;
+  text-align: center;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.125rem;
+  color: #757575;
+  letter-spacing: 0.08em;
+  background: #ffffff;
+  border: 0.4px solid #333333;
+  border-radius: 4px;
+}
+.contact-headline {
+  /* MAIN TITLE — same typography rules as project section */
+}
+.contact-headline .contact-header__title {
+  margin-top: 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1e1e1e;
+}
+@media (max-width: 1024px) {
+  .contact-headline .contact-header__title {
+    font-size: 1.25rem;
+  }
+}
+.contact-headline .contact-header__title {
+  /* Highlighted word in the headline */
+}
+.contact-headline .contact-header__title .contact-header__title--highlight {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  color: #1e1e1e;
+  font-size: inherit;
 }
 
 .contact-email {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #ffffff;
   border: 1px solid #bbbbbb;
   border-radius: 8px;
@@ -1738,7 +1751,7 @@ div:has(.works-section) {
 .email-text {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.5rem;
-  color: #333333;
+  color: #1e1e1e;
   font-weight: 600;
   padding-right: 0.5rem;
 }
@@ -1751,7 +1764,7 @@ div:has(.works-section) {
 }
 
 .copy-button {
-  background-color: #555555;
+  background-color: #333333;
   border: none;
   border-radius: 6px;
   padding: 1.25rem 1.75rem;
@@ -1765,7 +1778,7 @@ div:has(.works-section) {
   display: block;
 }
 .copy-button:hover {
-  background-color: #333333;
+  background-color: #1e1e1e;
 }
 .copy-button.is-copied {
   background-color: #27563f;
@@ -1797,10 +1810,9 @@ div:has(.works-section) {
 }
 .contact-socials a {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  font-style: italic;
   font-size: 1rem;
   font-weight: 600;
-  color: #555555;
+  color: #333333;
   text-decoration: none;
   transition: color 0.2s ease;
   position: relative;
@@ -1813,7 +1825,7 @@ div:has(.works-section) {
   left: 0;
   width: 100%;
   height: 1.4px;
-  background-color: #555555;
+  background-color: #333333;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 300ms ease-in-out;
@@ -1850,7 +1862,7 @@ div:has(.works-section) {
 .contact-decor .decor-tree {
   width: 600px;
   top: 10%;
-  left: calc(100vw - 25%);
+  right: calc(100vw - 25%);
 }
 .contact-decor .decor-mountain {
   width: 740px;
@@ -1909,18 +1921,31 @@ div:has(.works-section) {
 \*--------------------------------*/
 @media (min-width: 1280px) {
   .project-main-content {
-    grid-template-columns: 3fr 9fr;
+    grid-template-columns: 320px 1fr;
     padding: 0 2.5rem;
   }
   .project-sidebar {
     display: block;
+    position: -webkit-sticky;
     position: sticky;
     top: 120px;
     align-self: start;
   }
+  .project-sidebar-nav {
+    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 144px;
+    align-self: start;
+    z-index: 50;
+    max-height: calc(100vh - 152px);
+    overflow: auto;
+    padding-right: 0.5rem;
+  }
   .project-sidebar-nav ul {
     list-style: none;
     padding: 0;
+    padding-bottom: 2rem;
     margin: 0;
   }
   .project-sidebar-nav li {
@@ -1929,7 +1954,7 @@ div:has(.works-section) {
   .project-sidebar-nav a {
     font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: 600;
-    color: #555555;
+    color: #333333;
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.2s ease;
@@ -1948,13 +1973,13 @@ div:has(.works-section) {
   display: flex;
   padding: 2.5rem;
   /* --- This is the fix --- */
-  border-left: 0.4px solid #888888;
-  border-right: 0.4px solid #888888;
-  border-bottom: 0.4px solid #888888;
+  border-left: 0.4px solid #757575;
+  border-right: 0.4px solid #757575;
+  border-bottom: 0.4px solid #757575;
 }
 .meta-row:last-child {
   /* We keep this to prevent a double border */
-  border-bottom: 0.4px solid #888888;
+  border-bottom: 0.4px solid #757575;
 }
 @media (max-width: 1024px) {
   .meta-row {
@@ -1987,7 +2012,7 @@ div:has(.works-section) {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1rem;
   font-weight: 400;
-  color: #757575;
+  color: #555555;
   margin-bottom: 1.25rem;
   font-style: italic;
 }
@@ -1999,7 +2024,7 @@ div:has(.works-section) {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.125rem;
   font-weight: 400;
-  color: #333333;
+  color: #1e1e1e;
   line-height: 1.5;
 }
 
@@ -2030,7 +2055,7 @@ div:has(.works-section) {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
-  color: #333333;
+  color: #1e1e1e;
   margin: 0 0.5rem 0.5rem 0;
 }
 
@@ -2084,7 +2109,7 @@ div:has(.works-section) {
   font-style: italic;
   font-weight: 400;
   font-size: 1rem;
-  color: #555555;
+  color: #333333;
   margin-bottom: 1rem;
   padding-top: 2rem;
 }
@@ -2115,14 +2140,14 @@ div:has(.works-section) {
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
-  color: #333333;
+  color: #1e1e1e;
 }
 .sidebar-link .sidebar-subtitle {
   display: block;
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-size: 0.875rem;
-  color: #555555;
+  color: #333333;
   margin-top: 4px;
   flex-basis: 100%;
 }
@@ -2136,7 +2161,7 @@ div:has(.works-section) {
   font-weight: 600;
   padding: 4px 8px;
   background-color: #cdcdcd;
-  color: #333333;
+  color: #1e1e1e;
   border-radius: 4px;
   transition: all 0.3s ease-in-out;
 }
@@ -2158,7 +2183,7 @@ div:has(.works-section) {
 .sidebar-link.is-active {
   margin-top: 8px;
   margin-bottom: 16px;
-  border: 0.8px solid #888888;
+  border: 0.8px solid #757575;
   background-color: #d9c9e9;
   border: 0.8px solid #6b4c8b;
   box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.2);
@@ -2166,7 +2191,7 @@ div:has(.works-section) {
 .sidebar-link.is-active .sidebar-title {
   font-weight: 600;
   font-style: normal;
-  color: #333333;
+  color: #1e1e1e;
 }
 .sidebar-link.is-active .tag {
   background-color: #ffffff;
@@ -2188,10 +2213,10 @@ div:has(.works-section) {
   }
 }
 .project-content-scroll section {
-  border-top: 0.4px solid #888888;
-  border-left: 0.4px solid #888888;
-  border-right: 0.4px solid #888888;
-  border-bottom: 0.4px solid #888888;
+  border-top: 0.4px solid #757575;
+  border-left: 0.4px solid #757575;
+  border-right: 0.4px solid #757575;
+  border-bottom: 0.4px solid #757575;
   padding: 2.5rem;
 }
 @media (max-width: 1024px) {
@@ -2213,7 +2238,7 @@ div:has(.works-section) {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.125rem;
   line-height: 1.7;
-  color: #333333;
+  color: #1e1e1e;
   margin-bottom: 1.5rem;
 }
 .project-content-scroll .project-media {
@@ -2254,7 +2279,7 @@ div:has(.works-section) {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
-  color: #555555;
+  color: #333333;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0;
@@ -2263,21 +2288,21 @@ div:has(.works-section) {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 700;
   font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
-  color: #333333;
+  color: #1e1e1e;
   margin: 0.5rem 0;
 }
 .project-video-embed .video-subtitle {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: clamp(1.125rem, 1rem + 1vw, 1.5rem);
-  color: #555555;
+  color: #333333;
   margin-bottom: 2.5rem;
 }
 .project-video-embed .video-label-large {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-style: italic;
   font-size: 1.125rem;
-  color: #333333;
+  color: #1e1e1e;
   margin-bottom: 1rem;
 }
 
@@ -2355,7 +2380,7 @@ div:has(.works-section) {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.75rem;
   font-weight: 300;
-  color: #555555;
+  color: #333333;
   margin: 0 0 0.75rem 0;
 }
 
@@ -2368,7 +2393,7 @@ div:has(.works-section) {
 .site-footer__tagline {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 0.875rem;
-  color: #555555;
+  color: #333333;
   line-height: 1.5;
   margin: 0;
 }
@@ -2389,9 +2414,9 @@ div:has(.works-section) {
 }
 .site-footer__nav a {
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.15rem;
-  color: #333333;
+  color: #1e1e1e;
   text-decoration: none;
   position: relative;
   text-decoration: none;
@@ -2403,7 +2428,7 @@ div:has(.works-section) {
   left: 0;
   width: 100%;
   height: 1.4px;
-  background-color: #333333;
+  background-color: #1e1e1e;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 300ms ease-in-out;
@@ -2420,11 +2445,11 @@ div:has(.works-section) {
   grid-area: contact;
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1rem;
-  color: #555555;
+  color: #333333;
 }
 .site-footer__contact a {
   font-weight: 600;
-  color: #333333;
+  color: #1e1e1e;
   text-decoration: none;
 }
 .site-footer__contact a:hover {
@@ -2499,7 +2524,7 @@ div:has(.works-section) {
     margin: 0 0 0 2rem;
   }
   .site-footer__nav a {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
   }
   .site-footer__contact {

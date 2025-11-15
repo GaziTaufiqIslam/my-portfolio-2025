@@ -38,6 +38,20 @@
   &.is-hidden {
     transform: translateY(-100%);
   }
+  isolation: isolate;
+  // z-index: 0;
+  &::after {
+    // position: relative;
+    // overflow-x: hidden;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("../assets/images/noise-bg.png");
+    background-repeat: repeat;
+    opacity: 0.25;
+    z-index: -1;
+    
+  }
 }
 
 .fuzzy-overlay__header {
@@ -138,6 +152,7 @@
   align-items: center;
   position: relative; // <-- ADD THIS
   z-index: 2;  
+  gap: 1rem ;
 
   ul {
     display: flex;
@@ -154,8 +169,7 @@
   ul a {
     font-family: $font-serif;
     font-weight: 600;
-    font-size: 1.5rem;
-    font-style: italic;
+    font-size: 1.25rem;
     color: $color-text;
     text-decoration: none;
     transition: color 0.2s ease;
@@ -165,15 +179,15 @@
       font-size: 1.125rem;
     }
 
-    &:hover {
-      color: $color-neutral-700;
-    }
+    // &:hover {
+    //   // color: $color-neutral-700;
+    // }
   }
   a {
     font-family: $font-serif;
-    font-weight: 600;
-    font-size: 1.5rem;
-    font-style: italic;
+    font-weight: 500;
+    font-size: 1.25rem;
+    // font-style: italic;
   }
 }
 

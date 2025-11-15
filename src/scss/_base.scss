@@ -30,7 +30,9 @@ code, pre {
 }
 body {
   position: relative;
+  // overflow-x: hidden;
   isolation: isolate;
+  z-index: 0;
 }
 body::after {
     // position: relative;
@@ -61,7 +63,7 @@ main {
   opacity: 0.35;
   z-index: -10;
   // animation: shift .5s linear infinite both;
-
+  display: none;
 }
 
 @keyframes shift {
