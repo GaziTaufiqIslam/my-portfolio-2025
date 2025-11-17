@@ -84,7 +84,7 @@
       <!-- Grid for the images -->
       <div class="meta-quick-view-grid">
         {% for image in quickViewImages %}
-          <img src="{{ image.src }}" alt="{{ image.alt }}" class="quick-view-image">
+          <img src="{{ image.src }}" alt="{{ image.alt }}" class="quick-view-image"  loading="lazy" onload="this.parentElement.classList.add('is-loaded')">
         {% endfor %}
       </div>
     </div>

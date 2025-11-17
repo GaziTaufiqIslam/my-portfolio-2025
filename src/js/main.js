@@ -70,40 +70,31 @@ if(header) { // Add a check in case header doesn't exist
 }
 
 // --- 4. Site Loader (Global) ---
-window.addEventListener('load', () => {
-  lenis.stop(); // Stop scroll
-
-  // --- FIX 1: Check for a hash in the URL ---
+window.addEventListener("DOMContentLoaded", () => {
   const hash = window.location.hash;
 
+  // Phase 1 — Reveal structure
   setTimeout(() => {
-    document.documentElement.classList.add('is-loaded');
-    
-    // --- FIX 2: Only scroll to top if there is NO hash ---
+    document.documentElement.classList.add("is-loaded");
+
     if (!hash) {
-      window.scrollTo(0, 0);
+      lenis.scrollTo(0, { immediate: true });
     }
   }, 200);
 
+  // Phase 2 — Enable interactions + scroll to hash
   setTimeout(() => {
     runPageSpecificJS();
-    
     ScrollTrigger.refresh();
-    lenis.start();
-    
-    // --- FIX 3: If there *was* a hash, scroll to it now ---
+
     if (hash) {
       lenis.scrollTo(hash, {
-        offset: -120, // Your 120px header height
-        duration: 1.5, // A nice smooth scroll
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Same easing as Lenis
+        offset: -HEADER_HEIGHT,
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });
     }
-    
   }, 1500);
-
-  // gsap.to('body', { duration: 0.5, opacity: 1, ease: 'power1.inOut' });
-
 });
 
 /**
