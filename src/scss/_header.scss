@@ -42,7 +42,7 @@
   // z-index: 0;
   &::after {
     // position: relative;
-    // overflow-x: hidden;
+    overflow-x: hidden;
     content: '';
     position: absolute;
     inset: 0;

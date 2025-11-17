@@ -20,28 +20,50 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 // --- 3. Header Show/Hide Logic (Global) ---
-let lastScrollTop = 0;
+// We no longer need lastScrollTop
 const header = document.querySelector('.site-header');
 const headerHeight = 120; // Your header height
 
 if(header) { // Add a check in case header doesn't exist
+  
+  // This tells Lenis to update GSAP's ScrollTrigger
+  lenis.on('scroll', ScrollTrigger.update);
+
   lenis.on('scroll', (e) => {
     const currentScrollTop = e.scroll;
+    const velocity = e.velocity;
 
-    if (currentScrollTop > headerHeight) { 
+    // --- 1. Handle the 'is-scrolled' class (for blur/border) ---
+    // This logic is based on position and is correct.
+    if (currentScrollTop > headerHeight) {
       header.classList.add('is-scrolled');
-
-      if (currentScrollTop > lastScrollTop) {
-        header.classList.add('is-hidden');
-      } else {
-        header.classList.remove('is-hidden');
-      }
     } else {
       header.classList.remove('is-scrolled');
+    }
+
+    // --- 2. Handle the 'is-hidden' class (show/hide logic) ---
+    // We only apply this logic *after* scrolling past the header
+    if (currentScrollTop > headerHeight) {
+        
+        // Scrolling DOWN (positive velocity)
+        // We use a small threshold (0.5) to ignore tiny movements
+        if (velocity > 0.5) { 
+            header.classList.add('is-hidden');
+        } 
+        // Scrolling UP (negative velocity)
+        else if (velocity < -0.5) {
+            header.classList.remove('is-hidden');
+        }
+        // If velocity is between -0.5 and 0.5, we're pausing or
+        // easing, so we DO NOTHING. The header stays as it was.
+
+    } 
+    // When near the top, always show the header
+    else {
       header.classList.remove('is-hidden');
     }
 
-    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+    // 'lastScrollTop' is no longer needed for this logic.
   });
 }
 
