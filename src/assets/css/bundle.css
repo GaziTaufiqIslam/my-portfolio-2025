@@ -509,6 +509,7 @@ code, pre {
 }
 
 body {
+  opacity: 1;
   position: relative;
   isolation: isolate;
   z-index: 0;
