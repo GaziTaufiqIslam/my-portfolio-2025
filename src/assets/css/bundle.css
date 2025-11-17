@@ -2006,6 +2006,24 @@ a.btn-contact:hover {
   }
 }
 
+.meta-block--full-width {
+  flex: 1 1 100% !important;
+  padding-right: 0 !important;
+}
+
+.meta-quick-view-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.quick-view-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+}
+
 .meta-label,
 .meta-label-small {
   display: block;

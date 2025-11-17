@@ -72,5 +72,23 @@
       </div>
     </div>
   </div>
+  <!-- 
+    NEW QUICK VIEW ROW 
+    This checks if 'quickViewImages' exists in the front matter.
+  -->
+  {% if quickViewImages %}
+  <div class="meta-row meta-row--quick-view">
+    <div class="meta-block meta-block--full-width">
+      <span class="meta-label">Quick View</span>
+      
+      <!-- Grid for the images -->
+      <div class="meta-quick-view-grid">
+        {% for image in quickViewImages %}
+          <img src="{{ image.src }}" alt="{{ image.alt }}" class="quick-view-image">
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
 
 </div>

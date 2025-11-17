@@ -7,20 +7,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export function initializeGSAPAnimations() {
 
   // --- Works Headline Animation ---
-  gsap.utils.toArray('.works-headline .char').forEach(char => {
-    gsap.set(char, {
-      rotation: gsap.utils.random(-3, 2),
-      y: gsap.utils.random(-2, 2),
-    });
-  });
+  // gsap.utils.toArray('.works-headline .char').forEach(char => {
+  //   gsap.set(char, {
+  //     rotation: gsap.utils.random(-3, 2),
+  //     y: gsap.utils.random(-2, 2),
+  //   });
+  // });
 
-  // --- Contact Headline Animation ---
-  gsap.utils.toArray('.contact-headline .char').forEach(char => {
-    gsap.set(char, {
-      rotation: gsap.utils.random(-2, 2),
-      y: gsap.utils.random(-2, 2),
-    });
-  });
+  // // --- Contact Headline Animation ---
+  // gsap.utils.toArray('.contact-headline .char').forEach(char => {
+  //   gsap.set(char, {
+  //     rotation: gsap.utils.random(-2, 2),
+  //     y: gsap.utils.random(-2, 2),
+  //   });
+  // });
 
   // --- Works Section Scroll Animation ---
   if (window.innerWidth > 768) {
