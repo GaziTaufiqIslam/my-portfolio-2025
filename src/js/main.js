@@ -7,10 +7,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 // --- 1. Initialize Lenis (Global) ---
 const lenis = new Lenis({
-  duration: 1.2,
+  duration: 0.8,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   smoothTouch: true,
 });
+
+window.lenis = lenis; // For debugging
 
 // --- 2. The Render Loop (Global) ---
 function raf(time) {
@@ -94,7 +96,7 @@ window.addEventListener('load', () => {
       lenis.scrollTo(hash, {
         offset: -120, // Your 120px header height
         duration: 1.5, // A nice smooth scroll
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Same easing as Lenis
       });
     }
     
@@ -159,3 +161,7 @@ if (menuToggle && nav) {
     menuToggle.setAttribute('aria-expanded', isOpen);
   });
 }
+
+
+
+
