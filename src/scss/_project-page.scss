@@ -8,6 +8,7 @@
   height: 56vw; 
   background-size: cover;
   background-position: center;
+  background-color: $color-neutral-700;
 }
 
 .project-main-content {
@@ -17,13 +18,14 @@
   gap: 2rem;
 //   max-width: 1600px;
   margin: 0 auto 2rem; // <-- CHANGED THIS (was 2rem auto)
-  padding: 0 1.5rem;
+  // padding: 0 1.5rem;
 }
 
 // 1. Left Sidebar (Desktop)
 .project-sidebar {
   // --- HIDDEN ON MOBILE ---
   display: none; 
+  padding-left: 1.5rem;
 }
 
 // 2. Right Content (Mobile)
@@ -53,7 +55,7 @@
     // 4-col / 8-col split (12-col grid)
     grid-template-columns: 320px 1fr; 
     // margin-top: 4rem;
-    padding: 0 2.5rem;
+    // padding: 0 2.5rem;
   }
 
   // .project-content-scroll {

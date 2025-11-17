@@ -7,12 +7,13 @@
   inset: 0;
   z-index: 9999;
   display: none; // <-- Hide by default
-  background-color: rgba(255, 250, 244, 1);
+  // background-color: rgba(255, 250, 244, 1);
 }
 
 // Show the loader *only* if JS is enabled
 html.js-enabled .site-loader {
   display: block;
+  opacity: 1;
 }
 
 /**
@@ -33,7 +34,8 @@ html.js-enabled .site-loader {
 
 .loader-bg-left {
   left: 0;
-  background-image: url('../assets/images/loader-paper-left.png');
+  // background-image: url('../assets/images/loader-paper-left.png');
+  background-color: rgb(255, 246, 233);
   background-position: right center;
   z-index: 998;
   // opacity: .4;
@@ -42,7 +44,8 @@ html.js-enabled .site-loader {
 
 .loader-bg-right {
   right: 0;
-  background-image: url('../assets/images/loader-paper-right.png');
+  // background-image: url('../assets/images/loader-paper-right.png');
+  background-color: rgb(255, 246, 233);
   background-position: left center;
   z-index: 998;
   // opacity: .4;
@@ -152,6 +155,8 @@ html.is-loaded {
   .site-loader {
     pointer-events: none;
     visibility: hidden;
-    transition: visibility 0s 1.4s; // Hide after 1.4s
+    // opacity: 0;
+    transition: visibility 0s 1.4s ease-out; // Hide after 1.4s
+    // transition: opacity 1s ease-out 5s; // Hide after 1.4s
   }
 }

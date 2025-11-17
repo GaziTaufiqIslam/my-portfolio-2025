@@ -8,15 +8,16 @@
   padding: 0 1rem;
 
   @media (min-width: $breakpoint-lg) {
-    padding: 0 2.5rem;
+    padding: 0;
   }
 
   section {
-    border-top: .4px solid $color-neutral-500;
-    border-left: .4px solid $color-neutral-500;
-    border-right: .4px solid $color-neutral-500;
-    border-bottom: .4px solid $color-neutral-500;
-    padding: 2.5rem; // Padding *inside* the borders
+    // border-top: .4px solid $color-neutral-500;
+    // border-left: .4px solid $color-neutral-500;
+    // border-right: .4px solid $color-neutral-500;
+    // border-bottom: .4px solid $color-neutral-500;
+    // padding: 2.5rem 0; // Padding *inside* the borders
+    margin: 0;
 
     @media (max-width: $breakpoint-lg) {
       padding: 2rem 1.5rem;
@@ -50,7 +51,7 @@
   .project-media {
     // This makes it full-width of the 8-col container
     width: 100%; 
-    margin: 3rem 0; // Vertical spacing
+    // margin: 3rem 0; // Vertical spacing
 
     img {
       width: 100%;

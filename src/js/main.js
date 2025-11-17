@@ -1,7 +1,16 @@
+
+const loaderTimeout = setTimeout(() => {
+  console.warn("Loader fail-safe triggered after 1.8s");
+  document.documentElement.classList.add("is-loaded");
+}, 1800);
+
 import '../scss/main.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+
+try {
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,8 +78,16 @@ if(header) { // Add a check in case header doesn't exist
   });
 }
 
+
+
 // --- 4. Site Loader (Global) ---
+
+
+
+
 window.addEventListener("DOMContentLoaded", () => {
+    // clearTimeout(loaderTimeout);
+
   const hash = window.location.hash;
 
   // Phase 1 — Reveal structure
@@ -153,6 +170,9 @@ if (menuToggle && nav) {
   });
 }
 
-
+} catch (err) {
+  console.error("MAIN JS ERROR:", err);
+  document.documentElement.classList.add("is-loaded");
+}
 
 

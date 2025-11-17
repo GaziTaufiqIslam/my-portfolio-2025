@@ -17,10 +17,10 @@
   border-right: .4px solid $color-neutral-500;
   border-bottom: .4px solid $color-neutral-500;
 
-  &:last-child {
-    /* We keep this to prevent a double border */
-    border-bottom: .4px solid $color-neutral-500;
-  }
+  // &:last-child {
+  //   /* We keep this to prevent a double border */
+  //   border-bottom: none;
+  // }
 
   @media (max-width: $breakpoint-lg) { // Match your page breakpoint
     flex-direction: column; // Stack columns on mobile
@@ -53,6 +53,11 @@
 .meta-block--full-width {
   flex: 1 1 100% !important; // Make this block span full width
   padding-right: 0 !important;
+}
+
+.meta-row--quick-view {
+  padding: 0;
+  border: none;
 }
 
 .meta-quick-view-grid {

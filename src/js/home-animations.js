@@ -117,33 +117,33 @@ export function initializeGSAPAnimations() {
   } // End of if (window.innerWidth > 768)
 
   // --- Contact Section Scroll Animation ---
-  const contactSection = document.querySelector('.contact-section');
-  if (contactSection) {
-    // Using your new, preferred values
-    gsap.set('.decor-sun', { xPercent: -40, yPercent: -100, rotation: -60 });
-    gsap.set('.decor-tree', { xPercent: 40, yPercent: -5, rotation: 30 });
-    gsap.set('.decor-mountain', { xPercent: -40, yPercent: 10, rotation: -20 });
-    gsap.set('.decor-tori', { xPercent: 40, yPercent: 10, rotation: -25 });
+  // const contactSection = document.querySelector('.contact-section');
+  // if (contactSection) {
+  //   // Using your new, preferred values
+  //   gsap.set('.decor-sun', { xPercent: -40, yPercent: -100, rotation: -60 });
+  //   gsap.set('.decor-tree', { xPercent: 40, yPercent: -5, rotation: 30 });
+  //   gsap.set('.decor-mountain', { xPercent: -40, yPercent: 10, rotation: -20 });
+  //   gsap.set('.decor-tori', { xPercent: 40, yPercent: 10, rotation: -25 });
 
-    const stopMotionEase = "steps(10)"; 
+  //   const stopMotionEase = "steps(10)"; 
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: contactSection,
-        start: 'top bottom',
-        // --- FIX 2: Corrected end trigger ---
-        end: 'bottom 80%', // Was 'bottom 80%'
-        scrub: 1.5
-      }
-    });
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: contactSection,
+  //       start: 'top bottom',
+  //       // --- FIX 2: Corrected end trigger ---
+  //       end: 'bottom 80%', // Was 'bottom 80%'
+  //       scrub: 1.5
+  //     }
+  //   });
 
-    // We add the 'ease' property to each animation
-    tl.to('.decor-sun', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)
-      .to('.decor-tree', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)
-      .to('.decor-mountain', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)
-      .to('.decor-tori', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0);
+  //   // We add the 'ease' property to each animation
+  //   tl.to('.decor-sun', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)
+  //     .to('.decor-tree', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)
+  //     .to('.decor-mountain', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)
+  //     .to('.decor-tori', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0);
 
-  } // End of if (contactSection)
+  // } // End of if (contactSection)
 
 
   // --- Clipboard Button ---

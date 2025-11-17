@@ -104,7 +104,7 @@ html.is-loaded {
   .work-section,
   .contact-section {
     opacity: 1;
-    transition-delay: 1s; 
+    transition-delay: 2s; 
   }
   .site-header {
     opacity: 1;
@@ -120,7 +120,7 @@ html.is-loaded {
 .image-placeholder {
   position: relative;
   overflow: hidden;
-  background-color: $color-neutral-300; // Your light gray
+  background-color: $color-neutral-100; // Your light gray
   
   // This creates the shimmer/wipe animation
   &::after {
@@ -133,7 +133,7 @@ html.is-loaded {
     background: linear-gradient(
       90deg,
       rgba(255,255,255,0) 0%,
-      rgba(255,255,255,0.9) 50%,
+      rgba(255,255,255,0.8) 50%,
       rgba(255,255,255,0) 100%
     );
     animation: skeleton-wipe 1.5s infinite;

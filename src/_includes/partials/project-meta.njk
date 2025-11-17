@@ -82,7 +82,7 @@
       {# <span class="meta-label">Quick View</span> #}
       
       <!-- Grid for the images -->
-      <div class="meta-quick-view-grid">
+      <div class="meta-quick-view-grid image-placeholder">
         {% for image in quickViewImages %}
           <img src="{{ image.src }}" alt="{{ image.alt }}" class="quick-view-image"  loading="lazy" onload="this.parentElement.classList.add('is-loaded')">
         {% endfor %}
