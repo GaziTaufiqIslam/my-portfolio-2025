@@ -1,15 +1,7 @@
-
-const loaderTimeout = setTimeout(() => {
-  console.warn("Loader fail-safe triggered after 1.8s");
-  document.documentElement.classList.add("is-loaded");
-}, 1800);
-
 import '../scss/main.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-
-try {
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,7 +13,6 @@ const lenis = new Lenis({
   smoothTouch: true,
 });
 
-window.lenis = lenis; // For debugging
 
 // --- 2. The Render Loop (Global) ---
 function raf(time) {
@@ -36,7 +27,7 @@ const header = document.querySelector('.site-header');
 const headerHeight = 120; // Your header height
 
 if(header) { // Add a check in case header doesn't exist
-  
+  console.log("heelo");
   // This tells Lenis to update GSAP's ScrollTrigger
   lenis.on('scroll', ScrollTrigger.update);
 
@@ -81,12 +72,15 @@ if(header) { // Add a check in case header doesn't exist
 
 
 // --- 4. Site Loader (Global) ---
-
+const loaderTimeout = setTimeout(() => {
+  console.warn("Loader fail-safe triggered after 1.8s");
+  document.documentElement.classList.add("is-loaded");
+}, 1800);
 
 
 
 window.addEventListener("DOMContentLoaded", () => {
-    // clearTimeout(loaderTimeout);
+    clearTimeout(loaderTimeout);
 
   const hash = window.location.hash;
 
@@ -106,7 +100,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (hash) {
       lenis.scrollTo(hash, {
-        offset: -HEADER_HEIGHT,
+        offset: -(headerHeight),
         duration: 1.5,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });
@@ -170,9 +164,5 @@ if (menuToggle && nav) {
   });
 }
 
-} catch (err) {
-  console.error("MAIN JS ERROR:", err);
-  document.documentElement.classList.add("is-loaded");
-}
 
 
