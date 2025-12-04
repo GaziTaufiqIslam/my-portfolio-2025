@@ -157,7 +157,7 @@
   ul {
     display: flex;
     list-style: none;
-    margin: 0 1.5rem 0 0; // 24px spacing to the right
+    margin: 0;
     padding: 0;
   }
 
@@ -167,6 +167,7 @@
 
   // Styles for the nav links (not the button)
   ul a {
+    padding-top: 0.5em;
     font-family: $font-serif;
     font-weight: 600;
     font-size: 1.25rem;

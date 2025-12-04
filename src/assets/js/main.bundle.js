@@ -11253,7 +11253,7 @@ if (cursor && window.matchMedia("(pointer: fine)").matches) {
       gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.to(cursor, {
         scale: 2,
         opacity: 0.5,
-        // mixBlendMode: 'normal', 
+        // mixBlendMode: 'difference', 
         duration: 0.3
       });
     });
@@ -11261,7 +11261,7 @@ if (cursor && window.matchMedia("(pointer: fine)").matches) {
       gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.to(cursor, {
         scale: 1,
         opacity: 1,
-        // mixBlendMode: 'normal', 
+        // mixBlendMode: 'difference', 
         duration: 0.3
       });
     });
@@ -11296,7 +11296,49 @@ if (cursor && window.matchMedia("(pointer: fine)").matches) {
   //     duration: 0.2
   //   });
   // });
-  document.addEventListener('mouseout', function () {
+
+  // --- A. Project Cards (Priority High) ---
+  var projectTargets = document.querySelectorAll('.project-card');
+  projectTargets.forEach(function (target) {
+    target.addEventListener('mouseenter', function () {
+      // Check if this is a "Coming Soon" card
+      var isComingSoon = target.classList.contains('project-card--coming-soon');
+      if (isComingSoon) {
+        cursor.textContent = "Coming Soon...";
+        // Scale larger (6x) to fit the longer text
+        gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.to(cursor, {
+          scale: 6,
+          opacity: 1,
+          mixBlendMode: 'normal',
+          backgroundColor: '#451C64',
+          fontSize: 2,
+          duration: 0.3
+        });
+      } else {
+        cursor.textContent = "View";
+        // Standard scale (4x)
+        gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.to(cursor, {
+          scale: 6,
+          opacity: 1,
+          fontSize: 2.335,
+          mixBlendMode: 'normal',
+          backgroundColor: '#451C64',
+          duration: 0.3
+        });
+      }
+    });
+    target.addEventListener('mouseleave', function () {
+      cursor.textContent = ""; // Remove text
+      gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.to(cursor, {
+        scale: 1,
+        opacity: 1,
+        backgroundColor: '#67E3F6',
+        mixBlendMode: 'difference',
+        duration: 0.3
+      });
+    });
+  });
+  document.addEventListener('mouseleave', function () {
     // console.log('mouse left');
     gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.to(cursor, {
       autoAlpha: 0,

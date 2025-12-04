@@ -860,8 +860,8 @@ h5, .h5 {
   background-color: #1e1e1e;
   color: #ffffff;
   padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  border-radius: 12px;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -890,6 +890,16 @@ h5, .h5 {
   z-index: 9999;
   transform: translate(-50%, -50%);
   opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-size: 0.145rem;
 }
 
 body {
@@ -1166,13 +1176,14 @@ html.is-loaded .site-loader {
 .site-header__nav ul {
   display: flex;
   list-style: none;
-  margin: 0 1.5rem 0 0;
+  margin: 0;
   padding: 0;
 }
 .site-header__nav li {
   margin-left: 2rem;
 }
 .site-header__nav ul a {
+  padding-top: 0.5em;
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 600;
   font-size: 1.25rem;
@@ -1602,9 +1613,9 @@ a.btn-contact:hover {
   overflow-x: hidden;
 }
 .work-section .container {
-  max-width: 1280px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 40px;
 }
 .work-section {
   /*--------------------------------*\
@@ -1689,7 +1700,14 @@ a.btn-contact:hover {
 }
 .work-section .projects-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 1280px) {
+  .work-section .projects-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
 }
 @media (max-width: 1024px) {
   .work-section .projects-grid {
@@ -1713,17 +1731,27 @@ a.btn-contact:hover {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   padding: 1.25rem 1.25rem 1.75rem 1.25rem;
   overflow: visible;
-  width: 96%;
-  max-width: 480px;
   justify-self: center;
+}
+@media (max-width: 1280px) {
+  .work-section .project-card {
+    width: 96%;
+    max-width: 480px;
+  }
+}
+.work-section .project-card {
   transform-origin: top center;
-  transform: perspective(1800px) translateZ(0);
+  transform: perspective(18g00px) translateZ(0);
   transition: transform 0.45s cubic-bezier(0.25, 0.14, 0.16, 1), box-shadow 0.45s cubic-bezier(0.25, 0.14, 0.16, 1);
 }
 .work-section .project-card:hover, .work-section .project-card:focus-visible {
-  transform: perspective(1800px) rotateX(2deg) translateY(0px);
+  transform: perspective(1800px) rotateX(2deg);
   /* NEW SHADOW: softer + more spread + dropped lower */
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12), 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+.work-section .project-card:hover:last-child:hover, .work-section .project-card:focus-visible:last-child:hover {
+  transform: none;
+  box-shadow: none;
 }
 .work-section .project-card {
   /* Tape PNG */
@@ -1785,10 +1813,17 @@ a.btn-contact:hover {
   border: 1px solid #333333;
   color: #212121;
   font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  text-transform: uppercase;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.02em;
+}
+.work-section .project-card--coming-soon .project-card__thumb img {
+  transition: filter 0.5s ease;
+}
+.work-section .project-card--coming-soon:hover .project-card__thumb img {
+  filter: grayscale(100%);
 }
 .work-section {
   /*--------------------------------*\

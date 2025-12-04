@@ -19,6 +19,24 @@
   // Initially hidden until mouse moves
   opacity: 0; 
 
+  // --- Flexbox for centering text ---
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  // --- Text Styles ---
+  color: $color-neutral-000; // White text
+  font-family: $font-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  
+  // Critical: We set a tiny font size (4px)
+  // Because we will scale the cursor up by 4x (to 80px)
+  // 4px * 4 = 16px (Normal readable size)
+  text-align: center;
+  font-size: 0.145rem;
+
 
 // //   transition: transform 0.3s ease, background-color 0.3s ease;
 //   &.is-hovering-link {
@@ -32,6 +50,7 @@
 //     // Optional: turning it white often helps the difference mode pop more
 //     // background-color: #fff; 
 //   }
+  
 
 
 }

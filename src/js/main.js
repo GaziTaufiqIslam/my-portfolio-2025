@@ -164,6 +164,8 @@ if (menuToggle && nav) {
   });
 }
 
+
+
 // --- 7. Custom Cursor Logic ---
   const cursor = document.querySelector('.cursor');
 
@@ -188,7 +190,7 @@ if (menuToggle && nav) {
         gsap.to(cursor, { 
           scale: 2, 
           opacity: 0.5, 
-          // mixBlendMode: 'normal', 
+          // mixBlendMode: 'difference', 
           duration: 0.3 
         });
       });
@@ -197,7 +199,7 @@ if (menuToggle && nav) {
         gsap.to(cursor, { 
           scale: 1, 
           opacity: 1, 
-          // mixBlendMode: 'normal', 
+          // mixBlendMode: 'difference', 
           duration: 0.3 
         });
       });
@@ -232,7 +234,54 @@ if (menuToggle && nav) {
     //     duration: 0.2
     //   });
     // });
-    document.addEventListener('mouseout', () => {
+
+    // --- A. Project Cards (Priority High) ---
+    const projectTargets = document.querySelectorAll('.project-card');
+    projectTargets.forEach(target => {
+      target.addEventListener('mouseenter', () => {
+        
+        // Check if this is a "Coming Soon" card
+        const isComingSoon = target.classList.contains('project-card--coming-soon');
+        
+        if (isComingSoon) {
+          cursor.textContent = "Coming Soon...";
+          // Scale larger (6x) to fit the longer text
+          gsap.to(cursor, { 
+            scale: 6, 
+            opacity: 1, 
+            mixBlendMode: 'normal', 
+            backgroundColor: '#451C64',
+            fontSize: 2,
+            duration: 0.3 
+          });
+        } else {
+          cursor.textContent = "View";
+          // Standard scale (4x)
+          gsap.to(cursor, { 
+            scale: 6, 
+            opacity: 1, 
+            fontSize: 2.335,
+            mixBlendMode: 'normal', 
+            backgroundColor: '#451C64', 
+            duration: 0.3 
+          });
+        }
+      });
+
+      target.addEventListener('mouseleave', () => {
+        cursor.textContent = ""; // Remove text
+        gsap.to(cursor, { 
+          scale: 1, 
+          opacity: 1, 
+          backgroundColor: '#67E3F6',
+            mixBlendMode: 'difference', 
+          duration: 0.3 
+        });
+      });
+    });
+
+
+    document.addEventListener('mouseleave', () => {
       // console.log('mouse left');
       gsap.to(cursor, {
         autoAlpha: 0,
@@ -240,6 +289,10 @@ if (menuToggle && nav) {
       });
     });
   }
+
+
+
+
 
   // --- Clipboard Button & Toast Logic ---
   const copyButtons = document.querySelectorAll('.copy-button');
