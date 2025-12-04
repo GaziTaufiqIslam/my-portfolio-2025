@@ -44,6 +44,8 @@ module.exports = (env, argv) => {
 
   return {
     mode: isProduction ? 'production' : 'development',
+    devtool: 'source-map',
+    
     entry: {
       main: './src/js/main.js',
       images: imageEntries
@@ -57,7 +59,9 @@ module.exports = (env, argv) => {
     plugins: [
       new RemoveEmptyScriptsPlugin(),
       new MiniCssExtractPlugin({
-        filename: 'css/bundle.css'
+        filename: 'css/bundle.css',
+        // Enable source maps for the plugin
+        experimentalUseImportModule: false
       }),
     ],
 
@@ -77,20 +81,24 @@ module.exports = (env, argv) => {
         {
           test: /\.scss$/,
           use: [
-            // --- THIS IS THE FIX ---
-            // We replace the simple string with an object
-            // to provide the correct publicPath
             {
               loader: MiniCssExtractPlugin.loader,
               options: {
-                // This tells Webpack to go "up one level" from /css/ 
-                // to find other assets. (e.g., ../images/)
-                publicPath: '../' 
+                publicPath: '../'
               }
             },
-            // --- END FIX ---
-            'css-loader',
-            'sass-loader'
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            }
           ]
         },
         {

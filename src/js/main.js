@@ -164,5 +164,111 @@ if (menuToggle && nav) {
   });
 }
 
+// --- 7. Custom Cursor Logic ---
+  const cursor = document.querySelector('.cursor');
 
+  if (cursor && window.matchMedia("(pointer: fine)").matches) {
+    
+    gsap.set(cursor, { xPercent: -50, yPercent: -50 });
 
+    window.addEventListener('mousemove', (e) => {
+      gsap.to(cursor, { autoAlpha: 1, duration: 0.2, overwrite: 'auto' });
+      gsap.to(cursor, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.3, 
+        ease: 'power2.out'
+      });
+    });
+
+    // 1. Links and Buttons (Scale Up)
+    const linkTargets = document.querySelectorAll('a, button, .project-card');
+    linkTargets.forEach(target => {
+      target.addEventListener('mouseenter', () => {
+        gsap.to(cursor, { 
+          scale: 2, 
+          opacity: 0.5, 
+          // mixBlendMode: 'normal', 
+          duration: 0.3 
+        });
+      });
+      
+      target.addEventListener('mouseleave', () => {
+        gsap.to(cursor, { 
+          scale: 1, 
+          opacity: 1, 
+          // mixBlendMode: 'normal', 
+          duration: 0.3 
+        });
+      });
+    });
+
+    // // 2. Images (Negative Effect)
+    // const imageTargets = document.querySelectorAll('img');
+    // imageTargets.forEach(target => {
+    //   target.addEventListener('mouseenter', () => {
+    //     gsap.to(cursor, { 
+    //       scale: 1.1, 
+    //       opacity: 1, 
+    //       mixBlendMode: 'difference', 
+    //       duration: 0.3 
+    //     });
+    //   });
+      
+    //   target.addEventListener('mouseleave', () => {
+    //     gsap.to(cursor, { 
+    //       scale: 1, 
+    //       opacity: 1, 
+    //       mixBlendMode: 'normal', 
+    //       duration: 0.3 
+    //     });
+    //   });
+    // });
+
+    // document.addEventListener('mouseleave', () => {
+    //   console.log('mouse left');
+    //   gsap.to(cursor, {
+    //     autoAlpha: 0,
+    //     duration: 0.2
+    //   });
+    // });
+    document.addEventListener('mouseout', () => {
+      // console.log('mouse left');
+      gsap.to(cursor, {
+        autoAlpha: 0,
+        duration: 0.2
+      });
+    });
+  }
+
+  // --- Clipboard Button & Toast Logic ---
+  const copyButtons = document.querySelectorAll('.copy-button');
+  const toast = document.getElementById('copy-toast');
+
+  copyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const textToCopy = button.dataset.clipboardText;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        
+        // 1. Animate Button (Visual feedback on the button itself)
+        button.classList.add('is-copied');
+        setTimeout(() => {
+          button.classList.remove('is-copied');
+        }, 2000);
+
+        // 2. Show Toast
+        if (toast) {
+          toast.classList.add('is-visible');
+          
+          // Hide toast after 3 seconds
+          setTimeout(() => {
+            toast.classList.remove('is-visible');
+          }, 3000);
+        }
+
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    });
+  });

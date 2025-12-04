@@ -1,0 +1,35 @@
+/* TOAST NOTIFICATION */
+.toast-notification {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%, 20px); // Start slightly down
+  
+  background-color: $color-neutral-900; // Dark background
+  color: $color-neutral-000; // White text
+  
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px; // Pill shape
+  
+  font-family: $font-sans;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  
+  z-index: 10000; // Above everything
+  
+  // Hidden state
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  
+  // Smooth pop-up animation
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+
+  // Visible state (added by JS)
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0); // Slide up to position
+  }
+}

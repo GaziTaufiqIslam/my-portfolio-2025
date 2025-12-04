@@ -1,12 +1,4 @@
 "use strict";
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 (self["webpackChunkmy_portfolio_2025"] = self["webpackChunkmy_portfolio_2025"] || []).push([["src_js_home-animations_js"],{
 
 /***/ "./src/js/home-animations.js":
@@ -15,8 +7,176 @@
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   initializeGSAPAnimations: () => (/* binding */ initializeGSAPAnimations)\n/* harmony export */ });\n/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ \"./node_modules/gsap/index.js\");\n/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollTrigger */ \"./node_modules/gsap/ScrollTrigger.js\");\n\n\n\n/**\r\n * All GSAP and ScrollTrigger animations go in here.\r\n */\nfunction initializeGSAPAnimations() {\n  // --- Works Headline Animation ---\n  // gsap.utils.toArray('.works-headline .char').forEach(char => {\n  //   gsap.set(char, {\n  //     rotation: gsap.utils.random(-3, 2),\n  //     y: gsap.utils.random(-2, 2),\n  //   });\n  // });\n\n  // // --- Contact Headline Animation ---\n  // gsap.utils.toArray('.contact-headline .char').forEach(char => {\n  //   gsap.set(char, {\n  //     rotation: gsap.utils.random(-2, 2),\n  //     y: gsap.utils.random(-2, 2),\n  //   });\n  // });\n\n  // --- Works Section Scroll Animation ---\n  if (window.innerWidth > 768) {\n    var projects = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.utils.toArray('.project-item');\n    var thumbnails = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.utils.toArray('.works-gallery-thumbnail');\n    if (projects.length === 0) return; // Safety check\n\n    var lastActiveIndex = -1;\n    var progressBarSteps = 6; // Your \"stop motion\" frames\n\n    // Set default active state\n    projects[0].classList.add('is-active');\n    var firstThumbId = projects[0].dataset.thumbnailId;\n    if (firstThumbId) {\n      var firstThumb = document.getElementById(firstThumbId);\n      if (firstThumb) firstThumb.classList.add('is-active');\n    }\n    lastActiveIndex = 0;\n\n    // 1. Create ONE ScrollTrigger for the whole section\n    gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.create({\n      trigger: '.works-section',\n      start: 'top top',\n      end: '+=2000vh',\n      // Your 400vh duration\n      pin: true,\n      pinSpacing: true,\n      scrub: 1,\n      onUpdate: function onUpdate(self) {\n        var numProjects = projects.length;\n\n        // --- THIS IS THE UPDATED LOGIC ---\n\n        // 1. Calculate the new active index\n        // We use Math.floor to get the index (0, 1, 2, 3, 4)\n        var newIndex = Math.floor(self.progress * numProjects);\n        // Clamp it to the max index\n        if (newIndex >= numProjects) {\n          newIndex = numProjects - 1;\n        }\n\n        // 2. Calculate the progress *within* this project's segment\n        var segmentDuration = 1 / numProjects;\n        var segmentStartProgress = newIndex * segmentDuration;\n        // This gives a 0-1 value for just the current segment\n        var rawProgress = (self.progress - segmentStartProgress) / segmentDuration;\n        rawProgress = Math.max(0, Math.min(1, rawProgress)); // Clamp it\n\n        // 3. Apply the \"stop motion\" steps\n        var steppedProgress = Math.round(rawProgress * progressBarSteps) / progressBarSteps;\n        var progressForThisProject = steppedProgress * 100;\n\n        // --- END UPDATED LOGIC ---\n\n        // Toggle active class (only if it changed)\n        if (newIndex !== lastActiveIndex) {\n          projects.forEach(function (p) {\n            return p.classList.remove('is-active');\n          });\n          thumbnails.forEach(function (t) {\n            return t.classList.remove('is-active');\n          });\n          if (projects[newIndex]) {\n            projects[newIndex].classList.add('is-active');\n            var thumbId = projects[newIndex].dataset.thumbnailId;\n            if (thumbId) {\n              var thumb = document.getElementById(thumbId);\n              if (thumb) thumb.classList.add('is-active');\n            }\n          }\n          lastActiveIndex = newIndex;\n        }\n\n        // --- THIS IS THE FIX ---\n        // This code block is no longer inside an `if (projects.length === 2)`\n        if (projects[newIndex]) {\n          if (progressForThisProject !== undefined) {\n            projects[newIndex].style.setProperty('--progress-width', \"\".concat(progressForThisProject, \"%\"));\n          }\n\n          // Clean up bars for other projects\n          projects.forEach(function (p, index) {\n            if (index !== newIndex) {\n              if (index < newIndex) p.style.setProperty('--progress-width', '100%');\n              if (index > newIndex) p.style.setProperty('--progress-width', '0%');\n            }\n          });\n        }\n      },\n      // onEnter, set the first item as active\n      onEnter: function onEnter() {\n        // ... (this code is fine as-is)\n      }\n    });\n  } // End of if (window.innerWidth > 768)\n\n  // --- Contact Section Scroll Animation ---\n  // const contactSection = document.querySelector('.contact-section');\n  // if (contactSection) {\n  //   // Using your new, preferred values\n  //   gsap.set('.decor-sun', { xPercent: -40, yPercent: -100, rotation: -60 });\n  //   gsap.set('.decor-tree', { xPercent: 40, yPercent: -5, rotation: 30 });\n  //   gsap.set('.decor-mountain', { xPercent: -40, yPercent: 10, rotation: -20 });\n  //   gsap.set('.decor-tori', { xPercent: 40, yPercent: 10, rotation: -25 });\n\n  //   const stopMotionEase = \"steps(10)\"; \n\n  //   const tl = gsap.timeline({\n  //     scrollTrigger: {\n  //       trigger: contactSection,\n  //       start: 'top bottom',\n  //       // --- FIX 2: Corrected end trigger ---\n  //       end: 'bottom 80%', // Was 'bottom 80%'\n  //       scrub: 1.5\n  //     }\n  //   });\n\n  //   // We add the 'ease' property to each animation\n  //   tl.to('.decor-sun', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)\n  //     .to('.decor-tree', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)\n  //     .to('.decor-mountain', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)\n  //     .to('.decor-tori', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0);\n\n  // } // End of if (contactSection)\n\n  // --- Clipboard Button ---\n  document.querySelectorAll('.copy-button').forEach(function (button) {\n    button.addEventListener('click', function () {\n      var textToCopy = button.dataset.clipboardText;\n      navigator.clipboard.writeText(textToCopy).then(function () {\n        button.classList.add('is-copied');\n        setTimeout(function () {\n          button.classList.remove('is-copied');\n        }, 2000);\n      })[\"catch\"](function (err) {\n        console.error('Failed to copy: ', err);\n      });\n    });\n  });\n} // --- END OF initializeGSAPAnimations ---\n\n//# sourceURL=webpack://my-portfolio-2025/./src/js/home-animations.js?\n}");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   initializeGSAPAnimations: () => (/* binding */ initializeGSAPAnimations)
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
+
+
+
+/**
+ * All GSAP and ScrollTrigger animations go in here.
+ */
+function initializeGSAPAnimations() {
+  // --- Works Headline Animation ---
+  // gsap.utils.toArray('.works-headline .char').forEach(char => {
+  //   gsap.set(char, {
+  //     rotation: gsap.utils.random(-3, 2),
+  //     y: gsap.utils.random(-2, 2),
+  //   });
+  // });
+
+  // // --- Contact Headline Animation ---
+  // gsap.utils.toArray('.contact-headline .char').forEach(char => {
+  //   gsap.set(char, {
+  //     rotation: gsap.utils.random(-2, 2),
+  //     y: gsap.utils.random(-2, 2),
+  //   });
+  // });
+
+  // --- Works Section Scroll Animation ---
+  if (window.innerWidth > 768) {
+    var projects = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.utils.toArray('.project-item');
+    var thumbnails = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.utils.toArray('.works-gallery-thumbnail');
+    if (projects.length === 0) return; // Safety check
+
+    var lastActiveIndex = -1;
+    var progressBarSteps = 6; // Your "stop motion" frames
+
+    // Set default active state
+    projects[0].classList.add('is-active');
+    var firstThumbId = projects[0].dataset.thumbnailId;
+    if (firstThumbId) {
+      var firstThumb = document.getElementById(firstThumbId);
+      if (firstThumb) firstThumb.classList.add('is-active');
+    }
+    lastActiveIndex = 0;
+
+    // 1. Create ONE ScrollTrigger for the whole section
+    gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.create({
+      trigger: '.works-section',
+      start: 'top top',
+      end: '+=2000vh',
+      // Your 400vh duration
+      pin: true,
+      pinSpacing: true,
+      scrub: 1,
+      onUpdate: function onUpdate(self) {
+        var numProjects = projects.length;
+
+        // --- THIS IS THE UPDATED LOGIC ---
+
+        // 1. Calculate the new active index
+        // We use Math.floor to get the index (0, 1, 2, 3, 4)
+        var newIndex = Math.floor(self.progress * numProjects);
+        // Clamp it to the max index
+        if (newIndex >= numProjects) {
+          newIndex = numProjects - 1;
+        }
+
+        // 2. Calculate the progress *within* this project's segment
+        var segmentDuration = 1 / numProjects;
+        var segmentStartProgress = newIndex * segmentDuration;
+        // This gives a 0-1 value for just the current segment
+        var rawProgress = (self.progress - segmentStartProgress) / segmentDuration;
+        rawProgress = Math.max(0, Math.min(1, rawProgress)); // Clamp it
+
+        // 3. Apply the "stop motion" steps
+        var steppedProgress = Math.round(rawProgress * progressBarSteps) / progressBarSteps;
+        var progressForThisProject = steppedProgress * 100;
+
+        // --- END UPDATED LOGIC ---
+
+        // Toggle active class (only if it changed)
+        if (newIndex !== lastActiveIndex) {
+          projects.forEach(function (p) {
+            return p.classList.remove('is-active');
+          });
+          thumbnails.forEach(function (t) {
+            return t.classList.remove('is-active');
+          });
+          if (projects[newIndex]) {
+            projects[newIndex].classList.add('is-active');
+            var thumbId = projects[newIndex].dataset.thumbnailId;
+            if (thumbId) {
+              var thumb = document.getElementById(thumbId);
+              if (thumb) thumb.classList.add('is-active');
+            }
+          }
+          lastActiveIndex = newIndex;
+        }
+
+        // --- THIS IS THE FIX ---
+        // This code block is no longer inside an `if (projects.length === 2)`
+        if (projects[newIndex]) {
+          if (progressForThisProject !== undefined) {
+            projects[newIndex].style.setProperty('--progress-width', "".concat(progressForThisProject, "%"));
+          }
+
+          // Clean up bars for other projects
+          projects.forEach(function (p, index) {
+            if (index !== newIndex) {
+              if (index < newIndex) p.style.setProperty('--progress-width', '100%');
+              if (index > newIndex) p.style.setProperty('--progress-width', '0%');
+            }
+          });
+        }
+      },
+      // onEnter, set the first item as active
+      onEnter: function onEnter() {
+        // ... (this code is fine as-is)
+      }
+    });
+  } // End of if (window.innerWidth > 768)
+
+  // --- Contact Section Scroll Animation ---
+  // const contactSection = document.querySelector('.contact-section');
+  // if (contactSection) {
+  //   // Using your new, preferred values
+  //   gsap.set('.decor-sun', { xPercent: -40, yPercent: -100, rotation: -60 });
+  //   gsap.set('.decor-tree', { xPercent: 40, yPercent: -5, rotation: 30 });
+  //   gsap.set('.decor-mountain', { xPercent: -40, yPercent: 10, rotation: -20 });
+  //   gsap.set('.decor-tori', { xPercent: 40, yPercent: 10, rotation: -25 });
+
+  //   const stopMotionEase = "steps(10)"; 
+
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: contactSection,
+  //       start: 'top bottom',
+  //       // --- FIX 2: Corrected end trigger ---
+  //       end: 'bottom 80%', // Was 'bottom 80%'
+  //       scrub: 1.5
+  //     }
+  //   });
+
+  //   // We add the 'ease' property to each animation
+  //   tl.to('.decor-sun', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)
+  //     .to('.decor-tree', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)
+  //     .to('.decor-mountain', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0)
+  //     .to('.decor-tori', { xPercent: 0, yPercent: 0, rotation: 0, ease: stopMotionEase }, 0);
+
+  // } // End of if (contactSection)
+
+  // --- Clipboard Button ---
+  document.querySelectorAll('.copy-button').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var textToCopy = button.dataset.clipboardText;
+      navigator.clipboard.writeText(textToCopy).then(function () {
+        button.classList.add('is-copied');
+        setTimeout(function () {
+          button.classList.remove('is-copied');
+        }, 2000);
+      })["catch"](function (err) {
+        console.error('Failed to copy: ', err);
+      });
+    });
+  });
+} // --- END OF initializeGSAPAnimations ---
 
 /***/ })
 
 }]);
+//# sourceMappingURL=src_js_home-animations_js.bundle.js.map

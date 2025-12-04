@@ -29,3 +29,10 @@
     transform-origin: left; // Grows from the left
   }
 }
+
+// --- NEW MIXIN ---
+@mixin squircle {
+  @supports (corner-shape: squircle) {
+    corner-shape: squircle;
+  }
+}

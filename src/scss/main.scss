@@ -10,13 +10,16 @@
 @import 'base';
 @import 'typography';
 @import 'effects';
+@import 'effects';
+@import 'components';
+@import 'cursor';
 
 // 4. Your components and layouts will go here...
 
 @import 'loader';
 @import 'header';
 @import 'hero';
-@import 'works';
+@import 'work';
 @import 'contact';
 @import 'project-page';
 @import 'project-meta';

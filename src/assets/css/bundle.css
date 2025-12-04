@@ -1,6 +1,6 @@
-/*!********************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/normalize.css/normalize.css ***!
-  \********************************************************************************************/
+/*!************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/normalize.css/normalize.css ***!
+  \************************************************************************************************************************/
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -351,9 +351,9 @@ template {
   display: none;
 }
 
-/*!*************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/main.scss ***!
-  \*************************************************************************************************************/
+/*!*********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/scss/main.scss ***!
+  \*********************************************************************************************************************************************************************/
 @charset "UTF-8";
 /* --- IBM Plex Sans --- */
 /* 300 Light */
@@ -526,7 +526,7 @@ body::after {
 }
 
 main {
-  padding-top: 120px;
+  padding-top: 100px;
 }
 
 .fuzzy-overlay {
@@ -801,6 +801,106 @@ h5, .h5 {
   }
 }
 /*--------------------------------*\
+  #EFFECTS
+\*--------------------------------*/
+.loader-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-repeat: repeat;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 999;
+  animation: noise-animation 0.2s steps(2) infinite;
+}
+
+@keyframes noise-animation {
+  0% {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -5% -10%;
+  }
+  20% {
+    background-position: -15% 5%;
+  }
+  30% {
+    background-position: 7% -25%;
+  }
+  40% {
+    background-position: 20% 25%;
+  }
+  50% {
+    background-position: -25% 10%;
+  }
+  60% {
+    background-position: 15% 5%;
+  }
+  70% {
+    background-position: 0 15%;
+  }
+  80% {
+    background-position: 25% 35%;
+  }
+  90% {
+    background-position: -10% 10%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+/* TOAST NOTIFICATION */
+.toast-notification {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.toast-notification.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  background: #67E3F6;
+  mix-blend-mode: difference;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+body {
+  cursor: none;
+}
+
+a, button {
+  cursor: none;
+}
+
+/*--------------------------------*\
   #SITE-LOADER
 \*--------------------------------*/
 .site-loader {
@@ -947,7 +1047,7 @@ html.is-loaded .site-loader {
   left: 0;
   width: 100%;
   z-index: 1000;
-  height: 120px;
+  height: 100px;
   background-color: #ffffff;
   transition-property: transform, opacity;
   transition-duration: 0.3s, 0.5s;
@@ -1617,11 +1717,11 @@ a.btn-contact:hover {
   max-width: 480px;
   justify-self: center;
   transform-origin: top center;
-  transform: perspective(1200px) translateZ(0);
+  transform: perspective(1800px) translateZ(0);
   transition: transform 0.45s cubic-bezier(0.25, 0.14, 0.16, 1), box-shadow 0.45s cubic-bezier(0.25, 0.14, 0.16, 1);
 }
 .work-section .project-card:hover, .work-section .project-card:focus-visible {
-  transform: perspective(1200px) rotateX(2deg) translateY(-2px);
+  transform: perspective(1800px) rotateX(2deg) translateY(0px);
   /* NEW SHADOW: softer + more spread + dropped lower */
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12), 0 8px 18px rgba(0, 0, 0, 0.08);
 }
@@ -2023,10 +2123,10 @@ a.btn-contact:hover {
     position: relative;
     position: -webkit-sticky;
     position: sticky;
-    top: 144px;
+    top: 124px;
     align-self: start;
     z-index: 50;
-    max-height: calc(100vh - 152px);
+    max-height: calc(100vh - 132px);
     overflow: auto;
     padding-right: 0.5rem;
   }
@@ -2656,3 +2756,5 @@ a.btn-contact:hover {
     transform: rotate(-10deg);
   }
 }
+
+/*# sourceMappingURL=bundle.css.map*/
