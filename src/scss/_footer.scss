@@ -39,7 +39,7 @@
  * 1. Copyright & Tagline
  */
 .site-footer__copyright {
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-size: 1.75rem; // ~28px
   font-weight: 300;
   color: $color-text-light;
@@ -47,13 +47,14 @@
 }
 
 .site-footer__name {
+    font-family: $font-serif;
     font-style: italic;
     font-size: 32px;
     font-weight: 400;
 }
 
 .site-footer__tagline {
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-size: 0.875rem; // ~14px
   color: $color-text-light;
   line-height: 1.5;
@@ -78,7 +79,7 @@
   }
 
   a {
-    font-family: $font-serif;
+    font-family: $font-sans;
     font-weight: 600;
     font-size: 1.15rem;
     color: $color-text;
@@ -93,7 +94,7 @@
 
 .site-footer__contact {
   grid-area: contact;
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-size: 1rem;
   color: $color-text-light;
 

@@ -37,7 +37,7 @@
     }
 
     p {
-      font-family: $font-serif;
+      font-family: $font-sans;
       font-size: 1.125rem; // 18px
       line-height: 1.7;
       color: $color-text;
@@ -101,7 +101,7 @@
   }
 
   .video-title {
-    font-family: $font-serif;
+    font-family: $font-sans;
     font-weight: 700;
     font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
     color: $color-text;
@@ -109,7 +109,7 @@
   }
 
   .video-subtitle {
-    font-family: $font-serif;
+    font-family: $font-sans;
     font-weight: 400;
     font-size: clamp(1.125rem, 1rem + 1vw, 1.5rem);
     color: $color-text-light;
@@ -117,7 +117,7 @@
   }
 
   .video-label-large {
-    font-family: $font-serif;
+    font-family: $font-sans;
     font-style: italic;
     font-size: 1.125rem;
     color: $color-text;

@@ -36,6 +36,42 @@
   src: url('./../fonts/ibm-plex-sans-v23-latin-italic.woff2') format('woff2');
 }
 
+/* 500 Regular  */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./../fonts/ibm-plex-sans-v23-latin-500.woff2') format('woff2');
+}
+
+/* 500 Regular italic */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./../fonts/ibm-plex-sans-v23-latin-500italic.woff2') format('woff2');
+}
+
+/* 600 Regular  */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./../fonts/ibm-plex-sans-v23-latin-600.woff2') format('woff2');
+}
+
+/* 600 Regular italic */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./../fonts/ibm-plex-sans-v23-latin-600italic.woff2') format('woff2');
+}
+
 /* 700 Bold */
 @font-face {
   font-family: 'IBM Plex Sans';

@@ -116,7 +116,7 @@
   position: relative;
   bottom: -4.125rem;
   z-index: 2; // Above the newspaper background
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-size: clamp(1rem, 1rem + 0.5vw, 2rem); /* Scales from 16px to 18px */
   line-height: 1.5;
   color: $color-text;
@@ -129,6 +129,12 @@
     font-weight: 400;
     font-style: italic;
   }
+  second-line {
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+   /* Highlighted word in the description */
   .highlight {
     position: relative; // This is the anchor
     display: inline-block; // Gives the span a layout box

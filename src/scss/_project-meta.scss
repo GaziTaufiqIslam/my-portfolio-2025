@@ -78,7 +78,7 @@
 .meta-label,
 .meta-label-small {
   display: block;
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-size: 1rem; // 16px
   font-weight: 400;
   color: $color-text-lighter;
@@ -91,7 +91,7 @@
 .meta-value-small,
 .meta-value-large,
 .meta-tags {
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-size: 1.125rem; // 18px
   font-weight: 400;
   color: $color-text;

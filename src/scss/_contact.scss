@@ -61,7 +61,7 @@
     padding: 0.125rem 0.5rem;
     text-align: center;
 
-    font-family: $font-serif;
+    font-family: $font-sans;
     font-size: 1.125rem;
     color: $color-neutral-500;
     letter-spacing: 0.08em;
@@ -78,7 +78,7 @@
     position: relative;
     z-index: 2;
 
-    font-family: $font-serif;
+    font-family: $font-sans;
     font-size: 1.75rem;
     font-weight: 400;
     line-height: 1.4;
@@ -93,7 +93,7 @@
       text-transform: uppercase;
       font-weight: 600;
       letter-spacing: 0.06em;
-      font-family: $font-serif;
+      font-family: $font-sans;
       color: $color-neutral-900;
       font-size: inherit;
     }
@@ -118,7 +118,7 @@
 }
 
 .email-text {
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-size: 1.5rem;
   color: $color-text;
   font-weight: 600;
@@ -186,7 +186,7 @@
   }
 
   a {
-    font-family: $font-serif;
+    font-family: $font-sans;
     // font-style: italic;
     font-size: 1rem;
     font-weight: 600;

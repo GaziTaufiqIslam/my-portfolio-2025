@@ -95,13 +95,14 @@
 }
 
 .site-header__brand-text {
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-size: 1.5rem; // 18px
   font-weight: 400;
   color: $color-text-light;
   white-space: nowrap;
 }
 .site-header__my-name {
+    font-family: $font-serif;
     font-weight: 600;
     color: $color-brand;
     font-style: italic;
@@ -168,8 +169,8 @@
   // Styles for the nav links (not the button)
   ul a {
     padding-top: 0.5em;
-    font-family: $font-serif;
-    font-weight: 600;
+    font-family: $font-sans;
+    font-weight: 500;
     font-size: 1.25rem;
     color: $color-text;
     text-decoration: none;

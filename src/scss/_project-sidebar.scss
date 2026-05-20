@@ -12,7 +12,7 @@
 // }
 
 .sidebar-label {
-  font-family: $font-serif;
+  font-family: $font-sans;
   font-style: italic;
   font-weight: 400;
   font-size: 1rem;
@@ -50,7 +50,7 @@
 
   .sidebar-title {
     // --- Font style updates ---
-    font-family: $font-serif;
+    font-family: $font-sans;
     font-style: normal; // <-- NOT italic
     font-weight: 600;    // <-- 600 weight
     font-size: 20px;

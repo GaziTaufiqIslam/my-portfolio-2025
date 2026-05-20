@@ -380,6 +380,38 @@ template {
   font-display: swap;
   src: url(../fonts/ibm-plex-sans-v23-latin-italic.woff2) format("woff2");
 }
+/* 500 Regular  */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../fonts/ibm-plex-sans-v23-latin-500.woff2) format("woff2");
+}
+/* 500 Regular italic */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../fonts/ibm-plex-sans-v23-latin-500italic.woff2) format("woff2");
+}
+/* 600 Regular  */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/ibm-plex-sans-v23-latin-600.woff2) format("woff2");
+}
+/* 600 Regular italic */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/ibm-plex-sans-v23-latin-600italic.woff2) format("woff2");
+}
 /* 700 Bold */
 @font-face {
   font-family: "IBM Plex Sans";
@@ -519,7 +551,7 @@ body::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.25;
   z-index: -1;
@@ -533,7 +565,7 @@ main {
   pointer-events: none;
   position: fixed;
   inset: -200%;
-  background: url(../images/..\assets\images\noise-bg.png);
+  background: url(../images/../assets/images/noise-bg.png);
   opacity: 0.35;
   z-index: -10;
   display: none;
@@ -636,7 +668,7 @@ html.is-loaded .site-header {
 }
 
 html.js-enabled {
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
 }
 html.js-enabled .site-header,
 html.js-enabled .hero-section,
@@ -662,9 +694,10 @@ html.is-loaded .site-header {
   # Fluid scaling with clamp()
 \*--------------------------------*/
 body {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   line-height: 1.6;
+  letter-spacing: -0.03rem;
   color: #1e1e1e;
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
@@ -695,7 +728,7 @@ small {
 }
 
 h1, .h1 {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: clamp(2.25rem, 1rem + 5vw, 3.5rem);
   line-height: 1.1;
@@ -704,7 +737,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: clamp(2rem, 1.2rem + 3.5vw, 2.75rem);
   line-height: 1.2;
@@ -713,7 +746,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
   font-size: clamp(1.625rem, 1.2rem + 2.5vw, 2rem);
   line-height: 1.3;
@@ -722,7 +755,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.5rem);
   line-height: 1.4;
@@ -738,13 +771,13 @@ h5, .h5 {
 }
 
 .text-body-base {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-size: 16px;
 }
 
 .text-small-strong {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
 }
@@ -757,7 +790,7 @@ h5, .h5 {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.4;
   pointer-events: none;
@@ -808,7 +841,7 @@ h5, .h5 {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.4;
   pointer-events: none;
@@ -1085,7 +1118,7 @@ html.is-loaded .site-loader {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.25;
   z-index: -1;
@@ -1096,7 +1129,7 @@ html.is-loaded .site-loader {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.35;
   z-index: 1;
@@ -1125,7 +1158,7 @@ html.is-loaded .site-loader {
 }
 
 .site-header__brand-text {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
   color: #333333;
@@ -1133,6 +1166,7 @@ html.is-loaded .site-loader {
 }
 
 .site-header__my-name {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 600;
   color: #4a2d6b;
   font-style: italic;
@@ -1151,7 +1185,7 @@ html.is-loaded .site-loader {
   width: 100%;
   height: 3vw;
   max-height: 44px;
-  background-image: url(../images/..\assets\images\pencil-underline.png);
+  background-image: url(../images/../assets/images/pencil-underline.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -1184,8 +1218,8 @@ html.is-loaded .site-loader {
 }
 .site-header__nav ul a {
   padding-top: 0.5em;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  font-weight: 600;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
   font-size: 1.25rem;
   color: #1e1e1e;
   text-decoration: none;
@@ -1243,7 +1277,7 @@ html.is-loaded .site-loader {
   left: 0;
   bottom: -3px;
   right: -2px;
-  background-image: url(../images/..\assets\images\button-stroke-red.svg);
+  background-image: url(../images/../assets/images/button-stroke-red.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -1253,7 +1287,7 @@ html.is-loaded .site-loader {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: url(../images/..\assets\images\button-stroke-gray.svg);
+  background-image: url(../images/../assets/images/button-stroke-gray.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -1462,7 +1496,7 @@ a.btn-contact:hover {
   position: relative;
   bottom: -4.125rem;
   z-index: 2;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(1rem, 1rem + 0.5vw, 2rem); /* Scales from 16px to 18px */
   line-height: 1.5;
   color: #1e1e1e;
@@ -1474,6 +1508,13 @@ a.btn-contact:hover {
 .hero-description-text span {
   font-weight: 400;
   font-style: italic;
+}
+.hero-description-text second-line {
+  display: block;
+  margin-top: 0.25rem;
+}
+.hero-description-text {
+  /* Highlighted word in the description */
 }
 .hero-description-text .highlight {
   position: relative;
@@ -1487,7 +1528,7 @@ a.btn-contact:hover {
   height: 2rem;
   width: 120%;
   transform: translateY(-40%);
-  background-image: url(../images/..\assets\images\scribble.png);
+  background-image: url(../images/../assets/images/scribble.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -1637,7 +1678,7 @@ a.btn-contact:hover {
   position: relative;
   /* Existing specs */
   padding: 0.125rem 0.5rem;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.125rem;
   color: #757575;
   letter-spacing: 0.08em;
@@ -1671,7 +1712,7 @@ a.btn-contact:hover {
   text-align: center;
   position: relative;
   z-index: 2;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.75rem;
   font-weight: 400;
   line-height: 1.4;
@@ -1689,7 +1730,7 @@ a.btn-contact:hover {
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.06em;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: #1e1e1e;
   font-size: inherit;
 }
@@ -1792,7 +1833,7 @@ a.btn-contact:hover {
   /* Card Heading */
 }
 .work-section .project-card__heading {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 125%;
@@ -1812,10 +1853,10 @@ a.btn-contact:hover {
   border-radius: 4px;
   border: 1px solid #333333;
   color: #212121;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.02em;
 }
@@ -1836,7 +1877,7 @@ a.btn-contact:hover {
 }
 .work-section .work-footer .see-more-projects {
   color: #1e1e1e;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 500;
   line-height: 120%;
@@ -1920,7 +1961,7 @@ a.btn-contact:hover {
   margin: 0 auto;
   padding: 0.125rem 0.5rem;
   text-align: center;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.125rem;
   color: #757575;
   letter-spacing: 0.08em;
@@ -1936,7 +1977,7 @@ a.btn-contact:hover {
   text-align: center;
   position: relative;
   z-index: 2;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.75rem;
   font-weight: 400;
   line-height: 1.4;
@@ -1954,7 +1995,7 @@ a.btn-contact:hover {
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.06em;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: #1e1e1e;
   font-size: inherit;
 }
@@ -1972,7 +2013,7 @@ a.btn-contact:hover {
 }
 
 .email-text {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.5rem;
   color: #1e1e1e;
   font-weight: 600;
@@ -2032,7 +2073,7 @@ a.btn-contact:hover {
   margin: 0.5rem 1rem;
 }
 .contact-socials a {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: #333333;
@@ -2135,7 +2176,7 @@ a.btn-contact:hover {
 
 .mobile-subheader {
   display: block;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.75rem;
   margin-bottom: 1.5rem;
 }
@@ -2249,7 +2290,7 @@ a.btn-contact:hover {
 .meta-label,
 .meta-label-small {
   display: block;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   color: #555555;
@@ -2261,7 +2302,7 @@ a.btn-contact:hover {
 .meta-value-small,
 .meta-value-large,
 .meta-tags {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   color: #1e1e1e;
@@ -2345,7 +2386,7 @@ a.btn-contact:hover {
   #PROJECT-SIDEBAR
 \*--------------------------------*/
 .sidebar-label {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: italic;
   font-weight: 400;
   font-size: 1rem;
@@ -2377,7 +2418,7 @@ a.btn-contact:hover {
   margin-bottom: 8px;
 }
 .sidebar-link .sidebar-title {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -2472,7 +2513,7 @@ a.btn-contact:hover {
   }
 }
 .project-content-scroll .project-text p {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.125rem;
   line-height: 1.7;
   color: #1e1e1e;
@@ -2521,21 +2562,21 @@ a.btn-contact:hover {
   margin: 0;
 }
 .project-video-embed .video-title {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
   color: #1e1e1e;
   margin: 0.5rem 0;
 }
 .project-video-embed .video-subtitle {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-size: clamp(1.125rem, 1rem + 1vw, 1.5rem);
   color: #333333;
   margin-bottom: 2.5rem;
 }
 .project-video-embed .video-label-large {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: italic;
   font-size: 1.125rem;
   color: #1e1e1e;
@@ -2613,7 +2654,7 @@ a.btn-contact:hover {
  * 1. Copyright & Tagline
  */
 .site-footer__copyright {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.75rem;
   font-weight: 300;
   color: #333333;
@@ -2621,13 +2662,14 @@ a.btn-contact:hover {
 }
 
 .site-footer__name {
+  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
   font-style: italic;
   font-size: 32px;
   font-weight: 400;
 }
 
 .site-footer__tagline {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   color: #333333;
   line-height: 1.5;
@@ -2649,7 +2691,7 @@ a.btn-contact:hover {
   margin-bottom: 1.25rem;
 }
 .site-footer__nav a {
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
   font-size: 1.15rem;
   color: #1e1e1e;
@@ -2679,7 +2721,7 @@ a.btn-contact:hover {
 
 .site-footer__contact {
   grid-area: contact;
-  font-family: "IBM Plex Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   color: #333333;
 }
