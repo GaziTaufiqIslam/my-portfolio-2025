@@ -5,20 +5,87 @@
 .project-hero {
   width: 100%;
   // Not full height, as requested
-  height: 56vw; 
+  // height: 56vw;
   background-size: cover;
   background-position: center;
-  background-color: $color-neutral-700;
+  background-color: $color-neutral-000;
+  border-bottom: .4px solid $color-neutral-500;
+}
+
+.project-hero{
+  .container{
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 120px 0 64px;
+  }
+
+  .title-wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .title-left{
+      width: 100%;
+      max-width: 750px;
+    }
+
+    .title-sub{
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 125%; /* 30px */
+      letter-spacing: -0.48px;
+      max-width: 640px;
+    }
+    .title-main{
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 110%; /* 30px */
+      letter-spacing: -0.96px;
+      max-width: 750px;
+    }
+
+    .title-right{
+      display: flex;
+      justify-content: start;
+      .title-img{
+        height: 100%;
+        max-height: 280px;
+      }
+    }
+  }
+
+  .title-tags-wrapper ul{
+    margin-top: 3.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    li{
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .title-tag{
+      padding: .5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid $color-brand-700;
+      color: $color-brand-700
+    }
+  }
+
 }
 
 .project-main-content {
   display: grid;
   // Mobile-first: 1 column
   grid-template-columns: 1fr; 
-  gap: 2rem;
+  // gap: 2rem;
 //   max-width: 1600px;
   margin: 0 auto 2rem; // <-- CHANGED THIS (was 2rem auto)
   // padding: 0 1.5rem;
+
+  width: 100%;
+  max-width: 1600px;
 }
 
 // 1. Left Sidebar (Desktop)
@@ -51,6 +118,19 @@
 \*--------------------------------*/
 
 @media (min-width: $breakpoint-xl) { // 768px and up
+
+  .project-hero{
+    .title-wrapper{
+      flex-direction: row;
+      justify-content: center;
+      .title-right{
+        justify-content: end;
+      }
+    }
+
+  }
+
+
   .project-main-content {
     // 4-col / 8-col split (12-col grid)
     grid-template-columns: 320px 1fr; 

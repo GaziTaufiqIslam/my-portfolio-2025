@@ -4,7 +4,26 @@ layout: layouts/base.njk
 <article class="project-page">
 
   {# 1. PROJECT HERO #}
-  <header class="project-hero" style="background-image: url('{{ heroImage }}');">
+  <header class="project-hero">
+    <div class="container">
+      <div class="title-wrapper">
+        <div class="title-left">
+          <h2 class="title-sub">{{ heroTitle.sub }}</h2>
+          <h1 class="title-main">{{ heroTitle.main }}</h1>
+        </div>
+        <div class="title-right">
+          <img class="title-img" src="{{ heroImage }}" alt="project image">
+        </div>
+        
+      </div>
+      <div class="title-tags-wrapper">
+        <ul>
+          {% for item in role %}
+            <li class="title-tag">{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
     {# Intentionally empty so user can see details below #}
   </header>
 

@@ -1,22 +1,26 @@
 <div class="project-meta" id="overview">
 
-  <div class="meta-row">
-    <div class="meta-block">
-      <span class="meta-label">Client</span>
-      <img src="{{ client.logo }}" alt="{{ client.name }} Logo" class="client-logo">
-    </div>
-    <div class="meta-block">
-      <span class="meta-label">Role</span>
+  <div class="meta-row row-1">
+    <div class="meta-block" id="modules">
+      <span class="meta-label">Classroom Modules</span>
       <div class="meta-tags">
-        {% for item in role %}
+        {% for item in modules %}
         <span class="tag">{{ item }}</span>
         {% endfor %}
       </div>
     </div>
+
     <div class="meta-block">
       <span class="meta-label">Timeline</span>
       <span class="meta-value-large">{{ timeline }}</span>
     </div>
+
+    <div class="meta-block">
+      <span class="meta-label">Client</span>
+      <img src="{{ client.logo }}" alt="{{ client.name }} Logo" class="client-logo">
+    </div>
+    
+    
   </div>
 
   <div class="meta-row">
