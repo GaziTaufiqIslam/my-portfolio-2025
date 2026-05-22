@@ -17,6 +17,7 @@
   font-weight: 400;
   font-size: 1rem;
   color: $color-text-light;
+  opacity: 50%;
   margin-bottom: 1rem;
   padding-top: 2rem;
 }
@@ -29,13 +30,13 @@
 
 .sidebar-link {
   display: block;
-  padding: 20px 16px;
-  border: 0.4px solid $color-neutral-300;
-  border-radius: 4px;
+  padding: 8px 0;
+  // border: 0.4px solid $color-neutral-300;
+  // border-radius: 4px;
   background-color: $color-neutral-000;
 
   text-decoration: none;
-  margin-bottom: 8px;
+  // margin-bottom: 2px;
   position: relative;
   overflow: hidden; // For the progress bar
   transition: all 0.5s ease-in-out;
@@ -52,8 +53,8 @@
     // --- Font style updates ---
     font-family: $font-sans;
     font-style: normal; // <-- NOT italic
-    font-weight: 600;    // <-- 600 weight
-    font-size: 20px;
+    font-weight: 400;    // <-- 600 weight
+    font-size: 1rem;
     color: $color-text;
     // transition: all 0.3s ease-in-out;
   }
@@ -94,9 +95,9 @@
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: .5rem;
     left: 0;
-    height: 4px;
+    height: 2px;
     background-color: $color-brand;
     width: 100%;
     transform: translateX(-100%); // Start off-screen
@@ -107,16 +108,16 @@
 // --- ACTIVE STATE ---
 .sidebar-link.is-active {
 //   padding: 32px;
-  margin-top: 8px;
-  margin-bottom: 16px;
-  border: 0.8px solid $color-neutral-500;
-  background-color: $color-brand-100; // New brand 100 background
-  border: 0.8px solid $color-brand-500;
-  box-shadow: 0 10px 40px -15px rgba(0,0,0,0.2);
+  // margin-top: 8px;
+  // margin-bottom: 16px;
+  // border: 0.8px solid $color-neutral-500;
+  // background-color: $color-brand-100; // New brand 100 background
+  // border: 0.8px solid $color-brand-500;
+  // box-shadow: 0 10px 40px -15px rgba(0,0,0,0.2);
 
   .sidebar-title {
     // font-size: 24px;
-    font-weight: 600;
+    font-weight: 500;
     font-style: normal;
     color: $color-text;
     // transform: scale(1.2); // <-- ADD THIS
