@@ -8,7 +8,7 @@
   // height: 56vw;
   background-size: cover;
   background-position: center;
-  background-color: $color-neutral-000;
+  // background-color: $color-neutral-000;
   border-bottom: .4px solid $color-neutral-500;
 }
 
@@ -17,13 +17,14 @@
     width: 90%;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 120px 0 64px;
+    padding: 6vh 0 4vh;
   }
 
   .title-wrapper{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    gap: 1rem;
 
     .title-left{
       width: 100%;
@@ -31,35 +32,43 @@
     }
 
     .title-sub{
-      font-size: 1.5rem;
+      font-size: 1rem;
       font-weight: 400;
       line-height: 125%; /* 30px */
       letter-spacing: -0.48px;
       max-width: 640px;
+      margin: 0;
     }
     .title-main{
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: 700;
       line-height: 110%; /* 30px */
       letter-spacing: -0.96px;
       max-width: 750px;
+      margin: 0;
+      margin-top: 0.75rem;
     }
 
     .title-right{
       display: flex;
       justify-content: start;
       .title-img{
-        height: 100%;
+        width: 100%;
+        height: auto;
         max-height: 280px;
+        object-fit: contain;
+        object-position: left;
+        border-radius: 1rem;
       }
     }
   }
 
   .title-tags-wrapper ul{
-    margin-top: 3.5rem;
+    margin-top: 1rem;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: left;
+    gap: .5rem;
+    flex-wrap: wrap;
     li{
       list-style-type: none;
       padding: 0;
@@ -117,21 +126,36 @@
   #DESKTOP & TABLET LAYOUT
 \*--------------------------------*/
 
-@media (min-width: $breakpoint-xl) { // 768px and up
-
+@media (min-width: $breakpoint-lg) {
   .project-hero{
+    .container{
+      padding: 120px 0 64px;
+    }
     .title-wrapper{
       flex-direction: row;
       justify-content: center;
       .title-right{
         justify-content: end;
       }
+    .title-sub{
+      font-size: 1.5rem;
     }
-
+    .title-main{
+      font-size: 3rem;
+      margin-top: 1.5rem;
+    }
   }
+  .title-tags-wrapper ul{
+    margin-top: 3.5rem;
+    gap: 2rem;
+    justify-content: center;
+  }
+  }
+}
 
+@media (min-width: $breakpoint-xl) { // 768px and up
 
-  .project-main-content {
+    .project-main-content {
     // 4-col / 8-col split (12-col grid)
     grid-template-columns: 320px 1fr; 
     // margin-top: 4rem;

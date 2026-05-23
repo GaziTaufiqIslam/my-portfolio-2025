@@ -129,18 +129,19 @@
 .meta-tags .tag {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: $color-neutral-200;
+  // background-color: $color-neutral-200;
   border-radius: 0.625rem;
+  border: 1px solid $color-neutral-300;
   font-family: $font-sans;
   font-size: 0.875rem;
   font-weight: 400;
-  color: $color-text;
+  color: $color-text-light;
   margin: 0 0.5rem 0.5rem 0;
 }
 
 .meta-tools img {
-  height: 32px;
-  width: 32px;
+  height: 48px;
+  width: 48px;
   margin: 0 0.75rem 0.5rem 0;
 }
 
@@ -168,9 +169,14 @@
   font-style: normal;
 }
 
+.row-3{
+  display: none;
+}
+
 .recognition-item,
 .impact-item {
-  display: flex;
+  // display: flex;
+  display: none;
   align-items: flex-start;
   margin-bottom: 1.5rem;
 

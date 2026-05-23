@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div class="meta-row">
+  <div class="meta-row row-3">
     {# This block only renders if 'recognition' exists in the front matter #}
       {% if recognition %}
       <div class="meta-block">
@@ -64,7 +64,7 @@
       </div>
       {% endif %}
       {# --- END FIX --- #}
-    <div class="meta-block">
+    <div class="meta-block impact-block">
       <span class="meta-label">Impact</span>
       <div class="meta-impact">
         {% for item in impact %}

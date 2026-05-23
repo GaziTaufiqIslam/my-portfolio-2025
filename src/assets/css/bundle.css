@@ -551,7 +551,7 @@ body::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.25;
   z-index: -1;
@@ -565,7 +565,7 @@ main {
   pointer-events: none;
   position: fixed;
   inset: -200%;
-  background: url(../images/..\assets\images\noise-bg.png);
+  background: url(../images/../assets/images/noise-bg.png);
   opacity: 0.35;
   z-index: -10;
   display: none;
@@ -668,7 +668,7 @@ html.is-loaded .site-header {
 }
 
 html.js-enabled {
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
 }
 html.js-enabled .site-header,
 html.js-enabled .hero-section,
@@ -790,7 +790,7 @@ h5, .h5 {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.4;
   pointer-events: none;
@@ -841,7 +841,7 @@ h5, .h5 {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.4;
   pointer-events: none;
@@ -1118,7 +1118,7 @@ html.is-loaded .site-loader {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.25;
   z-index: -1;
@@ -1129,7 +1129,7 @@ html.is-loaded .site-loader {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/..\assets\images\noise-bg.png);
+  background-image: url(../images/../assets/images/noise-bg.png);
   background-repeat: repeat;
   opacity: 0.35;
   z-index: 1;
@@ -1185,7 +1185,7 @@ html.is-loaded .site-loader {
   width: 100%;
   height: 3vw;
   max-height: 44px;
-  background-image: url(../images/..\assets\images\pencil-underline.png);
+  background-image: url(../images/../assets/images/pencil-underline.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -1277,7 +1277,7 @@ html.is-loaded .site-loader {
   left: 0;
   bottom: -3px;
   right: -2px;
-  background-image: url(../images/..\assets\images\button-stroke-red.svg);
+  background-image: url(../images/../assets/images/button-stroke-red.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -1287,7 +1287,7 @@ html.is-loaded .site-loader {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: url(../images/..\assets\images\button-stroke-gray.svg);
+  background-image: url(../images/../assets/images/button-stroke-gray.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -1528,7 +1528,7 @@ a.btn-contact:hover {
   height: 2rem;
   width: 120%;
   transform: translateY(-40%);
-  background-image: url(../images/..\assets\images\scribble.png);
+  background-image: url(../images/../assets/images/scribble.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -2151,7 +2151,6 @@ a.btn-contact:hover {
   width: 100%;
   background-size: cover;
   background-position: center;
-  background-color: #ffffff;
   border-bottom: 0.4px solid #757575;
 }
 
@@ -2159,44 +2158,53 @@ a.btn-contact:hover {
   width: 90%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 120px 0 64px;
+  padding: 6vh 0 4vh;
 }
 .project-hero .title-wrapper {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  gap: 1rem;
 }
 .project-hero .title-wrapper .title-left {
   width: 100%;
   max-width: 750px;
 }
 .project-hero .title-wrapper .title-sub {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 125%; /* 30px */
   letter-spacing: -0.48px;
   max-width: 640px;
+  margin: 0;
 }
 .project-hero .title-wrapper .title-main {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 110%; /* 30px */
   letter-spacing: -0.96px;
   max-width: 750px;
+  margin: 0;
+  margin-top: 0.75rem;
 }
 .project-hero .title-wrapper .title-right {
   display: flex;
   justify-content: start;
 }
 .project-hero .title-wrapper .title-right .title-img {
-  height: 100%;
+  width: 100%;
+  height: auto;
   max-height: 280px;
+  object-fit: contain;
+  object-position: left;
+  border-radius: 1rem;
 }
 .project-hero .title-tags-wrapper ul {
-  margin-top: 3.5rem;
+  margin-top: 1rem;
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: left;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 .project-hero .title-tags-wrapper ul li {
   list-style-type: none;
@@ -2240,7 +2248,10 @@ a.btn-contact:hover {
 /*--------------------------------*\
   #DESKTOP & TABLET LAYOUT
 \*--------------------------------*/
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
+  .project-hero .container {
+    padding: 120px 0 64px;
+  }
   .project-hero .title-wrapper {
     flex-direction: row;
     justify-content: center;
@@ -2248,6 +2259,20 @@ a.btn-contact:hover {
   .project-hero .title-wrapper .title-right {
     justify-content: end;
   }
+  .project-hero .title-wrapper .title-sub {
+    font-size: 1.5rem;
+  }
+  .project-hero .title-wrapper .title-main {
+    font-size: 3rem;
+    margin-top: 1.5rem;
+  }
+  .project-hero .title-tags-wrapper ul {
+    margin-top: 3.5rem;
+    gap: 2rem;
+    justify-content: center;
+  }
+}
+@media (min-width: 1280px) {
   .project-main-content {
     grid-template-columns: 320px 1fr;
   }
@@ -2395,18 +2420,18 @@ a.btn-contact:hover {
 .meta-tags .tag {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: #cdcdcd;
   border-radius: 0.625rem;
+  border: 1px solid #bbbbbb;
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
-  color: #1e1e1e;
+  color: #333333;
   margin: 0 0.5rem 0.5rem 0;
 }
 
 .meta-tools img {
-  height: 32px;
-  width: 32px;
+  height: 48px;
+  width: 48px;
   margin: 0 0.75rem 0.5rem 0;
 }
 
@@ -2433,9 +2458,13 @@ a.btn-contact:hover {
   font-style: normal;
 }
 
+.row-3 {
+  display: none;
+}
+
 .recognition-item,
 .impact-item {
-  display: flex;
+  display: none;
   align-items: flex-start;
   margin-bottom: 1.5rem;
 }
@@ -2454,7 +2483,6 @@ a.btn-contact:hover {
   font-style: italic;
   font-weight: 400;
   font-size: 1rem;
-  color: #333333;
   opacity: 50%;
   margin-bottom: 1rem;
   padding-top: 2rem;
@@ -2467,7 +2495,6 @@ a.btn-contact:hover {
 .sidebar-link {
   display: block;
   padding: 8px 0;
-  background-color: #ffffff;
   text-decoration: none;
   position: relative;
   overflow: hidden;
@@ -2540,9 +2567,6 @@ a.btn-contact:hover {
 /*--------------------------------*\
   #PROJECT CONTENT (Right Column)
 \*--------------------------------*/
-.project-content-scroll {
-  padding: 0 1rem;
-}
 @media (min-width: 1024px) {
   .project-content-scroll {
     padding: 0;
@@ -2550,11 +2574,6 @@ a.btn-contact:hover {
 }
 .project-content-scroll section {
   margin: 0;
-}
-@media (max-width: 1024px) {
-  .project-content-scroll section {
-    padding: 2rem 1.5rem;
-  }
 }
 .project-content-scroll .project-text {
   max-width: 720px;
