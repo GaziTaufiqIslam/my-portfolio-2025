@@ -558,7 +558,7 @@ body::after {
 }
 
 main {
-  padding-top: 100px;
+  padding-top: 80px;
 }
 
 .fuzzy-overlay {
@@ -1090,7 +1090,7 @@ html.is-loaded .site-loader {
   left: 0;
   width: 100%;
   z-index: 1000;
-  height: 100px;
+  height: 80px;
   background-color: #ffffff;
   transition-property: transform, opacity;
   transition-duration: 0.3s, 0.5s;
@@ -1104,7 +1104,7 @@ html.is-loaded .site-loader {
 }
 @media (max-width: 1024px) {
   .site-header {
-    height: 80px;
+    height: 64px;
   }
 }
 .site-header.is-hidden {
@@ -1159,7 +1159,7 @@ html.is-loaded .site-loader {
 
 .site-header__brand-text {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 400;
   color: #333333;
   white-space: nowrap;
@@ -1175,21 +1175,6 @@ html.is-loaded .site-loader {
 .site-header__my-role {
   position: relative;
   padding-bottom: 10px;
-}
-.site-header__my-role::after {
-  content: "";
-  position: absolute;
-  top: 1.45rem;
-  bottom: 0;
-  left: -1rem;
-  width: 100%;
-  height: 3vw;
-  max-height: 44px;
-  background-image: url(../images/../assets/images/pencil-underline.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  z-index: -1;
 }
 @media (max-width: 1280px) {
   .site-header__my-role {
@@ -1219,7 +1204,7 @@ html.is-loaded .site-loader {
 .site-header__nav ul a {
   padding-top: 0.5em;
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1.25rem;
   color: #1e1e1e;
   text-decoration: none;
@@ -2287,10 +2272,10 @@ a.btn-contact:hover {
     position: relative;
     position: -webkit-sticky;
     position: sticky;
-    top: 124px;
+    top: 104px;
     align-self: start;
     z-index: 50;
-    max-height: calc(100vh - 132px);
+    max-height: calc(100vh - 112px);
     overflow: auto;
     padding-right: 0.5rem;
   }
@@ -2687,13 +2672,269 @@ a.btn-contact:hover {
 .playground-page-content {
   padding: 4rem 2.5rem;
   min-height: 80vh;
-  text-align: center;
 }
 
 #lottie-playground {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
+}
+
+.playground-section {
+  padding: 6rem 0;
+  color: #1e1e1e;
+  overflow-x: hidden;
+}
+.playground-section .container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.playground-section {
+  /*--------------------------------*\
+      PROJECT HEADER
+  \*--------------------------------*/
+}
+.playground-section .project-header {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding: 0.75rem 0;
+  /* Small Label */
+}
+.playground-section .project-header__label {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  /* Placement: perfectly centered in the viewport */
+  margin: 0 auto;
+  position: relative;
+  /* Existing specs */
+  padding: 0.125rem 0.5rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.125rem;
+  color: #757575;
+  letter-spacing: 0.08em;
+  text-align: center;
+  /* New additions */
+  background: #ffffff;
+  border: 0.4px solid #333333;
+  border-radius: 4px;
+}
+.playground-section .project-header__label-wrapper {
+  display: flex;
+  position: relative;
+}
+.playground-section .project-header__label-wrapper:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  width: 100vw;
+  height: 0.4px;
+  background: #333333;
+  pointer-events: none;
+  z-index: -1;
+}
+.playground-section .project-header {
+  /* Main Title */
+}
+.playground-section .project-header__title {
+  margin-top: 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1e1e1e;
+}
+@media (max-width: 1024px) {
+  .playground-section .project-header__title {
+    font-size: 1.25rem;
+  }
+}
+.playground-section .project-header__title {
+  /* Highlight Word (sTUDIES) */
+}
+.playground-section .project-header__title .project-header__title--highlight {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1e1e1e;
+  font-size: inherit;
+}
+.playground-section {
+  /*--------------------------------*\
+      PROJECT GRID
+  \*--------------------------------*/
+}
+.playground-section .projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+}
+@media (max-width: 1280px) {
+  .playground-section .projects-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+@media (max-width: 1024px) {
+  .playground-section .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+.playground-section {
+  /*--------------------------------*\
+      PROJECT CARD
+  \*--------------------------------*/
+}
+.playground-section a.project-card {
+  text-decoration: none;
+}
+.playground-section .project-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 0.4px solid #888888;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 1.25rem 1.25rem 1.75rem 1.25rem;
+  overflow: visible;
+  justify-self: center;
+}
+@media (max-width: 1280px) {
+  .playground-section .project-card {
+    width: 96%;
+    max-width: 480px;
+  }
+}
+.playground-section .project-card {
+  transform-origin: top center;
+  transform: perspective(18g00px) translateZ(0);
+  transition: transform 0.45s cubic-bezier(0.25, 0.14, 0.16, 1), box-shadow 0.45s cubic-bezier(0.25, 0.14, 0.16, 1);
+}
+.playground-section .project-card:hover, .playground-section .project-card:focus-visible {
+  transform: perspective(1800px) rotateX(2deg);
+  /* NEW SHADOW: softer + more spread + dropped lower */
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12), 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+.playground-section .project-card:hover:last-child:hover, .playground-section .project-card:focus-visible:last-child:hover {
+  transform: none;
+  box-shadow: none;
+}
+.playground-section .project-card {
+  /* Tape PNG */
+}
+.playground-section .project-card__tape {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.95;
+}
+.playground-section .project-card {
+  /* Thumbnail */
+}
+.playground-section .project-card__thumb {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.playground-section .project-card__thumb img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 1.2/1; /* Enforce a specific width-to-height ratio */
+  object-fit: cover;
+}
+.playground-section .project-card {
+  /* Content */
+}
+.playground-section .project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 4px;
+}
+.playground-section .project-card {
+  /* Card Heading */
+}
+.playground-section .project-card__heading {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 125%;
+  color: #1e1e1e;
+  margin: 0;
+}
+.playground-section .project-card {
+  /* Tags */
+}
+.playground-section .project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.playground-section .project-card .tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #333333;
+  color: #212121;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+.playground-section .project-card--coming-soon .project-card__thumb img {
+  transition: filter 0.5s ease;
+}
+.playground-section .project-card--coming-soon:hover .project-card__thumb img {
+  filter: grayscale(100%);
+}
+.playground-section {
+  /*--------------------------------*\
+      SEE MORE PROJECTS LINK
+  \*--------------------------------*/
+}
+.playground-section .work-footer {
+  margin-top: 3.5rem;
+  text-align: center;
+}
+.playground-section .work-footer .see-more-projects {
+  color: #1e1e1e;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 120%;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.25rem 0;
+  position: relative;
+  text-decoration: none;
+}
+.playground-section .work-footer .see-more-projects::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.4px;
+  background-color: #333333;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 300ms ease-in-out;
+}
+.playground-section .work-footer .see-more-projects:hover::after, .playground-section .work-footer .see-more-projects:focus::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /*--------------------------------*\

@@ -96,7 +96,7 @@
 
 .site-header__brand-text {
   font-family: $font-sans;
-  font-size: 1.5rem; // 18px
+  font-size: 1.35rem; // 18px
   font-weight: 400;
   color: $color-text-light;
   white-space: nowrap;
@@ -114,28 +114,28 @@
   // 2. Add padding to the bottom to make space for the line
   padding-bottom: 10px;
 
-  &::after {
-    content: '';
-    position: absolute;
+  // &::after {
+  //   content: '';
+  //   position: absolute;
     
-    // 3. Position the line
+  //   // 3. Position the line
 
-    top: 1.45rem;
-    bottom: 0; // Sits at the very bottom of the new padding area
-    left: -1rem;
-    width: 100%;
-    height: 3vw; // Adjust this height to match your image's aspect ratio
-    max-height: 44px;
+  //   top: 1.45rem;
+  //   bottom: 0; // Sits at the very bottom of the new padding area
+  //   left: -1rem;
+  //   width: 100%;
+  //   height: 3vw; // Adjust this height to match your image's aspect ratio
+  //   max-height: 44px;
 
-    // 4. Load the image
-    background-image: url('../assets/images/pencil-underline.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+  //   // 4. Load the image
+  //   background-image: url('../assets/images/pencil-underline.png');
+  //   background-repeat: no-repeat;
+  //   background-position: center;
+  //   background-size: contain;
 
-    // 5. Send it behind the text
-    z-index: -1;
-  }
+  //   // 5. Send it behind the text
+  //   z-index: -1;
+  // }
 
   // 5. Responsive font size
     @media (max-width: $breakpoint-xl) {
@@ -170,7 +170,7 @@
   ul a {
     padding-top: 0.5em;
     font-family: $font-sans;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.25rem;
     color: $color-text;
     text-decoration: none;
