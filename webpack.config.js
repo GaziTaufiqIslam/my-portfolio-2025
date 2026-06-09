@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
 
   const imageLoaderRule = {
-    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+    test: /\.(png|svg|jpg|jpeg)$/i, //removed gif as it is not supported by image-webpack-loader while production build
     type: 'asset/resource',
     generator: {
       filename: (pathData) => {
@@ -39,7 +39,7 @@ module.exports = (env, argv) => {
     });
   }
 
-  const imageFiles = glob.sync('src/images/**/*.{png,svg,jpg,jpeg,gif}');
+  const imageFiles = glob.sync('src/images/**/*.{png,svg,jpg,jpeg}'); //removed gif as it is not supported by image-webpack-loader while production build
   const imageEntries = imageFiles.map(file => './' + file);
 
   return {
