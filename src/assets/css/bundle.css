@@ -2937,6 +2937,14 @@ a.btn-contact:hover {
   transform-origin: left;
 }
 
+.photography-section {
+  padding-bottom: 6rem;
+}
+.photography-section .image-placeholder {
+  padding: 2rem 0;
+  background: none;
+}
+
 /*--------------------------------*\
   #SITE-FOOTER
 \*--------------------------------*/
