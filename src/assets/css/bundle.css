@@ -551,7 +551,7 @@ body::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url(../images/../assets/images/noise-bg.png);
+  background-image: url(../images/..\assets\images\noise-bg.png);
   background-repeat: repeat;
   opacity: 0.25;
   z-index: -1;
@@ -565,7 +565,7 @@ main {
   pointer-events: none;
   position: fixed;
   inset: -200%;
-  background: url(../images/../assets/images/noise-bg.png);
+  background: url(../images/..\assets\images\noise-bg.png);
   opacity: 0.35;
   z-index: -10;
   display: none;
@@ -668,7 +668,7 @@ html.is-loaded .site-header {
 }
 
 html.js-enabled {
-  background-image: url(../images/../assets/images/noise-bg.png);
+  background-image: url(../images/..\assets\images\noise-bg.png);
 }
 html.js-enabled .site-header,
 html.js-enabled .hero-section,
@@ -790,7 +790,7 @@ h5, .h5 {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/../assets/images/noise-bg.png);
+  background-image: url(../images/..\assets\images\noise-bg.png);
   background-repeat: repeat;
   opacity: 0.4;
   pointer-events: none;
@@ -841,7 +841,7 @@ h5, .h5 {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/../assets/images/noise-bg.png);
+  background-image: url(../images/..\assets\images\noise-bg.png);
   background-repeat: repeat;
   opacity: 0.4;
   pointer-events: none;
@@ -1118,7 +1118,7 @@ html.is-loaded .site-loader {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url(../images/../assets/images/noise-bg.png);
+  background-image: url(../images/..\assets\images\noise-bg.png);
   background-repeat: repeat;
   opacity: 0.25;
   z-index: -1;
@@ -1129,7 +1129,7 @@ html.is-loaded .site-loader {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../images/../assets/images/noise-bg.png);
+  background-image: url(../images/..\assets\images\noise-bg.png);
   background-repeat: repeat;
   opacity: 0.35;
   z-index: 1;
@@ -1262,7 +1262,7 @@ html.is-loaded .site-loader {
   left: 0;
   bottom: -3px;
   right: -2px;
-  background-image: url(../images/../assets/images/button-stroke-red.svg);
+  background-image: url(../images/..\assets\images\button-stroke-red.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -1272,7 +1272,7 @@ html.is-loaded .site-loader {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: url(../images/../assets/images/button-stroke-gray.svg);
+  background-image: url(../images/..\assets\images\button-stroke-gray.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -1513,7 +1513,7 @@ a.btn-contact:hover {
   height: 2rem;
   width: 120%;
   transform: translateY(-40%);
-  background-image: url(../images/../assets/images/scribble.png);
+  background-image: url(../images/..\assets\images\scribble.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
